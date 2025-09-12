@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-# ai-append.sh - Version 1.4
+# ai-append.sh - Version 1.5
 # Concatenate AI workspace files into ./ai/project-parser/output/ai-files.md
+# Adds project_root/agentic-pipeline and project_root/AGENTS.md explicitly.
 
 set -euo pipefail
 
@@ -98,6 +99,24 @@ for g in "${BINARY_GLOBS[@]}"; do
 done
 unset 'BINARY_EXPR[${#BINARY_EXPR[@]}-1]' # remove trailing -o
 
+# Helper to append a single file (with a provided relative label) to OUTPUT_FILE
+append_file() {
+  local file="$1"
+  local rel_label="$2"
+  local lang
+  lang="$(lang_for "$file")"
+  {
+    echo "## File: $rel_label"
+    echo
+    echo "\`\`\`$lang"
+    cat "$file"
+    echo
+    echo "\`\`\`"
+    echo
+  } >> "$OUTPUT_FILE"
+}
+
+# Crawl AI_DIR (workspace ai/…)
 find "$AI_DIR" \
   \( "${EXCLUDE_EXPR[@]}" -false \) -o \
   -type f \
@@ -106,36 +125,50 @@ find "$AI_DIR" \
   -print0 |
 sort -z | while IFS= read -r -d '' file; do
   rel="./${file#"$PROJECT_ROOT/"}"
-  lang=$(lang_for "$file")
-
   printf 'Processing: %s\n' "$rel" 1>&2
-
-  {
-    echo "## File: $rel"
-    echo
-    echo "\`\`\`$lang"
-    cat "$file"
-    echo
-    echo "\`\`\`"
-    echo
-  } >> "$OUTPUT_FILE"
+  append_file "$file" "$rel"
 done
 
-# Then explicitly add AGENTS.md from project root if it exists
+# Explicitly add AGENTS.md from project root if it exists
 AGENTS_FILE="$PROJECT_ROOT/AGENTS.md"
 if [[ -f "$AGENTS_FILE" ]]; then
   rel="project_root/AGENTS.md"
-  lang="markdown"
   printf 'Processing: %s\n' "$rel" 1>&2
-  {
-    echo "## File: $rel"
-    echo
-    echo "\`\`\`$lang"
-    cat "$AGENTS_FILE"
-    echo
-    echo "\`\`\`"
-    echo
-  } >> "$OUTPUT_FILE"
+  append_file "$AGENTS_FILE" "$rel"
+fi
+
+# Explicitly include project_root/agentic-pipeline tree (if present)
+PIPE_DIR="$PROJECT_ROOT/agentic-pipeline"
+if [[ -d "$PIPE_DIR" ]]; then
+  # Optional excludes within agentic-pipeline (mirror style used for AI_DIR)
+  PIPE_EXCLUDES=(
+    "$PIPE_DIR/.git"
+    "$PIPE_DIR/.idea"
+    "$PIPE_DIR/node_modules"
+    "$PIPE_DIR/dist"
+    "$PIPE_DIR/build"
+    "$PIPE_DIR/.cache"
+    "$PIPE_DIR/__pycache__"
+    "$PIPE_DIR/.venv"
+    "$PIPE_DIR/output"
+  )
+  PIPE_EXCLUDE_EXPR=()
+  for d in "${PIPE_EXCLUDES[@]}"; do
+    PIPE_EXCLUDE_EXPR+=( -path "$d" -prune -o )
+  done
+
+  find "$PIPE_DIR" \
+    \( "${PIPE_EXCLUDE_EXPR[@]}" -false \) -o \
+    -type f \
+    \( "${INCLUDE_EXPR[@]}" \) \
+    ! \( "${BINARY_EXPR[@]}" \) \
+    -print0 |
+  sort -z | while IFS= read -r -d '' file; do
+    # Label as project_root/agentic-pipeline/<relative>
+    rel="project_root/agentic-pipeline/${file#"$PIPE_DIR/"}"
+    printf 'Processing: %s\n' "$rel" 1>&2
+    append_file "$file" "$rel"
+  done
 fi
 
 # Cross-platform sed -i

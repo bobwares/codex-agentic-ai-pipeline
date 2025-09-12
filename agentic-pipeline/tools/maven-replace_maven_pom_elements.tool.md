@@ -8,7 +8,7 @@ Given a Maven POM XML, replace only the text nodes of `<groupId>`, `<artifactId>
 
 ### Inputs
 
-Load Codex session context.
+Load Codex Project context.
 
 ---
 
