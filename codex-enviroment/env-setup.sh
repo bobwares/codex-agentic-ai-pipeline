@@ -18,6 +18,7 @@ fi
 
 echo "Repository is ready in $TARGET_DIR."
 
-ln -s ./codex-agentic-ai-pipeline/AGENTS.md AGENTS.md
-echo "Symlink created: AGENTS.md -> ../codex-agentic-ai-pipeline/AGENTS.md"
+ln -s /workspace/codex-agentic-ai-pipeline/AGENTS.md AGENTS.md
+
+echo "Symlink created: AGENTS.md -> /workspace/codex-agentic-ai-pipeline/AGENTS.md"
 
