@@ -1,14 +1,29 @@
 # Codex Session Context
 
-open and read file project_root/ai/agentic-pipeline/context/codex_session_context.md
+open and read file /workspace/codex-agentic-ai-pipline/agentic-pipeline/context/codex_session_context.md
 
 # Turns
 
-open and read file project_root/ai/agentic-pipeline/context/Turns_Technical_Design.md
+open and read file /workspace/codex-agentic-ai-pipeline/agentic-pipeline/context/Turns_Technical_Design.md
+
+# Codex Project Context
+
+open and read file ./ai/agentic-pipeline/context/codex_project_context.md
+
 
 # Tech Stack
 
-open and read file project_root/ai/agentic-pipeline/context/tech-stack.md
+open and read file /workspace/codex-agentic-ai-pipeline/agentic-pipeline/patterns/tech-stack.md
+
+# Tasks
+
+tasks are in directory /workspace/codex-agentic-ai-pipeline/agentic-pipeline/tasks
+
+# Tools
+
+tools are in directory /workspace/codex-agentic-ai-pipeline/agentic-pipeline/tools
+
+
 
 # Coding Standards
 
