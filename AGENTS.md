@@ -8,12 +8,12 @@ open and read file /workspace/codex-agentic-ai-pipeline/agentic-pipeline/context
 
 # Codex Project Context
 
-open and read file ./ai/agentic-pipeline/context/codex_project_context.md
+open and read file ./ai/context/codex_project_context.md
 
 
-# Tech Stack
+# Patterns
 
-open and read file /workspace/codex-agentic-ai-pipeline/agentic-pipeline/patterns/tech-stack.md
+open and read pattern specified in the codex_project_context in the directory /workspace/codex-agentic-ai-pipeline/agentic-pipeline/patterns
 
 # Tasks
 

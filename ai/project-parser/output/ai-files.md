@@ -1,8 +1,152 @@
 # AI Workspace Files
 
-_Generated on: 2025-09-10T22:33:32Z_
+_Generated on: 2025-09-12T19:42:19Z_
 
-## File: ./ai/project-parser/../agentic-pipeline/context/Agentic_Pipeline_Definition.md
+## File: project_root/AGENTS.md
+
+```markdown
+# Codex Session Context
+
+open and read file /workspace/codex-agentic-ai-pipline/agentic-pipeline/context/codex_session_context.md
+
+# Turns
+
+open and read file /workspace/codex-agentic-ai-pipeline/agentic-pipeline/context/Turns_Technical_Design.md
+
+# Codex Project Context
+
+open and read file ./ai/context/codex_project_context.md
+
+
+# Patterns
+
+open and read pattern specified in the codex_project_context in the directory /workspace/codex-agentic-ai-pipeline/agentic-pipeline/patterns
+
+# Tasks
+
+tasks are in directory /workspace/codex-agentic-ai-pipeline/agentic-pipeline/tasks
+
+# Tools
+
+tools are in directory /workspace/codex-agentic-ai-pipeline/agentic-pipeline/tools
+
+
+
+# Coding Standards
+
+## Metadata Header
+
+— Every source, test, and IAC file must begin with Metadata Header comment section.
+- exclude pom.xml
+- Placement: Top of file, above any import or code statements.
+- Version: Increment only when the file contents change.
+- Date: UTC timestamp of the most recent change.
+
+
+### Metadata Header Template
+    ```markdown
+      /**
+      * App: {{Application Name}}
+      * Package: {{package}}
+      * File: {{file name}}
+      * Version: semantic versioning starting at 0.1.0
+      * Turns: append {{turn number}} list when created or updated.
+      * Author: {{author}}
+      * Date: {{YYYY-MM-DDThh:mm:ssZ}}
+      * Exports: {{ exported functions, types, and variables.}}
+      * Description: documentate the function of the class or function. Document each
+      *              method or function in the file.
+      */
+    ````
+
+### Source Versioning Rules
+
+      * Use **semantic versioning** (`MAJOR.MINOR.PATCH`).
+      * Start at **0.1.0**; update only when code or configuration changes.
+      * Update the version in the source file if it is updated during a turn.
+
+# Logging
+
+## Change Log
+
+- Track changes each “AI turn” in: project_root/ai/agentic-pipeline/turns/current turn directory/changelog.md
+- append changes to project change log located project_root/changelog.md
+
+### Change Log Entry Template
+
+    # Turn: {{turn number}}  – {{Date Time of execution}}
+    
+    ## prompt
+
+    {{ input prompt}}
+
+    #### Task
+    <Task>
+    
+    #### Changes
+    - Initial project structure and configuration.
+    
+    ### 0.0.2 – 2025-06-08 07:23:08 UTC (work)
+    
+    #### Task
+    <Task>
+    
+    #### Changes
+    - Add tsconfig for ui and api.
+    - Create src directories with unit-test folders.
+    - Add e2e test directory for Playwright.
+   
+
+## ADR (Architecture Decision Record)
+
+### Purpose
+
+The adr.md` folder captures **concise, high-signal Architecture Decision Records** whenever the
+AI coding agent (or a human) makes a non-obvious technical or architectural choice.
+Storing ADRs keeps the project’s architectural rationale transparent and allows reviewers to
+understand **why** a particular path was taken without trawling through commit history or code
+comments.
+
+### Location
+
+    project_root/ai/agentic-pipeline/turns/current turn directory/adr.md
+
+
+### When the Agent Must Create an ADR
+
+| Scenario                                                     | Example                                                                                                                                                                                                                                                                | Required? |
+|--------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|
+| Summarize Chain of Thought reasoning for the task            | Documenting the decision flow: ① capture requirements for a low-latency, pay-per-request CRUD API → ② compare DynamoDB single-table vs. Aurora Serverless → ③ choose DynamoDB single-table with GSI on email for predictable access patterns and minimal ops overhead. | **Yes**   |
+| Selecting one library or pattern over plausible alternatives | Choosing Prisma instead of TypeORM                                                                                                                                                                                                                                     | **Yes**   |
+| Introducing a new directory or module layout                 | Splitting `customer` domain into bounded contexts                                                                                                                                                                                                                      | **Yes**   |
+| Changing a cross-cutting concern                             | Switching error-handling strategy to functional `Result` types                                                                                                                                                                                                         | **Yes**   |
+| Cosmetic or trivial change                                   | Renaming a variable                                                                                                                                                                                                                                                    | **Yes**   |
+
+
+### Minimal ADR Template
+
+```markdown
+# {{ADR Title}}
+
+**Status**: Proposed | Accepted | Deprecated
+
+**Date**: {{YYYY-MM-DD}}
+
+**Context**  
+Briefly explain the problem or decision context.
+
+**Decision**  
+State the choice that was made.
+
+**Consequences**  
+List the trade-offs and implications (positive and negative).  
+```
+
+
+
+```
+
+## File: project_root/agentic-pipeline/context/Agentic_Pipeline_Definition.md
 
 ```markdown
 # ChatGPT Codex Agentic Pipeline
@@ -153,7 +297,7 @@ All source code, config, and prompt files must include a **metadata header**:
 
 ```
 
-## File: ./ai/project-parser/../agentic-pipeline/context/Turns_Technical_Design.md
+## File: project_root/agentic-pipeline/context/Turns_Technical_Design.md
 
 ```markdown
 # Turns: Technical Design
@@ -418,277 +562,113 @@ turnId,timestampUtc,task,branch,tag,headAfter,testsPassed,testsFailed,coverageDe
 
 ```
 
-## File: ./ai/project-parser/../agentic-pipeline/context/codex_session_context.md
+## File: project_root/agentic-pipeline/context/codex_session_context.md
 
 ```markdown
 # Codex Session Context
 
-# Project 
-
-- Name: Customer Registration
-- Detailed Description:
-
-  The Customer Registration project provides a standardized service for securely onboarding new customers into a system. It manages the complete registration lifecycle—from capturing customer details and validating inputs, to persisting records in a relational database, and exposing CRUD operations through a REST API. The system is designed to integrate with enterprise authentication and authorization frameworks, ensuring compliance with data security policies. It also establishes a foundation for downstream processes such as customer profile enrichment, service eligibility checks, and integration with external systems.
-
-- Short Description
-
-    Customer Registration is a service that securely captures, validates, and manages new customer data, exposing standardized APIs for onboarding and downstream integrations.
-
-
-- Author: Bobwares ([bobwares@outlook.com](mailto:bobwares@outlook.com)) 
- 
-## Maven 
-
-- groupId: com.bobwares.customer
-- artifactId: registration
-- name: Customer Registration
-- description: Spring Boot service for managing customer registrations
-
-## Domain
-- Domain Object
-  Customer
-- REST API Request Schema
-  load ./schemas/customer.schema.json
-- REST API Response Schema
-  load ./schemas/customer.schema.json
-- Persisted Data schema
-    load ./schemas/customer.schema.json
-```
-
-## File: ./ai/project-parser/../agentic-pipeline/context/schemas/customer.schema.json
-
-```json
-{
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "CustomerProfile",
-  "type": "object",
-  "properties": {
-    "id": {
-      "type": "string",
-      "format": "uuid",
-      "description": "Unique identifier for the customer profile"
-    },
-    "firstName": {
-      "type": "string",
-      "minLength": 1,
-      "description": "Customer’s given name"
-    },
-    "middleName": {
-      "type": "string",
-      "description": "Customer’s middle name or initial",
-      "minLength": 1
-    },
-    "lastName": {
-      "type": "string",
-      "minLength": 1,
-      "description": "Customer’s family name"
-    },
-    "emails": {
-      "type": "array",
-      "description": "List of the customer’s email addresses",
-      "items": {
-        "type": "string",
-        "format": "email"
-      },
-      "minItems": 1,
-      "uniqueItems": true
-    },
-    "phoneNumbers": {
-      "type": "array",
-      "description": "List of the customer’s phone numbers",
-      "items": {
-        "$ref": "#/definitions/PhoneNumber"
-      },
-      "minItems": 1
-    },
-    "address": {
-      "$ref": "#/definitions/PostalAddress"
-    },
-    "privacySettings": {
-      "$ref": "#/definitions/PrivacySettings"
-    }
-  },
-  "required": [
-    "id",
-    "firstName",
-    "lastName",
-    "emails",
-    "privacySettings"
-  ],
-  "additionalProperties": false,
-  "definitions": {
-
-    "PhoneNumber": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string",
-          "description": "Type of phone number",
-          "enum": ["mobile", "home", "work", "other"]
-        },
-        "number": {
-          "type": "string",
-          "pattern": "^\\+?[1-9]\\d{1,14}$",
-          "description": "Phone number in E.164 format"
-        }
-      },
-      "required": ["type", "number"],
-      "additionalProperties": false
-    },
-    "PostalAddress": {
-      "type": "object",
-      "properties": {
-        "line1": {
-          "type": "string",
-          "minLength": 1,
-          "description": "Street address, P.O. box, company name, c/o"
-        },
-        "line2": {
-          "type": "string",
-          "description": "Apartment, suite, unit, building, floor, etc."
-        },
-        "city": {
-          "type": "string",
-          "minLength": 1,
-          "description": "City or locality"
-        },
-        "state": {
-          "type": "string",
-          "minLength": 1,
-          "description": "State, province, or region"
-        },
-        "postalCode": {
-          "type": "string",
-          "description": "ZIP or postal code"
-        },
-        "country": {
-          "type": "string",
-          "minLength": 2,
-          "maxLength": 2,
-          "description": "ISO 3166-1 alpha-2 country code"
-        }
-      },
-      "required": ["line1", "city", "state", "postalCode", "country"],
-      "additionalProperties": false
-    },
-    "PrivacySettings": {
-      "type": "object",
-      "properties": {
-        "marketingEmailsEnabled": {
-          "type": "boolean",
-          "description": "Whether the user opts in to marketing emails"
-        },
-        "twoFactorEnabled": {
-          "type": "boolean",
-          "description": "Whether two-factor authentication is enabled"
-        }
-      },
-      "required": [
-        "marketingEmailsEnabled",
-        "twoFactorEnabled"
-      ],
-      "additionalProperties": false
-    }
-  }
-}
 
 ```
 
-## File: ./ai/project-parser/../agentic-pipeline/context/schemas/person.schema.json
-
-```json
-{
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Person",
-  "type": "object",
-  "properties": {
-    "first_name": {
-      "type": "string",
-      "minLength": 1
-    },
-    "last_name": {
-      "type": "string",
-      "minLength": 1
-    },
-    "city": {
-      "type": "string",
-      "minLength": 1
-    },
-    "state": {
-      "type": "string",
-      "minLength": 2,
-      "maxLength": 2,
-      "description": "Two-letter state abbreviation"
-    },
-    "zip": {
-      "type": "string",
-      "pattern": "^[0-9]{5}(-[0-9]{4})?$",
-      "description": "US ZIP code (5 digits or ZIP+4)"
-    }
-  },
-  "required": ["first_name", "last_name", "city", "state", "zip"],
-  "additionalProperties": false
-}
-```
-
-## File: ./ai/project-parser/../agentic-pipeline/context/tech-stack.md
+## File: project_root/agentic-pipeline/patterns/spring-boot-mvc-jpa-postgresql.pattern.md
 
 ```markdown
-Here’s the updated tech stack specification you requested:
+# Application Implementation Pattern
 
-**Tech Stack Update**
+Spring Boot MVC + JPA + PostgreSQL
 
-* **Language & Runtime**: Java 21 (LTS)
-* **Framework**: Spring Boot 3.5.5
-* **Database**: PostgreSQL (latest stable release recommended, e.g., 16.x)
-* **Containerization**: Docker for local development and deployment
-* **Build Tool**: Maven 
-* **Testing**: JUnit 5, Testcontainers (for PostgreSQL integration tests inside Docker)
+# Tech Stack
 
-**Notes and Best Practices**
+**Language & Runtime**
 
-1. **Spring Boot 3.5.5 with Java 21**
+* Java 21 (LTS)
 
-  * Spring 3.5+ is fully compatible with Java 21.
-  * Ensure Maven/Gradle compiler plugin is set to `--release 21`.
+**Framework**
 
-2. **Postgres with Docker**
+* Spring Boot 3.5.5
 
-  * Use the official Docker image:
-    `docker run --name mydb -e POSTGRES_PASSWORD=secret -p 5432:5432 -d postgres:16`
-  * For dev/test pipelines, Testcontainers provides isolated PostgreSQL instances.
+    * Spring MVC REST (API endpoints)
+    * Spring Data JPA (relational persistence)
+    * Spring Boot Actuator (health/metrics endpoints)
+    * Springdoc OpenAPI (auto-generated API docs and Swagger UI)
+    * Spring Boot Validation (Jakarta validation support)
 
-3. **Integration Setup**
+**Database**
 
-  * `application.yml` should point to `jdbc:postgresql://localhost:5432/mydb` for dev.
-  * Use environment variables or Spring Profiles for production-ready DB configs.
+* PostgreSQL (recommended: 16.x stable)
+* Flyway (database migrations, version-controlled schema evolution)
 
-4. **Maven Dependencies (example)**
+**Build Tool**
 
-   ```xml
-   <dependency>
-       <groupId>org.springframework.boot</groupId>
-       <artifactId>spring-boot-starter-data-jpa</artifactId>
-   </dependency>
-   <dependency>
-       <groupId>org.postgresql</groupId>
-       <artifactId>postgresql</artifactId>
-       <scope>runtime</scope>
-   </dependency>
-   <dependency>
-       <groupId>org.testcontainers</groupId>
-       <artifactId>postgresql</artifactId>
-       <scope>test</scope>
-   </dependency>
-   ```
+* Maven (with Spring Boot Maven Plugin, Compiler Plugin)
+* Lombok (compile-time annotations for boilerplate reduction)
+* MapStruct (optional, for DTO–entity mapping if needed)
 
-5. **Docker Compose Option**
+**Testing**
 
-  * For multi-service setups, create a `docker-compose.yml` with `postgres` and your `spring-boot-app` as services.
+* JUnit 5 (unit testing)
+* Testcontainers (PostgreSQL integration tests in Docker)
+
+**Containerization & Deployment**
+
+* Docker (local development and production container builds)
+* Docker Compose (optional for local multi-service orchestration)
+
+---
+
+# Notes and Best Practices
+
+### 1. Spring Boot 3.5.5 with Java 21
+
+* Fully compatible; configure Maven Compiler Plugin with `--release 21`.
+* Keep dependencies managed by the Spring Boot BOM unless a pinned version is explicitly required (e.g., mapstruct, springdoc).
+
+### 2. PostgreSQL with Docker
+
+* Run local instance:
+  `docker run --name mydb -e POSTGRES_PASSWORD=secret -p 5432:5432 -d postgres:16`
+* For pipelines: use Testcontainers for isolated ephemeral PostgreSQL instances.
+
+### 3. Database Migrations with Flyway
+
+* Store migration scripts in `src/main/resources/db/migration`.
+* Version each change (e.g., `V1__init.sql`, `V2__add_customer_table.sql`).
+* Spring Boot auto-runs migrations on startup.
+
+### 4. Integration Setup
+
+* Dev config: `application.yml` → `jdbc:postgresql://localhost:5432/mydb`.
+* Override with env variables or Spring Profiles for prod/test.
+* Use secrets management (not plain-text) for DB credentials in production.
+
+### 5. API Documentation with Springdoc OpenAPI
+
+* Adds `/swagger-ui.html` and `/v3/api-docs`.
+* Auto-generates from controller annotations.
+
+### 6. Observability with Actuator
+
+* Exposes health checks (`/actuator/health`), metrics, and readiness probes.
+* Integrates with Kubernetes liveness/readiness endpoints.
+
+### 7. Lombok
+
+* Reduces boilerplate in entities, DTOs, and configs.
+* Keep `lombok.config` to enforce consistent usage.
+* Requires IDE support.
+
+### 8. Docker Compose Option
+
+* Example `docker-compose.yml`:
+
+    * `postgres` service
+    * `spring-boot-app` service linked to DB
+* Good for local multi-service integration testing.
+
 
 ```
 
-## File: ./ai/project-parser/../agentic-pipeline/tasks/create_app.task.md
+## File: project_root/agentic-pipeline/tasks/create_app.task.md
 
 ```markdown
 # Task - Create App
@@ -702,18 +682,17 @@ execute tasks
 
 ```
 
-## File: ./ai/project-parser/../agentic-pipeline/tasks/create_persistence_layer.task.md
+## File: project_root/agentic-pipeline/tasks/create_persistence_layer.task.md
 
 ```markdown
-# Task – Create JPA from DDL
+# Task – Create Persistence Layer (JPA)
 
 ## Workflow
-
 1. execute tool persistence-generate_persistence_code.tool.md
 
 ```
 
-## File: ./ai/project-parser/../agentic-pipeline/tasks/create_rest_service.task.md
+## File: project_root/agentic-pipeline/tasks/create_rest_service.task.md
 
 ```markdown
 # Task
@@ -727,7 +706,7 @@ Create a complete REST service based on input parameters.
 
 ```
 
-## File: ./ai/project-parser/../agentic-pipeline/tasks/create_sql_ddl_from_schema.task.md
+## File: project_root/agentic-pipeline/tasks/generate_normalized_tables_from_json_schema.task.md
 
 ```markdown
 # TASK Generate Normalized Tables from JSON Schema
@@ -742,7 +721,7 @@ Create a complete REST service based on input parameters.
 
 ```
 
-## File: ./ai/project-parser/../agentic-pipeline/tasks/initialize_app.task.md
+## File: project_root/agentic-pipeline/tasks/initialize_app.task.md
 
 ```markdown
 execute tools
@@ -750,7 +729,7 @@ execute tools
 1. maven-replace_maven_pom_elements.tool.md
 ```
 
-## File: ./ai/project-parser/../agentic-pipeline/tools/db-create_test_data_for_schema.tool.md
+## File: project_root/agentic-pipeline/tools/db-create_test_data_for_schema.tool.md
 
 ```markdown
 # tool – DB – Create Test Data for Schema
@@ -982,7 +961,7 @@ COMMIT;
 ```
 ```
 
-## File: ./ai/project-parser/../agentic-pipeline/tools/db-json_schema_to_sql_ddl.tool.md
+## File: project_root/agentic-pipeline/tools/db-json_schema_to_sql_ddl.tool.md
 
 ```markdown
 # tool - DB - JSON Schema to SQL DDL
@@ -1255,7 +1234,7 @@ COMMIT;
 
 ```
 
-## File: ./ai/project-parser/../agentic-pipeline/tools/maven-replace_maven_pom_elements.tool.md
+## File: project_root/agentic-pipeline/tools/maven-replace_maven_pom_elements.tool.md
 
 ```markdown
 ## Tool: Replace Maven POM Elements
@@ -1268,7 +1247,7 @@ Given a Maven POM XML, replace only the text nodes of `<groupId>`, `<artifactId>
 
 ### Inputs
 
-Load Codex session context.
+Load Codex Project context.
 
 ---
 
@@ -1300,7 +1279,7 @@ Response with update pom.xml with the following changes.
 
 ```
 
-## File: ./ai/project-parser/../agentic-pipeline/tools/persistence-generate_persistence_code.tool.md
+## File: project_root/agentic-pipeline/tools/persistence-generate_persistence_code.tool.md
 
 ```markdown
 ## Tool: Generate Persistence Code (Spring Data JPA for PostgreSQL)
@@ -1463,7 +1442,7 @@ Expected files under:
 
 ```
 
-## File: ./ai/project-parser/../agentic-pipeline/tools/rest-generate_rest_api.tool.md
+## File: project_root/agentic-pipeline/tools/rest-generate_rest_api.tool.md
 
 ```markdown
 # Tool – Generate CRUD with OpenAPI, Unit Tests, and E2E HTTP (Spring MVC + JPA + Postgres)
@@ -1589,190 +1568,6 @@ Provide only the files listed above, each with the standard metadata header. Do 
 - CRUD endpoints pass integration tests (Testcontainers or local DB).
 - OpenAPI renders models and endpoints accurately.
 - `.http` scenario executes end-to-end successfully.
-
-```
-
-## File: ./ai/project-parser/../starters.md
-
-```markdown
-# Base Starter
-
-1. configuration maven for tech stack
-
-
-
-1. update maven
-
-
-# Configuration Domain
-
-
-
-
-
-PostgreSQL Starter.
-
-1. application.yml configuration
-2. docker-compose.yml configuration
-   3 pom.xml configuration
-
-
-REST API starter
-Configuration:
-
-
-schema for request and response.
-
-Create the REST Service with Service Layer
-
-
-# Workflow
-
-1. select preconfigured maven pom based on the tech stack.
-
-2. update pom.xml with tool: Replace Maven POM Elements
-
-3. update application.yml based on values in codex session context and tech stack.
-
-4. generate sql dll from input domain schema
-
-5. generate test data from input domain schema
-
-6. generation openai spec from input request schema, response schema
-
-7. generate jpa code from domain schema
-
-8. generate REST code from openai spec.
-
-
-```
-
-## File: project_root/AGENTS.md
-
-```markdown
-# Codex Session Context
-
-open and read file project_root/ai/agentic-pipeline/context/codex_session_context.md
-
-# Turns
-
-open and read file project_root/ai/agentic-pipeline/context/Turns_Technical_Design.md
-
-# Tech Stack
-
-open and read file project_root/ai/agentic-pipeline/context/tech-stack.md
-
-# Coding Standards
-
-## Metadata Header
-
-— Every source, test, and IAC file must begin with Metadata Header comment section.
-- exclude pom.xml
-- Placement: Top of file, above any import or code statements.
-- Version: Increment only when the file contents change.
-- Date: UTC timestamp of the most recent change.
-
-
-### Metadata Header Template
-    ```markdown
-      /**
-      * App: {{Application Name}}
-      * Package: {{package}}
-      * File: {{file name}}
-      * Version: semantic versioning starting at 0.1.0
-      * Turns: append {{turn number}} list when created or updated.
-      * Author: {{author}}
-      * Date: {{YYYY-MM-DDThh:mm:ssZ}}
-      * Exports: {{ exported functions, types, and variables.}}
-      * Description: documentate the function of the class or function. Document each
-      *              method or function in the file.
-      */
-    ````
-
-### Source Versioning Rules
-
-      * Use **semantic versioning** (`MAJOR.MINOR.PATCH`).
-      * Start at **0.1.0**; update only when code or configuration changes.
-      * Update the version in the source file if it is updated during a turn.
-
-# Logging
-
-## Change Log
-
-- Track changes each “AI turn” in: project_root/ai/agentic-pipeline/turns/current turn directory/changelog.md
-- append changes to project change log located project_root/changelog.md
-
-### Change Log Entry Template
-
-    # Turn: {{turn number}}  – {{Date Time of execution}}
-    
-    ## prompt
-
-    {{ input prompt}}
-
-    #### Task
-    <Task>
-    
-    #### Changes
-    - Initial project structure and configuration.
-    
-    ### 0.0.2 – 2025-06-08 07:23:08 UTC (work)
-    
-    #### Task
-    <Task>
-    
-    #### Changes
-    - Add tsconfig for ui and api.
-    - Create src directories with unit-test folders.
-    - Add e2e test directory for Playwright.
-   
-
-## ADR (Architecture Decision Record)
-
-### Purpose
-
-The adr.md` folder captures **concise, high-signal Architecture Decision Records** whenever the
-AI coding agent (or a human) makes a non-obvious technical or architectural choice.
-Storing ADRs keeps the project’s architectural rationale transparent and allows reviewers to
-understand **why** a particular path was taken without trawling through commit history or code
-comments.
-
-### Location
-
-    project_root/ai/agentic-pipeline/turns/current turn directory/adr.md
-
-
-### When the Agent Must Create an ADR
-
-| Scenario                                                     | Example                                                                                                                                                                                                                                                                | Required? |
-|--------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|
-| Summarize Chain of Thought reasoning for the task            | Documenting the decision flow: ① capture requirements for a low-latency, pay-per-request CRUD API → ② compare DynamoDB single-table vs. Aurora Serverless → ③ choose DynamoDB single-table with GSI on email for predictable access patterns and minimal ops overhead. | **Yes**   |
-| Selecting one library or pattern over plausible alternatives | Choosing Prisma instead of TypeORM                                                                                                                                                                                                                                     | **Yes**   |
-| Introducing a new directory or module layout                 | Splitting `customer` domain into bounded contexts                                                                                                                                                                                                                      | **Yes**   |
-| Changing a cross-cutting concern                             | Switching error-handling strategy to functional `Result` types                                                                                                                                                                                                         | **Yes**   |
-| Cosmetic or trivial change                                   | Renaming a variable                                                                                                                                                                                                                                                    | **Yes**   |
-
-
-### Minimal ADR Template
-
-```markdown
-# {{ADR Title}}
-
-**Status**: Proposed | Accepted | Deprecated
-
-**Date**: {{YYYY-MM-DD}}
-
-**Context**  
-Briefly explain the problem or decision context.
-
-**Decision**  
-State the choice that was made.
-
-**Consequences**  
-List the trade-offs and implications (positive and negative).  
-```
-
-
 
 ```
 
