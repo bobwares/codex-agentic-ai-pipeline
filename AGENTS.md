@@ -15,14 +15,6 @@ open and read file ./ai/context/codex_project_context.md
 
 open and read pattern specified in the codex_project_context in the directory /workspace/codex-agentic-ai-pipeline/agentic-pipeline/patterns
 
-# Tasks
-
-tasks are in directory /workspace/codex-agentic-ai-pipeline/agentic-pipeline/tasks
-
-# Tools
-
-tools are in directory /workspace/codex-agentic-ai-pipeline/agentic-pipeline/tools
-
 
 
 # Coding Standards
