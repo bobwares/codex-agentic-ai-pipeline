@@ -1,3 +1,9 @@
+# Glossary Terms
+
+- codex_agentic_pipeline:  this project.  it is copied into the codex sandbox at the beginning of each turn.
+- target project:  the github repo associated with the codex environment.
+
+
 # Codex Session Context
 
 open and read file /workspace/codex-agentic-ai-pipline/agentic-pipeline/context/codex_session_context.md
@@ -21,7 +27,7 @@ open and read pattern specified in the codex_project_context in the directory /w
 
 ## Metadata Header
 
-— Every source, test, and IAC file must begin with Metadata Header comment section.
+— Every source, test, and IAC file in the target project must begin with Metadata Header comment section.
 - exclude pom.xml
 - Placement: Top of file, above any import or code statements.
 - Version: Increment only when the file contents change.
