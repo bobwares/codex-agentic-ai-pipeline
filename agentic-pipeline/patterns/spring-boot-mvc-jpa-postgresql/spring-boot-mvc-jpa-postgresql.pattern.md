@@ -3,6 +3,7 @@
 ## Purpose
 
 Build a production-grade REST API using Spring Boot MVC, Spring Data JPA, and PostgreSQL. Standardize schema evolution (liquidbase), docs (Springdoc), observability (Actuator), developer ergonomics (Lombok), testing (JUnit 5 + Testcontainers), and turn artifact aggregation.
+use application.yml in the pattern defined below.
 
 ## Tech Stack
 
