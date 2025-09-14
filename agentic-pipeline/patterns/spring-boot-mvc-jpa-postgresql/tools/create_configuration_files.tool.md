@@ -11,3 +11,4 @@
     </dependency>
     ```
 4. create local application.yml
+5. at end of turn create .env file for all environment variables defined in code and update AppProperties.
