@@ -56,6 +56,7 @@ open and read pattern specified in the codex_project_context in the directory /w
 
 - Track changes each “AI turn” in: project_root/ai/agentic-pipeline/turns/current turn directory/changelog.md
 - append changes to project change log located project_root/changelog.md
+- record the list of tasks and tools executed.
 
 ### Change Log Entry Template
 
