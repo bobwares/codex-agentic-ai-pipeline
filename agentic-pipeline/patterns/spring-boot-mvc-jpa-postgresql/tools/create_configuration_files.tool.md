@@ -2,7 +2,7 @@
 
 1. create the .gitignore defined in the codex_project_context.
 2. create spring @ConfigurationProperties in config package. class AppProperties 
-3. add configuration processor to pom.yml
+3. add configuration processor to pom.xml
     ```
     <dependency>
       <groupId>org.springframework.boot</groupId>
