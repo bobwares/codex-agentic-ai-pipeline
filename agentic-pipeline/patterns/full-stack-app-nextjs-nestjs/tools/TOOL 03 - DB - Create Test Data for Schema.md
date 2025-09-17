@@ -1,4 +1,4 @@
-# TASK 03 – DB – Create Test Data for Schema
+# TOOL 03 – DB – Create Test Data set based on Project Domain Schema
 
 ### Context
 
@@ -21,7 +21,7 @@ Seed initial customer data for development (PostgreSQL 16, plain SQL, Docker).
 
 ### Acceptance Criteria
 
-* Script file exists at `project_root/db/scripts/<domain>_test_data.sql`.
+* Script file exists at `target_project/db/scripts/<domain>_test_data.sql`.
 * Header present and accurate.
 * Exactly 10 `INSERT` rows, each idempotent.
 * Script runs cleanly multiple times without duplicate rows.

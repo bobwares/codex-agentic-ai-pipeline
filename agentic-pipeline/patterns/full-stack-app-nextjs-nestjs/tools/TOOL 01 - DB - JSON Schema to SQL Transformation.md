@@ -16,8 +16,8 @@ Directory: `/db`
 
 **Inputs**
 
-- Domain: referenced in Ticket.
-- JSON Schema referenced in Ticket.
+- Domain: referenced in Task.
+- JSON Schema referenced in Task.
 
 **Output**:  
 
@@ -26,7 +26,7 @@ Directory: `/db`
 
 **Task**:  
 Generate a migration in `db/migrations/NN_<schema title>_tables.sql` that:
-- Creates normalized tables from the JSON schema referenced in ticket.
+- Creates normalized tables from the JSON schema referenced in Task.
 - Infers data types and constraints (PRIMARY KEY, FOREIGN KEY, UNIQUE)
 - Maps nested objects ie (`customer`, `shipping_address`) to separate tables
 - Converts arrays (`items`) to a related table

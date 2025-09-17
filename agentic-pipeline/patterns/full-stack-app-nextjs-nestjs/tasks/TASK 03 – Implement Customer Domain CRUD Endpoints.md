@@ -1,4 +1,4 @@
-# Ticket 03 – Implement Customer Domain CRUD Endpoints
+# Task 03 – Implement Customer Domain CRUD Endpoints
 
 **Description**  
 Based on the `customer_domain` JSON schema (`project_root/schemas/customer_domain.json`), implement a full set of RESTful CRUD endpoints in the backend API (`project_root/api`):

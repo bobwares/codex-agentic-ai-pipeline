@@ -1,17 +1,17 @@
-# Ticket 02 – Create set of test data
+# Task 02 – Create test data set
 
 ## Instructions
 
 Execute the listed tasks.
 
-**Task**
+**Tools**
 
-project_root/db/tasks/TASK - DB - Seed Script.md
+TOOL - DB - Seed Script.md
 
 
 **Inputs**
 
-Domain = customer_profile
+Project Domain = customer_profile
 SQL DLL =  `project_root/db/migrations/01_customer_domain.sql`
 
 **Accept Criteria**

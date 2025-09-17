@@ -1,4 +1,4 @@
-# TASK 02 – DB – SQL → JSON Schema Transformation 
+# TOOL 02 – DB – SQL → JSON Schema Transformation 
 
 ## Context
 

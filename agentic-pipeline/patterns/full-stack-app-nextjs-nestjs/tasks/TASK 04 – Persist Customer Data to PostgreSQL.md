@@ -1,4 +1,4 @@
-# Ticket 04 – Persist Customer Data to PostgreSQL
+# Task 04 – Persist Customer Data to PostgreSQL
 
 **Description**  
 Wire up your backend API to the PostgreSQL database defined in `project-root/db`. You will:
