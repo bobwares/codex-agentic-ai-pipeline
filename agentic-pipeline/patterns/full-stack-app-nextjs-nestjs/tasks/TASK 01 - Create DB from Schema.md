@@ -1,24 +1,28 @@
-# Ticket 01 – Generate Normalized Customer Tables from JSON Schema
+# Task 01 – Generate Normalized Tables SQL DDL from JSON Schema
 
 ## Instructions
+load and add to context DB-AGENTS.md
 
-execute the following task in the order presented.
-
-**Task**
-
-db/tasks/TASK 01 - DB - JSON Schema to SQL Transformation.md
-
-db/tasks/TASK 02 - DB - SQL Schema to JSON Schema.md
-
-db/tasks/TASK 03 - DB - Create Test Data for Schema.md
-
-api/tasks/TASK 02 – API – JSON Schema → NestJS Entity Generation.md
+execute the following tools in the order presented.
 
 
 **Inputs**
 
-Domain = customer_profile
-JSON Schema = project_root/schemas/customer_domain.json
+project.domain.Domain Object 
+JSON Schema = project.domain.REST API Request Schema
+
+
+**Tools**
+
+TOOL 01 - DB - JSON Schema to SQL Transformation.md
+
+TOOL 02 - DB - SQL Schema to JSON Schema.md
+
+TOOL 03 - DB - Create Test Data for Schema.md
+
+TOOL 02 – API – JSON Schema → NestJS Entity Generation.md
+
+
 
 **Accept Criteria**
 

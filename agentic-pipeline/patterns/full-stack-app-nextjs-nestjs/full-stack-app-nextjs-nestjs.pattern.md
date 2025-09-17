@@ -60,7 +60,7 @@ Generate maintainable, type-safe, and modular code that aligns with the existing
 ### 1. Branch Naming
 
 ```
-<type>/<short-description>-<ticket-id?>
+<type>/<short-description>-<Task-id?>
 ```
 
 | Type       | Purpose                                | Example                           |
@@ -75,7 +75,7 @@ Generate maintainable, type-safe, and modular code that aligns with the existing
 
 **Rules**
 
-1. One branch per ticket or atomic change.
+1. One branch per Task or atomic change.
 2. **Never** commit directly to `main` or `develop`.
 3. Re-base on the target branch before opening a pull request.
 
@@ -89,7 +89,7 @@ AI Coding Agent Change:
 <BLANK LINE>
 Optional multi-line body (wrap at 72 chars).
 <BLANK LINE>
-Refs: <ticket-id(s)>
+Refs: <Task-id(s)>
 ```
 
 Example:
@@ -118,7 +118,7 @@ Copy this template into every PR description and fill in each placeholder.
 * **Why was it needed?**
 * **How was it implemented?** (key design points)
 
-# Related Tickets
+# Related Tasks
 - T1234 Profile Overview – In-place editing
 - T1300 Validation Rules
 
