@@ -16,8 +16,9 @@ Directory: `/db`
 
 **Inputs**
 
-- Domain: referenced in Task.
-- JSON Schema referenced in Task.
+project.domain.Domain Object
+project.domain.Persisted Data schema
+
 
 **Output**:  
 

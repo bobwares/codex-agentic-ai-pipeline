@@ -1,5 +1,6 @@
 
 # Application Implementation Pattern: Spring Boot MVC JPA PostgreSQL
+
 ## Purpose
 
 Build a production-grade REST API using Spring Boot MVC, Spring Data JPA, and PostgreSQL. Standardize schema evolution (liquidbase), docs (Springdoc), observability (Actuator), developer ergonomics (Lombok), testing (JUnit 5 + Testcontainers), and turn artifact aggregation.

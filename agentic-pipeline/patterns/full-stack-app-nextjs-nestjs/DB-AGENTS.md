@@ -27,8 +27,8 @@ Key components include:
 - Scripting: Bash for execution scripts
 - Environment: Configured via .env
 - example:
-  POSTGRES_USER=postgres
-  POSTGRES_PASSWORD=password
+  POSTGRES_USER=admin
+  POSTGRES_PASSWORD=abc123
   POSTGRES_DB=customer_db
 
 
@@ -198,11 +198,6 @@ Allow de-normalization for simpler schemas if specified.
 - Test schemas in a staging database using docker-compose up -d db.
 - Verify data integrity with smoke tests.
 - Check relationships with sample queries (e.g., SELECT * FROM orders JOIN customers ON orders.customer_id = customers.customer_id).
-
-**Tasks**
-
-- project_root/db/tasks/TASK - DB - JSON to SQL Transformation.md
-- project_root/db/tasks/TASK - DB - Seed Script.md
 
 
 End of Document

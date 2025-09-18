@@ -1,4 +1,4 @@
-# TOOL 03 – DB – Create Test Data set based on Project Domain Schema
+# TOOL 03 – DB – Create Test Data Schema
 
 ### Context
 
