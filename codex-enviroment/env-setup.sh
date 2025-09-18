@@ -32,3 +32,10 @@ echo "Copied: $AI_REPO_DIR/ai/project-parser -> ./ai/project-parser"
 echo
 echo "Workspace AI contents:"
 ls -1 ./ai | sed 's/^/  - /'
+
+
+cd ui
+npm install
+cd ..
+cd api
+npm install

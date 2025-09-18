@@ -206,8 +206,6 @@ List the trade-offs and implications (positive and negative).
 
 After every Codex turn save the reasoning thoughts to the file project_root/reasoning.md
 
-
----
 # Tasks
 
 tasks are in directory /workspace/codex-agentic-ai-pipeline/agentic-pipeline/patterns/{{selected pattern}}/tasks

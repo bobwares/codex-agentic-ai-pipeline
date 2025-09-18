@@ -1,8 +1,3 @@
-# Glossary Terms
-
-- codex_agentic_pipeline:  this project.  it is copied into the codex sandbox at the beginning of each turn.
-- target project:  the github repo associated with the codex environment.
-
 
 # Codex Session Context
 
