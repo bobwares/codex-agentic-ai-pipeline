@@ -1,6 +1,11 @@
 # Task 01 – Generate Normalized Tables SQL DDL from JSON Schema
 
+## Context
+
+App Component: DB
+
 ## Instructions
+
 load and add to context DB-AGENTS.md
 
 execute the following tools in the order presented.
@@ -8,20 +13,14 @@ execute the following tools in the order presented.
 
 **Inputs**
 
-project.domain.Domain Object 
-JSON Schema = project.domain.REST API Request Schema
+JSON Schema = project.domain.Persisted Data schema
 
 
 **Tools**
 
-TOOL 01 - DB - JSON Schema to SQL Transformation.md
+db/TOOL 01 - DB - JSON Schema to SQL Transformation.md
 
-TOOL 02 - DB - SQL Schema to JSON Schema.md
-
-TOOL 03 - DB - Create Test Data for Schema.md
-
-TOOL 02 – API – JSON Schema → NestJS Entity Generation.md
-
+db/TOOL 02 - DB - SQL Schema to JSON Schema.md
 
 
 **Accept Criteria**
