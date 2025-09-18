@@ -1,21 +1,11 @@
-# Glossary Terms
-
-- codex_agentic_pipeline:  this project.  it is copied into the codex sandbox at the beginning of each turn.
-- target project:  the github repo associated with the codex environment.
-
 
 # Codex Session Context
 
-open and read file /workspace/codex-agentic-ai-pipline/agentic-pipeline/context/codex_session_context.md
+open and read file /workspace/codex-agentic-ai-pipline/agentic-pipeline/context/session_context.md
 
 # Turns
 
 open and read file /workspace/codex-agentic-ai-pipeline/agentic-pipeline/context/Turns_Technical_Design.md
-
-# Codex Project Context
-
-open and read file ./ai/context/codex_project_context.md
-
 
 # Patterns
 
