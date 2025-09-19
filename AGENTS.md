@@ -21,4 +21,5 @@ open and read file /workspace/codex-agentic-ai-pipeline/agentic-pipeline/context
 
 # Tasks
 
-execute tasks in file  /workspace/codex-agentic-ai-pipeline/agentic-pipeline/patterns/{{session context.globals.application_implementation_pattern}}/tasks-pipeline.md
+- follow definitions for turns, governance and application implementation pattern and execute tasks in file  /workspace/codex-agentic-ai-pipeline/agentic-pipeline/patterns/{{session context.globals.application_implementation_pattern}}/tasks-pipeline.md
+
