@@ -14,8 +14,4 @@
 
 ## initialize  
 
-1. calculate current turn id
-2. set target_project value
-3. load project_context directory into the session context.
-4. load selected application implementation pattern into the context.
-5. write global and project scoped variable values to session_context_values.md in the current turn directory.
+1. write global and project scoped variable values to session_context_values.md in the current turn directory.
