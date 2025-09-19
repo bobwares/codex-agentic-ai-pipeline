@@ -34,6 +34,9 @@
 
 ## Turn lifecycle
 
+each turn executes the specified tasks in the pattern.  
+
+
 1. **Plan**
 
     * Resolve inputs (task, domain schema, constraints).
