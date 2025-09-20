@@ -1,4 +1,4 @@
-# Task 04 – Persist Customer Data to PostgreSQL
+# Task 04 – Persist Domain Data to PostgreSQL
 
 **Description**  
 Wire up your backend API to the PostgreSQL database defined in `project-root/db`. You will:
@@ -7,12 +7,12 @@ Wire up your backend API to the PostgreSQL database defined in `project-root/db`
     - Install and configure TypeORM (or Prisma) in `project_root/api`.
     - Point your ORM config to the connection settings in `project-root/db` (e.g. `db/.env` or `db/docker-compose.yml`).
 2. **Define Entity**
-    - Create `Customer` entity class (`project_root/api/src/customers/customer.entity.ts`) using decorators that match the JSON schema in `libs/domain/customer_domain.json`.
+    - Create `Customer` entity class (`project_root/api/src/{{project.domain.Domain Object}}/{{project.domain.Domain Object}}.entity.ts`) using decorators that match the JSON schema in `libs/domain/{{project.domain.Domain Object}}_domain.json`.
 3. **Set Up Migrations**
-    - Generate a migration to create the `customers` table with all schema fields.
+    - Generate a migration to create the `{{project.domain.Domain Object}}` table with all schema fields.
     - Add migration scripts under `project_root/api/migrations/`.
 4. **Repository & Service**
-    - Inject the `CustomerRepository` into `CustomerService` instead of using in-memory data.
+    - Inject the `{{project.domain.Domain Object}}Repository` into `{{project.domain.Domain Object}}Service` instead of using in-memory data.
     - Ensure each CRUD method (`create()`, `findAll()`, etc.) uses the repository to persist/retrieve data.
 5. **Database Lifecycle in Tests & CI**
     - Update your test setup (`project_root/api/test`) and CI workflow to:
@@ -34,17 +34,17 @@ Wire up your backend API to the PostgreSQL database defined in `project-root/db`
 - E2E tests pass against a live PostgreSQL instance.
 - CI pipeline brings up the DB, runs migrations, then tests without errors.
 - Documentation in `project_root/api/README.md` covers database setup, migrations, and testing.
-- Pull request opened on branch `task-04-persist-customer-data-postgres`.
+- Pull request opened on branch `task-04-persist-{{project.domain.Domain Object}}-data-postgres`.
 
 **Inputs**
 - Connection settings and Docker Compose in `project-root/db/`
-- JSON schema: `libs/domain/customer_domain.json`
+- JSON schema: `libs/domain/{{project.domain.Domain Object}}_domain.json`
 - Outputs from Task 03 (controllers, DTOs, service stubs)
 
 **Expected Outputs**
 - ORM configuration file under `project_root/api/src/`
-- `Customer` entity class in `project_root/api/src/customers/`
+- `Customer` entity class in `project_root/api/src/{{project.domain.Domain Object}}/`
 - Migration scripts in `project_root/api/migrations/`
-- Updated `CustomerService` using repository
+- Updated `{{project.domain.Domain Object}}Service` using repository
 - Revised E2E tests verifying persistence
 - Updated CI workflow and README section  
