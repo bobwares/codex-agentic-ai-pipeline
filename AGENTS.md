@@ -1,6 +1,6 @@
 # Session Context
 
-open and read file /workspace/codex-agentic-ai-pipline/agentic-pipeline/context/session_context.md
+open and read file /workspace/codex-agentic-ai-pipeline/agentic-pipeline/context/session_context.md
 
 # Turns
 
