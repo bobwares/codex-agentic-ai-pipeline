@@ -1,4 +1,4 @@
-# TASK — Persist Domain Data (Generalized SQL)
+# TASK — Create Domain Entities
 
 Goal
 Persist a domain’s data model in a relational SQL database and expose repository-backed CRUD in the API.
@@ -16,7 +16,7 @@ Acceptance Criteria
 
 Inputs
 
-* prooject.domain.Persisted Data schema
+* project.domain.Persisted Data schema
 * Connection settings via environment variables (host, port, user, password, database, optional schema/catalog, SSL/TSL flags) suitable for the selected engine.
 
 
