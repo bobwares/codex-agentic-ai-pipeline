@@ -13,6 +13,8 @@ Execute the following Tasks:
 
 Turn 1
 1. TASK — Initialize Project.task.md
+2. TASK - Add Health Check Endpoint Module.task.md
+3. TASK - Add Health Check E2E .http Test.task.md
 
 Turn 2
 1. TASK 01 - Create DB from Schema.md
