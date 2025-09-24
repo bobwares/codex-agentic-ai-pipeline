@@ -10,6 +10,8 @@ Inputs (authoritative)
 * nest-cli.json (exact) — collection preset and source root.&#x20;
 * .eslintrc.js (exact content below)
 * .gitignore (exact content below)
+* .prettier (exact content below)
+* jest.config.js
 
 Preconditions
 
@@ -20,7 +22,7 @@ Steps
 
 1. Create project directory
 
-* mkdir backend && cd backend
+* mkdir api && cd api
 * git init (optional)
 
 2. Write files
@@ -168,7 +170,7 @@ module.exports = {
 File: .gitignore
 
 ```
-# App: Customer Registration
+# App: {{project.name}}
 # Package: api
 # File: .gitignore
 # Version: 0.1.0
@@ -181,6 +183,21 @@ File: .gitignore
 /dist
 /.env
 /coverage
+```
+
+File: jest.config.js
+
+```javascript
+
+* @type {import('jest').Config}
+*/
+module.exports = {
+    preset: 'ts-jest',
+    testEnvironment: 'node',
+    roots: ['<rootDir>/src'],
+    testMatch: ['**/__tests__/**/*.test.ts', '**/?(*.)+(spec|test).ts?(x)'],
+    moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node']
+};
 ```
 
 3. Minimal source scaffold
