@@ -50,16 +50,7 @@ Convert the canonical SQL DDL in
 
   > **New requirement** ← ensures consumers know the exact PostgreSQL schema of all entities.
 
-* **Output path**
-
-  ```
-  project_root/db/entity-specs/<domain>-entities.json
-  ```
-
-* **No file header** – emit *pure* JSON Schema (no Markdown, no comments).
-
----
-
+  
 ## Inputs
 
 | Item              | Value                                |
@@ -71,7 +62,9 @@ Convert the canonical SQL DDL in
 
 ## Output
 
-A single file at `project_root/db/entity-specs/<domain>-entities.json`:
+* **No file header** – emit *pure* JSON Schema (no Markdown, no comments).
+* 
+A single file at ` project_root/ai/context/schemas/<domain>-entities.json `:
 
 ```json
 {
@@ -118,7 +111,7 @@ Each definition **must** include:
 
 ## Acceptance Criteria
 
-* `project_root/db/entity-specs/<domain>-entities.json` exists.
+* ` project_root/ai/context/schemas/<domain>-entities.json` exists.
 * JSON is valid Draft 2020-12 and passes `ajv validate`.
 * All tables from the DDL are represented with correct types & required fields.
 * Root-level `"x-db.schema"` matches the PostgreSQL schema name in the DDL.
@@ -207,8 +200,7 @@ COMMIT;
 ```
 
 **output**
-
-File: project_root/db/entity-specs/customer_profile-entities.json
+project_root/ai/context/schemas/customer_profile-entities.json
 
 ```json
 {
