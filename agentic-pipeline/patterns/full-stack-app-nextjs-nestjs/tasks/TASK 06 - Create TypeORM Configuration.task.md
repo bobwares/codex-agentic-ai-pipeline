@@ -1,4 +1,4 @@
-TASK — Generate ORM Configuration
+TASK 06 - Create TypeORM Configuration
 
 Purpose
 Create a reproducible, environment-aware ORM configuration for a NestJS API using TypeORM v0.3.x. The agent must produce a single source of truth DataSource, integrate it with NestJS, wire migration scripts, and validate connectivity against the Dockerized PostgreSQL instance in project-root/db.
@@ -77,37 +77,90 @@ Write project\_root/api/src/database/data-source.ts with the following propertie
 Template (the agent must concretize imports and adjust paths to the repo):
 
 ```ts
+/**
+ * App: Customer Registration
+ * Package: api
+ * File: data-source.ts
+ * Version: 0.1.3
+ * Turns: 6
+ * Author: Codex Agent
+ * Date: 2025-09-24T23:05:00Z
+ * Exports: AppDataSource, getDataSourceOptions
+ * Description: Configures the shared TypeORM DataSource using environment variables sourced from project_root/api/.env.
+ */
 import 'reflect-metadata';
+import * as path from 'node:path';
 import * as dotenv from 'dotenv';
-import { DataSource } from 'typeorm';
-// import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
-// import { Customer } from '../customers/customer.entity';
+import { DataSource, DataSourceOptions } from 'typeorm';
 
-dotenv.config({ path: ['../ai/context/.env'] });
+// Load env from project_root/api/.env
+const envPath = path.resolve(__dirname, '..', '..', '.env');
+dotenv.config({ path: envPath });
 
-const ssl = String(process.env.DATABASE_SSL).toLowerCase() === 'true';
-const schema = process.env.DATABASE_SCHEMA || 'public';
+function getEnv(name: string): string {
+    const val = process.env[name];
+    if (val === undefined || val === '') {
+        throw new Error(
+            `Database configuration is incomplete. Missing ${name}. Ensure it exists in ${envPath}`,
+        );
+    }
+    return val;
+}
 
-export const AppDataSource = new DataSource({
-  type: 'postgres',
-  host: process.env.DATABASE_HOST,
-  port: Number(process.env.DATABASE_PORT || 5432),
-  username: process.env.DATABASE_USERNAME,
-  password: process.env.DATABASE_PASSWORD,
-  database: process.env.DATABASE_NAME,
-  schema,
-  ssl,
-  // namingStrategy: new SnakeNamingStrategy(),
-  entities: [
-    // Customer,
-    process.env.NODE_ENV === 'production'
-      ? 'dist/**/*.entity.js'
-      : 'src/**/*.entity.ts',
-  ],
-  migrations: ['dist/migrations/*.js'],
-  synchronize: false,
-  logging: false,
-});
+function getBool(name: string): boolean {
+    return getEnv(name).toLowerCase() === 'true';
+}
+
+function getInt(name: string, fallback?: number): number {
+    const raw = process.env[name];
+    if (raw === undefined || raw === '') {
+        if (fallback !== undefined) return fallback;
+        throw new Error(
+            `Database configuration is incomplete. Missing ${name}. Ensure it exists in ${envPath}`,
+        );
+    }
+    const n = Number(raw);
+    if (Number.isNaN(n)) throw new Error(`Invalid integer for ${name}: "${raw}"`);
+    return n;
+}
+
+export function getDataSourceOptions(): DataSourceOptions {
+
+    const entities =  ['dist/**/*.entity.js'];
+    const migrations = ['dist/migrations/*.js'];
+
+    // Build with concrete types only (no string | undefined)
+    const options: DataSourceOptions = {
+        type: 'postgres',
+        host: getEnv('DATABASE_HOST'),
+        port: getInt('DATABASE_PORT', 5432),
+        username: getEnv('DATABASE_USERNAME'),
+        password: getEnv('DATABASE_PASSWORD'),
+        database: getEnv('DATABASE_NAME'),
+        // If you want schema optional instead of required, use the conditional block below.
+        schema: getEnv('DATABASE_SCHEMA'),
+        ssl: getBool('DATABASE_SSL'),
+        entities,
+        migrations,
+        synchronize: false,
+        logging: false,
+    };
+
+    return options;
+}
+
+/* If you prefer DATABASE_SCHEMA to be optional instead of required, replace the
+   schema line above with this conditional block:
+
+  const schema = process.env.DATABASE_SCHEMA;
+  if (schema && schema !== '') {
+    (options as any).schema = schema; // schema provided as concrete string
+  }
+
+*/
+
+export const AppDataSource = new DataSource(getDataSourceOptions());
+
 ```
 
 Step 4 — Wire NestJS to the Same Config

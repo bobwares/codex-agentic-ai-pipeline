@@ -1,4 +1,4 @@
-# Task 01 – Generate Normalized Tables SQL DDL from JSON Schema
+# TASK 04 - Create DB from Schema
 
 ## Context
 
