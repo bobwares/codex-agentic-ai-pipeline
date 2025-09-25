@@ -1,4 +1,4 @@
-# TASK - Add Health Check Endpoint Module
+# TASK 02 - Add Health Check Endpoint Module
 
 Goal
 Add a self-contained Health Check module to the existing NestJS 11 scaffold to provide liveness, readiness, and a rich service metadata endpoint.

@@ -1,9 +1,4 @@
-### Task 06 – API Logging & Structured Request Tracing
-
-| Field        | Value                                                   |
-| ------------ | ------------------------------------------------------- |
-| **Filename** | `Task 06 – API Logging & Structured Request Tracing.md` |
-| **T-Ref**    | —                                                       |
+### Task 09 – API Logging & Structured Request Tracing
 
 **Goal**
 Provide correlation-friendly, JSON-structured logs that include a per-request ID and latency.
@@ -32,8 +27,4 @@ Provide correlation-friendly, JSON-structured logs that include a per-request ID
 4. Update bootstrap order.
 5. Extend CI to archive `./logs/api-YYYYMMDD.log`.
 
-**DoD**
 
-* `GET /health` produces one structured log line.
-* `npm run lint` passes.
-* Docs updated in `api/README.md`.
