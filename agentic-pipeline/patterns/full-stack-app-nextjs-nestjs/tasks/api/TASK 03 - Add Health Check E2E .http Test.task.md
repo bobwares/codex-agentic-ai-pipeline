@@ -1,4 +1,4 @@
-# TASK - Add Health Check E2E .http Test
+# TASK 03 - Add Health Check E2E .http Test
 
 Goal
 Provide an `.http` file under `api/e2e` for manual and automated endpoint verification of the Health Check module.

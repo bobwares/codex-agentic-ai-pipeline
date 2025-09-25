@@ -1,16 +1,11 @@
-### Task 09 – End-to-End Tests with Supertest
-
-| Field        | Value                                          |
-| ------------ | ---------------------------------------------- |
-| **Filename** | `Task 09 – End-to-End Tests with Supertest.md` |
-| **T-Ref**    | —                                              |
+### Task 11 – End-to-End Tests with Supertest
 
 **Goal**
 Validate the full HTTP request-to-Postgres stack using real application wiring.
 
 **Context**
 
-* Tickets 03-04 added CRUD endpoints and DB persistence.
+* Create end-to-end (E2E) tests for the CRUD endpoints and DB persistence.
 * E2E tests catch wiring mistakes that unit tests miss.
 
 **Acceptance Criteria**
@@ -24,13 +19,6 @@ Validate the full HTTP request-to-Postgres stack using real application wiring.
 **Steps**
 
 1. Install `supertest`, `@types/supertest`.
-2. Add `test/e2e/customer.e2e-spec.ts`.
+2. Add `project_root/api/test/e2e/{{project.domain.Domain Object}}.e2e-spec.ts`.
 3. Configure Jest projects (`unit`, `e2e`) with separate ts-config.
-4. Create global setup/teardown script for Docker DB.
-5. Document local workflow in `api/README.md`.
 
-**DoD**
-
-* `npm run test:e2e` green locally and in CI.
-* Coverage report includes e2e numbers (optional).
-* Logs archived per **AGENTS.md** instructions.
