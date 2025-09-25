@@ -8,7 +8,8 @@ Provide Codex with all information needed to generate, modify, and validate the 
 
 This is a Next.js + TypeScript UI that connects to a backend API at `project_root/api`. Its responsibilities include:
 
-* Rendering pages and components under `src/`
+* location in the repo: project_root/ui.
+* pages and components under `src/`
 * Fetching data from REST endpoints (e.g. `/profile`, `/customers`)
 * Managing client-side state and user interactions
 * Styling via Tailwind CSS
