@@ -2,6 +2,11 @@
 
 tasks are in directory /workspace/codex-agentic-ai-pipeline/agentic-pipeline/patterns/full-stack-app-nextjs-nestjs/tasks
 
+# Tools
+
+tools are in directory /workspace/codex-agentic-ai-pipeline/agentic-pipeline/patterns/full-stack-app-nextjs-nestjs/tools/{{app component}}
+
+
 # Agentic Pipeline Flow
 
 Execute the following api Tasks:
@@ -34,3 +39,11 @@ Turn 5
 1. TASK 12 – Docker Compose for DB and API.task.md
 2. TASK 13 – Makefile for DB, Migrations, App, and Compose.task.md
 3. TASK 14 – Create README.md for API.task.md
+
+
+Execute the following ui Tasks:
+
+Turn 6
+
+1. TASK 01 – Initialize React + Next.js (Node) Project.task.md
+
