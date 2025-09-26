@@ -1,19 +1,22 @@
-TASK 06 - Create TypeORM Configuration
+# TASK 06 - Create TypeORM Configuration
 
-Purpose
+## Purpose
+
 Create a reproducible, environment-aware ORM configuration for a NestJS API using TypeORM v0.3.x. The agent must produce a single source of truth DataSource, integrate it with NestJS, wire migration scripts, and validate connectivity against the Dockerized PostgreSQL instance in project-root/db.
 
-Scope
+## Scope
+
 TypeORM only (v0.3.x). PostgreSQL target. No Prisma in this task.
 
-Preconditions
+## Preconditions
 
 * Node.js 20 LTS and npm available.
 * Docker Compose stack defined under project-root/db (PostgreSQL service + .env).
-* Project layout uses NestJS in project\_root/api.
+* Project layout uses NestJS in project_root/api.
 * Environment variables available via project\_root/ai/context/.env.
+* DB uses snake_case everywhere
 
-Authoritative Paths
+## Authoritative Paths
 
 * DataSource: project\_root/api/src/database/data-source.ts
 * Nest integration: project\_root/api/src/app.module.ts (or app.module integration module)
@@ -22,14 +25,14 @@ Authoritative Paths
 * Migrations (runtime): project\_root/api/dist/migrations/
 * NPM scripts: project\_root/api/package.json
 
-Inputs
+## Inputs
 
 * DB environment: project\_root/ai/context/.env with:
   DATABASE\_HOST, DATABASE\_PORT, DATABASE\_USERNAME, DATABASE\_PASSWORD, DATABASE\_NAME, DATABASE\_SCHEMA, DATABASE\_SSL
 * Existing entities (if any) under api/src/\*\*.entity.ts
 * Docker Compose at project-root/db/docker-compose.yml
 
-Expected Outputs
+## Expected Outputs
 
 1. data-source.ts exporting AppDataSource with:
 
