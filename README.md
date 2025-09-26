@@ -2,6 +2,33 @@
 
 ## Overview
 
+```mermaid
+flowchart TD
+    A[User Request] --> B[Agentic Orchestrator]
+    B --> C[Task Selection]
+    C --> D{Which Task?}
+
+    D -->|Task 01| E[Initialize Project]
+    D -->|Task 02| F[Configure ORM]
+    D -->|Task 03| G[Persist Domain Data]
+    D -->|Task 04| H[Generate Controllers & Services]
+    D -->|Task 05| I[Global Validation & Error Handling]
+
+    E --> J[Tools: npm init, tsconfig.json, Nest CLI]
+    F --> K[Tools: TypeORM, .env Config, DataSource]
+    G --> L[Tools: JSON Spec → Entities, Services]
+    H --> M[Tools: Swagger, CRUD Endpoints]
+    I --> N[Tools: ValidationPipe, ExceptionFilter]
+
+    J --> O[Pipeline Output]
+    K --> O
+    L --> O
+    M --> O
+    N --> O
+
+    O[Deployed & Tested API]
+
+```
 
 The **Codex Agentic Pipeline** is a modular, iterative framework designed for the Codex environment (powered by models like ChatGPT or Grok) to enable agentic software development. It orchestrates AI-driven code generation, testing, and deployment through a series of "turns," where each turn represents a discrete execution cycle. The pipeline emphasizes reproducibility, traceability, and standardization by integrating tools, tasks, metadata headers, semantic versioning, changelogs, and Architecture Decision Records (ADRs).
 
