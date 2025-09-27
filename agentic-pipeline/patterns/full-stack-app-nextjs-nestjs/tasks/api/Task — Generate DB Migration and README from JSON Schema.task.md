@@ -70,7 +70,7 @@ Given an authoritative JSON Schema for a domain object, produce:
 
 ### Step 1 — Load Schema & Overrides
 
-* Parse `{{domain}}.schema.json`.
+* Parse {{project.domain.Persisted Data schema}}.
 * If present, merge `overrides` shallowly; `overrides` win.
 * Validate minimal invariants: has `title` or `x-tableName`, at least one primary key strategy (`id` with uuid/serial or override).
 
@@ -109,6 +109,7 @@ Given an authoritative JSON Schema for a domain object, produce:
 
     * From `x-foreignKey`: `{ column, refTable, refColumn, onDelete, onUpdate }`.
     * From `$ref` referencing other domains when override supplies mapping.
+    * keep names under 30 characters.
 
 ### Step 3 — Generate TypeORM Entity (optional but recommended)
 
