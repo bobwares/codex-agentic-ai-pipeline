@@ -1,15 +1,16 @@
-### Task 09 – API Logging & Structured Request Tracing (NestJS built-in logger)
+# Task 04 – API Logging & Structured Request Tracing 
 
-Goal
+## Goal
 
 Provide correlation-friendly, JSON-structured logs using Nest’s `@nestjs/common` Logger (no pino/winston), including a per-request ID and latency.
 
-Context
+## Context
 
-* Logs are copied into the repo after every Codex run; structure must be machine-searchable.
-* Observability backends (Elastic/Grafana/CloudWatch) prefer JSON lines.
+- NestJS built-in logger
+- Logs are copied into the repo after every Codex run; structure must be machine-searchable.
+- Observability backends (Elastic/Grafana/CloudWatch) prefer JSON lines.
 
-Acceptance Criteria
+## Acceptance Criteria
 
 1. No third-party logger packages. Use Nest’s built-in `Logger` or a custom `LoggerService` derived from `ConsoleLogger`.
 2. `RequestIdMiddleware` injects an `X-Request-Id` header (uuid v4) if absent.
@@ -22,7 +23,7 @@ Acceptance Criteria
    * `LOG_FORMAT` in {`json`,`text`}. In `json`, output one JSON line per record; in `text`, use `Logger` default formatting.
 7. Unit tests assert a log entry contains `requestId` and `responseTimeMs`, and that `LOG_FORMAT=json` yields valid JSON.
 
-Steps
+## Steps
 
 1. Remove third-party logging deps (if present).
 
@@ -266,7 +267,7 @@ async function bootstrap(): Promise<void> {
 bootstrap();
 ```
 
-Environment
+## Environment
 
 * `.env`
 

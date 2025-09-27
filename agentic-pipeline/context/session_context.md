@@ -14,4 +14,4 @@
 
 ## initialize  
 
-1. write global and project scoped variable values to session_context_values.md in the current turn directory.
+1. write globals and project scoped variable values to session_context_values.md in the current turn directory.

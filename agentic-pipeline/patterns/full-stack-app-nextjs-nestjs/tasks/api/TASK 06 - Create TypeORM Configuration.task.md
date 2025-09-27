@@ -45,7 +45,7 @@ TypeORM only (v0.3.x). PostgreSQL target. No Prisma in this task.
 4. A connection validation step that initializes the DataSource and runs a no-op query.
 5. Documentation snippet (README section) explaining how to build and run migrations.
 
-Acceptance Criteria
+## Acceptance Criteria
 
 * AppDataSource.initialize() succeeds against the Docker PG from project-root/db.
 * npm run typeorm\:migration\:run\:js applies migrations from dist/migrations without path errors.
@@ -55,7 +55,7 @@ Acceptance Criteria
 * Non-public schemas are honored (DATABASE\_SCHEMA).
 * Scripts function in both dev (TS) and CI (JS built artifacts).
 
-Agent Steps
+## Agent Steps
 
 Step 1 — Collect Environment
 
