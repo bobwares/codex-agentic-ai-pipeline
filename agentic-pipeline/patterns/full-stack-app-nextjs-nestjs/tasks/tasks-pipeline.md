@@ -16,6 +16,7 @@ Turn 1
 1. TASK 01 — Initialize Project.task.md
 2. TASK 02 - Add Health Check Endpoint Module.task.md
 3. TASK 03 - Add Health Check E2E .http Test.task.md
+4. Task 04 – API Logging & Structured Request Tracing.task.md
 
 Turn 2
 
@@ -30,9 +31,8 @@ Turn 3
 Turn 4
 
 1. TASK 08 – Implement Domain CRUD Endpoints.task.md
-2. Task 09 – API Logging & Structured Request Tracing.task.md
-3. Task 10 – Global Validation Pipe & Error Handling.task.md
-4. Task 11 – End-to-End Tests with Supertest.task.md
+2. Task 10 – Global Validation Pipe & Error Handling.task.md
+3. Task 11 – End-to-End Tests with Supertest.task.md
 
 Turn 5
 

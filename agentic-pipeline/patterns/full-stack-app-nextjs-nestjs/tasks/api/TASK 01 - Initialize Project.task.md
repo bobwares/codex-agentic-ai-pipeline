@@ -5,7 +5,7 @@
 
 Create a clean NestJS 11 project scaffold with your exact package.json and tsconfig.json, plus standard Nest config (nest-cli.json), ESLint, and .gitignore. Output runs with npm scripts, compiles TypeScript, and supports Jest.
 
-## Inputs (authoritative)
+## Output (authoritative)
 
 - package.json (exact content below)
 - tsconfig.json (exact content below)
@@ -398,10 +398,6 @@ export function getAppPort(config: ConfigService): number {
 * Project folder containing the files above.
 * Compilable NestJS 11 skeleton with your exact package.json and tsconfig.json.
 * Global, validated configuration module with @nestjs/config and Joi, including a configuration factory and example usage.
-
-
-
-
 
 
 4. Install and verify
