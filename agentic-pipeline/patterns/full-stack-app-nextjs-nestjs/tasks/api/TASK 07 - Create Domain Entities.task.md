@@ -5,7 +5,7 @@
 Persist a domain’s data model in a relational SQL database and expose repository-backed CRUD in the API.
 
 ## Scope
-
+- Data Mapper pattern
 - Framework: NestJS (TypeScript). 
 - ORM: TypeORM .
 - SQL engines: any supported RDBMS (e.g., PostgreSQL, MySQL/MariaDB, Oracle, SQL Server). 

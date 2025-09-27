@@ -1,11 +1,13 @@
 # TOOL 01 - DB - JSON Schema to SQL Transformation
 
 
-**Context**:  
-Convert a JSON schema into normalized DDL SQL statements.  
-Directory: `/db`
+## Context
 
-**Constraints**:
+- Convert a JSON schema into normalized DDL SQL statements.
+- Directory: project_root/db
+
+## Constraints
+
 - Use PostgreSQL v16 dialect
 - Normalize to at least 3NF
 - Use singular table names (e.g., customer, order_item)
@@ -14,18 +16,19 @@ Directory: `/db`
 - Follow project naming conventions
 - Replace NN in file path with incremented number. ie db/migrations/01_<domain>_.sql
 
-**Inputs**
+## Inputs
 
 project.domain.Domain Object
 project.domain.Persisted Data schema
 
 
-**Output**:  
+## Output 
 
 - A complete SQL file with metadata header, table definitions, foreign keys, and indexes.
 - File path: db/migrations/NN_<domain>_.sql
 
-**Task**:  
+## Task
+
 Generate a migration in `db/migrations/NN_<schema title>_tables.sql` that:
 - Creates normalized tables from the JSON schema referenced in Task.
 - Infers data types and constraints (PRIMARY KEY, FOREIGN KEY, UNIQUE)
@@ -33,7 +36,7 @@ Generate a migration in `db/migrations/NN_<schema title>_tables.sql` that:
 - Converts arrays (`items`) to a related table
 - Creates a flattened views of the domain. 
 
-**Workflow Outline**
+## Workflow Outline
 
 1. **Review the DB task file** to confirm conventions, timestamp rules, and required header fields.
 2. **Parse the customer JSON schema** to derive an entity-relationship outline (e.g., `customer`, `customer_address`, `customer_contact`, etc.).

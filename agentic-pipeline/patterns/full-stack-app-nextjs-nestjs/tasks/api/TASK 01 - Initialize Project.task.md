@@ -1,6 +1,5 @@
 # TASK 01 - Initialize Project.task
 
-
 ## Goal
 
 Create a clean NestJS 11 project scaffold with your exact package.json and tsconfig.json, plus standard Nest config (nest-cli.json), ESLint, and .gitignore. Output runs with npm scripts, compiles TypeScript, and supports Jest.
