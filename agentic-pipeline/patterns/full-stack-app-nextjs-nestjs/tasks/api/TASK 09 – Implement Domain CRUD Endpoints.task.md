@@ -1,4 +1,4 @@
-# Task 08 – Implement Domain CRUD Endpoints (with OpenAPI)
+# Task 09 – Implement Domain CRUD Endpoints (with OpenAPI)
 
 **Description**
 Based on the {{project.domain.Domain Object}} JSON schema, implement a full set of RESTful CRUD endpoints in the backend API (`target_project/api`) and fully document them with OpenAPI (Swagger). The API must expose interactive docs at `/api/docs` and publish a machine-readable spec at `/api/openapi.json`.

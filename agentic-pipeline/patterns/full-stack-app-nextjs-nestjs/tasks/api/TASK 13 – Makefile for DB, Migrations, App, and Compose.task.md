@@ -1,19 +1,19 @@
-TASK 13 – Makefile for DB, Migrations, App, and Compose.task.md
+# TASK 13 – Makefile for DB, Migrations, App, and Compose.task.md
 
-Goal
+## Goal
 Provide a single entry point for local dev and CI to manage Docker Compose services, database lifecycle, TypeORM migrations, and API app commands.
 
-Context
+## Context
 Standardized targets reduce drift and make CI pipelines predictable. This task assumes the Compose files and envs from Task 12 and a TypeORM 0.3.x data source file in the API project.
 
-Preconditions
+## Preconditions
 
 * Task 12 completed (infra/docker-compose.yml, infra/.env, api/.env.local).
 * TypeORM CLI available (dev dependency) in api package.
 * Data source file exists at api/src/database/data-source.ts.
 * Node 20+, Docker, and Docker Compose installed.
 
-Outputs
+## Outputs
 
 * project_root/Makefile (top-level)
 
@@ -94,7 +94,7 @@ clean:
 	git clean -fdx
 ```
 
-Steps
+## Steps
 
 1. Create project_root/Makefile with the contents above.
 2. Ensure infra/.env exists (from Task 12) and contains DB_USER, DB_PASSWORD, DB_NAME, DB_PORT, API_PORT; Compose maps them to container envs (POSTGRES_*).

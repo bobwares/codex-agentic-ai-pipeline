@@ -1,4 +1,4 @@
-# TASK 06 - Create TypeORM Configuration
+# TASK 08 - Create TypeORM Configuration
 
 ## Purpose
 

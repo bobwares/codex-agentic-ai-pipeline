@@ -1,4 +1,4 @@
-### Task 10 – Global Validation Pipe & Error Handling
+## Task 10 – Global Validation Pipe & Error Handling
 
 
 **Goal**

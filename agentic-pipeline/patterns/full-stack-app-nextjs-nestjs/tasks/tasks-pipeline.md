@@ -20,17 +20,17 @@ Turn 1
 
 Turn 2
 
-1. TASK 04- Create DB from Schema.task.md
-2. Task 05 – Create test data set.task.md
+1. TASK 05 - Create DB from Schema.task.md
+2. Task 06 – Create test data set.task.md
 
 Turn 3
 
-1. TASK 06 - Create TypeORM Configuration.task.md
-2. TASK 07 - Create Domain Entities.task.md
+1. TASK 07 - Create Domain Entities.task.md
+2. TASK 08 - Create TypeORM Configuration.task.md
 
 Turn 4
 
-1. TASK 08 – Implement Domain CRUD Endpoints.task.md
+1. TASK 09 – Implement Domain CRUD Endpoints.task.md
 2. Task 10 – Global Validation Pipe & Error Handling.task.md
 3. Task 11 – End-to-End Tests with Supertest.task.md
 
