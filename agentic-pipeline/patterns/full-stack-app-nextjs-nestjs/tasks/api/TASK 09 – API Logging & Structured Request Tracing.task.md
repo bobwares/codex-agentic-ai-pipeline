@@ -1,6 +1,7 @@
 ### Task 09 – API Logging & Structured Request Tracing (NestJS built-in logger)
 
 Goal
+
 Provide correlation-friendly, JSON-structured logs using Nest’s `@nestjs/common` Logger (no pino/winston), including a per-request ID and latency.
 
 Context

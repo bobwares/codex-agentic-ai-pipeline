@@ -1,63 +1,63 @@
 # TOOL — JSON Entitiy Spec to Entities
 
-Purpose
+## Purpose
+
 Generate NestJS + TypeORM entity classes from a JSON Entity Schema that defines domain entities, including columns, PK/FK, uniques, and indexes. Output files are placed under project-root/api/src/{{domain}}/entities and are ready to use with TypeOrmModule.forFeature(\[...]) and migrations.
 
-Contract
+## Inputs
 
-* Inputs
+  - spec (object | file path): JSON Schema containing named definitions
+  - domain (string): short domain name used in paths (e.g., customer)
+  - dbSchema (string | undefined): optional SQL schema/catalog; if provided, set in @Entity({ schema })
+  - outDir (string): output dir, default project-root/api/src/{{domain}}/entities
+  - idStrategy (object, optional): per-type PK defaults, e.g., { uuidDefault: "db" | "orm" }
+  - engine (optional, string): target engine hints for edge cases ("postgres" | "mysql" | "mssql" | "oracle"); only affects migration notes or optional defaults (never required)
 
-    * spec (object | file path): JSON Schema containing named definitions
-    * domain (string): short domain name used in paths (e.g., customer)
-    * dbSchema (string | undefined): optional SQL schema/catalog; if provided, set in @Entity({ schema })
-    * outDir (string): output dir, default project-root/api/src/{{domain}}/entities
-    * idStrategy (object, optional): per-type PK defaults, e.g., { uuidDefault: "db" | "orm" }
-    * engine (optional, string): target engine hints for edge cases ("postgres" | "mysql" | "mssql" | "oracle"); only affects migration notes or optional defaults (never required)
-* Outputs
+## Outputs
 
-    * One .entity.ts per definition under outDir
-    * Deterministic class names (PascalCase of definition names) and snake\_case column names
-    * Decorators for @Entity, @Column, PKs, FKs (@ManyToOne, @JoinColumn), @Unique, @Index (with optional where when supported)
+    - One .entity.ts per definition under outDir
+    - Deterministic class names (PascalCase of definition names) and snake\_case column names
+    - Decorators for @Entity, @Column, PKs, FKs (@ManyToOne, @JoinColumn), @Unique, @Index (with optional where when supported)
 
-Authoritative Paths
+## Authoritative Paths
 
-* project-root/api/src/{{domain}}/entities
+- project-root/api/src/{{domain}}/entities
 
-Assumptions
+## Assumptions
 
-* JSON Schema uses definitions where each definition represents a table-like object.
-* x-db extensions carry relational metadata:
+- JSON Schema uses definitions where each definition represents a table-like object.
+- x-db extensions carry relational metadata:
 
-    * primaryKey: string\[] (columns)
-    * foreignKey: { column: string, ref: "OtherDef.column" }\[]
-    * unique: string\[]\[] (composite allowed)
-    * indexes: (string\[] | { columns: string\[], predicate?: string })\[]
-* Required array indicates NOT NULL columns (except where a business rule requires nullable).
-* Date-time fields map to timestamptz-ish types via TypeORM abstractions; exact SQL type resolved by driver.
+    - primaryKey: string\[] (columns)
+    - foreignKey: { column: string, ref: "OtherDef.column" }\[]
+    - unique: string\[]\[] (composite allowed)
+    - indexes: (string\[] | { columns: string\[], predicate?: string })\[]
+- Required array indicates NOT NULL columns (except where a business rule requires nullable).
+- Date-time fields map to timestamptz-ish types via TypeORM abstractions; exact SQL type resolved by driver.
 
-Mapping Rules
+## Mapping Rules
 
-* Name resolution
+- Name resolution
 
-    * ClassName = PascalCase(defName), table name = pluralized snake\_case of defName by default. If you don’t want pluralization, disable in config.
-    * Column names remain as-is from schema (typically snake\_case).
-    * @Entity({ name, schema?: dbSchema })
-* Scalar types
+    - ClassName = PascalCase(defName), table name = pluralized snake\_case of defName by default. If you don’t want pluralization, disable in config.
+    - Column names remain as-is from schema (typically snake\_case).
+    - @Entity({ name, schema?: dbSchema })
+- Scalar types
 
-    * string (format: uuid) → 'uuid'
-    * string (format: date-time) → @CreateDateColumn/@UpdateDateColumn if named created\_at/updated\_at; otherwise Column('timestamptz' | 'timestamp')
-    * string with maxLength → Column('varchar', { length })
-    * string fixed 2-char country → Column('char', { length: 2 })
-    * integer → Column('integer')
-    * boolean → Column('boolean')
-* Nullability
+    - string (format: uuid) → 'uuid'
+    - string (format: date-time) → @CreateDateColumn/@UpdateDateColumn if named created\_at/updated\_at; otherwise Column('timestamptz' | 'timestamp')
+    - string with maxLength → Column('varchar', { length })
+    - string fixed 2-char country → Column('char', { length: 2 })
+    - integer → Column('integer')
+    - boolean → Column('boolean')
+- Nullability
 
-    * required includes column → nullable: false
-    * else → nullable: true
-* Primary keys
+    - required includes column → nullable: false
+    - else → nullable: true
+- Primary keys
 
-    * If PK single integer → @PrimaryGeneratedColumn({ type: 'integer' })
-    * If PK uuid:
+    - If PK single integer → @PrimaryGeneratedColumn({ type: 'integer' })
+    - If PK uuid:
 
         * idStrategy.uuidDefault = 'db' → @Column('uuid', { primary: true, default: () => engine==='postgres'?'gen\_random\_uuid()':'uuid\_generate\_v4()' /\* or omit \*/ })
         * idStrategy.uuidDefault = 'orm' (default) → @PrimaryGeneratedColumn('uuid')
