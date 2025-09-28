@@ -6,57 +6,22 @@
 
 Given an authoritative JSON Schema for a domain object, produce:
 
-1. a TypeORM SQL migration class 
+1. a TypeORM migration class 
 2. a README describing the schema, tables, columns, constraints, and how to run/revert the migration.
 
 
 ## Inputs
 
-- Domain.Domain Object
-  Domain.Persisted Data schema
+- domain = Domain.Domain Object
+- Domain.Persisted Data schema
   
-
-
-
-
-
-
-* 
-* `{{project_root}}/api/src/database/data-source.ts` (TypeORM DataSource)
-* `{{project_root}}/.env` (DB connection variables used by the DataSource)
-* Optional: `{{project_root}}/ai/context/migration/overrides/{{domain}}.overrides.json` (naming/DDL hints: tableName, pk, indexes, unique, enum strategy, timestamps, schema, precision/scale, text/varchar thresholds, onDelete/onUpdate)
-
-## Preconditions
-
-* Node.js 20 LTS installed
-* TypeORM CLI available via `npx typeorm ...`
-* DataSource references `.env` and resolves entities/migrations paths correctly
-
 
 ## Outputs
 
-* `{{project_root}}/api/src/migrations/{{timestamp}}-{{domain}}.ts` (TypeORM Migration)
-* `{{project_root}}/api/README.migrations/{{domain}}.md` (human-readable spec & runbook)
-* `{{project_root}}/api/src/{{domain}}/entities/{{Domain}}.entity.ts` (optional; generated if missing and required for future diffs)
-* `{{project_root}}/api/src/{{domain}}/entities/index.ts` (re-export, if created/updated)
+* `{{project_root}}/api/src/migrations/{{timestamp}}-{{domain}}.ts` 
+* `{{project_root}}/api/src/migrations/{{domain}}.md` (human-readable spec & runbook)
+* `{{project_root}}/api/src/{{domain}}/entities/{{entity}}.entity.ts` 
 
-## Directory Structure (authoritative)
-
-* `project_root/`
-
-    * `api/`
-
-        * `src/`
-
-            * `database/data-source.ts`
-            * `migrations/`
-            * `{{domain}}/entities/`
-        * `README.migrations/`
-    * `ai/context/`
-
-        * `domain/{{domain}}.schema.json`
-        * `migration/overrides/{{domain}}.overrides.json` (optional)
-    * `.env`
 
 ## Acceptance Criteria
 
@@ -78,19 +43,13 @@ Given an authoritative JSON Schema for a domain object, produce:
 6. No destructive changes without explicit override (`"mode": "allow_destructive": true`); otherwise migration must be additive.
 7. Idempotence: `down()` fully reverts changes introduced by `up()` with correct drop order.
 
-## Tooling Contracts (Agent Steps)
-
 ### Step 1 — Load Schema & Overrides
 
-* Parse {{project.domain.Persisted Data schema}}.
-* If present, merge `overrides` shallowly; `overrides` win.
-* Validate minimal invariants: has `title` or `x-tableName`, at least one primary key strategy (`id` with uuid/serial or override).
+open and read  {{project.domain.Persisted Data schema}}.
+
 
 ### Step 2 — Derive Relational Model
 
-* Determine table name:
-
-    * `overrides.tableName` → else `kebab-case(schema.title || domain)` → `snake_case plural`.
 * Field mapping rules (defaults, can be overridden):
 
     * `string`:
@@ -110,20 +69,17 @@ Given an authoritative JSON Schema for a domain object, produce:
     * `enum` (via `enum` or `x-enum`) → native enum or check constraint per override.
 * Required props ⇒ `NOT NULL`.
 * Primary key:
-
     * If a property named `id` with `format: uuid` → `uuid` PK default `gen_random_uuid()` (or `uuid_generate_v4()` per environment).
     * Else use override `{ pk: ["field"] }` or composite PK list.
 * Uniqueness & indexes:
-
     * From `x-unique: true` or `overrides.unique[]`.
     * From `x-index: true` or `overrides.indexes[]`.
 * FKs:
-
     * From `x-foreignKey`: `{ column, refTable, refColumn, onDelete, onUpdate }`.
     * From `$ref` referencing other domains when override supplies mapping.
     * keep names under 30 characters.
 
-### Step 3 — Generate TypeORM Entity (optional but recommended)
+### Step 3 — Generate TypeORM Entity 
 
 * If file missing:
 
@@ -148,7 +104,6 @@ Given an authoritative JSON Schema for a domain object, produce:
 
 ### Step 5 — README Generation
 
-* Path: `api/README.migrations/{{domain}}.md`
 * Contents:
 
     * Title: `{{Domain}} Migration`
@@ -202,7 +157,7 @@ From `{{project_root}}/api`:
 * Show status:
   `npx typeorm migration:show -d src/database/data-source.ts`
 
-## Hints in JSON Schema (optional vendor extensions)
+## Hints in JSON Schema 
 
 Add any of the following to properties or root:
 
@@ -221,18 +176,3 @@ Add any of the following to properties or root:
 * If a destructive change is detected and `allow_destructive` is not enabled, emit an additive migration or abort with guidance.
 * Validate that `down()` is the strict reverse of `up()`.
 
-## Test Cases (minimum)
-
-* Required vs optional column generation.
-* Unique + index creation and naming.
-* Enum creation and teardown.
-* FK creation with cascade options.
-* Re-run `migration:run` on an already-migrated DB is a no-op; `revert` cleanly rolls back.
-
-## Deliverables Checklist
-
-* [ ] `src/migrations/{{timestamp}}-{{domain}}.ts` present and compiles
-* [ ] README with table/columns/constraints and runbook
-* [ ] Optional entity emitted and exported
-* [ ] Commands to run/revert verified locally
-* [ ] No unintended destructive DDL unless explicitly allowed
