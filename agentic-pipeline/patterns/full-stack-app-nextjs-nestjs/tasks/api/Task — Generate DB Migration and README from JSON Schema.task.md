@@ -1,15 +1,27 @@
 # Task — Generate DB Migration and README from JSON Schema
 
+# Context
+
 ## Goal
 
 Given an authoritative JSON Schema for a domain object, produce:
 
-1. a deterministic SQL migration (TypeORM migration class) that creates/updates the relational schema; and
-2. a concise README describing the schema, tables, columns, constraints, and how to run/revert the migration.
+1. a TypeORM SQL migration class 
+2. a README describing the schema, tables, columns, constraints, and how to run/revert the migration.
 
-## Inputs (authoritative)
 
-* `{{project_root}}/ai/context/domain/{{domain}}.schema.json` (Draft-07+ JSON Schema)
+## Inputs
+
+- Domain.Domain Object
+  Domain.Persisted Data schema
+  
+
+
+
+
+
+
+* 
 * `{{project_root}}/api/src/database/data-source.ts` (TypeORM DataSource)
 * `{{project_root}}/.env` (DB connection variables used by the DataSource)
 * Optional: `{{project_root}}/ai/context/migration/overrides/{{domain}}.overrides.json` (naming/DDL hints: tableName, pk, indexes, unique, enum strategy, timestamps, schema, precision/scale, text/varchar thresholds, onDelete/onUpdate)
