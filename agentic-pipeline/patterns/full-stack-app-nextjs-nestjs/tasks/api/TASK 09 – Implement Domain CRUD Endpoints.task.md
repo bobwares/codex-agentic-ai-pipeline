@@ -1,11 +1,15 @@
 # Task 09 – Implement Domain CRUD Endpoints (with OpenAPI)
 
-**Description**
-Based on the {{project.domain.Domain Object}} JSON schema, implement a full set of RESTful CRUD endpoints in the backend API (`target_project/api`) and fully document them with OpenAPI (Swagger). The API must expose interactive docs at `/api/docs` and publish a machine-readable spec at `/api/openapi.json`.
+## Context
+
+
+- Based on the {{project.domain.Domain Object}} JSON schema, implement a full set of RESTful CRUD endpoints in the backend API (`target_project/api`) 
+- fully document them with OpenAPI (Swagger). 
+- The API must expose interactive docs at `/api/docs` and publish a machine-readable spec at `/api/openapi.json`.
 
 * **Controller**
 
-    * Create `CustomerController` with routes:
+    * Create nestjs Controller with routes:
 
         * `GET    /{{project.domain.Domain Object}}`        → list all domain records
         * `GET    /{{project.domain.Domain Object}}/:id`    → fetch one domain record by ID
@@ -21,16 +25,13 @@ Based on the {{project.domain.Domain Object}} JSON schema, implement a full set 
 
 * **Service**
 
-    * Implement `{{project.domain.Domain Object}}Service` with methods: `create()`, `findAll()`, `findOne()`, `update()`, `remove()`.
+    * Call `{{project.domain.Domain Object}}Service` with methods: `create()`, `findAll()`, `findOne()`, `update()`, `remove()`.
 
 * **DTOs & Validation**
 
     * Define `Create{{project.domain.Domain Object}}Dto` and `Update{{project.domain.Domain Object}}Dto` matching the schema fields, with `class-validator` decorators.
     * Annotate DTOs with `@ApiProperty()` (and `@ApiPropertyOptional()`) including `description`, `example`, and constraints derived from the JSON schema.
 
-* **Persistence**
-
-    * Ensure the Domain entity (or model) defined under `libs/domain/` is registered in your ORM (TypeORM/Prisma) and wired into the API module.
 
 * **OpenAPI Bootstrapping**
 
@@ -56,40 +57,8 @@ Based on the {{project.domain.Domain Object}} JSON schema, implement a full set 
 
     * Provide `project_root/api/e2e/{{project.domain.Domain Object}}s.http` including calls to each route and a request to `/api/openapi.json`.
 
-**Acceptance Criteria**
 
-* `project_root/api/src/{{project.domain.Domain Object}}/{{project.domain.Domain Object}}.controller.ts` contains all five CRUD routes and is annotated with appropriate Swagger decorators.
-* `{{project.domain.Domain Object}}Service` and the two DTO classes exist, enforce schema validation, and expose `@ApiProperty` metadata with examples and constraints aligned to the JSON schema.
-* The persistence layer correctly maps to the JSON schema and is wired into `ApiModule`.
-* `/api/docs` renders Swagger UI; `/api/openapi.json` serves a valid OpenAPI 3.1 spec that includes all CRUD paths, request bodies, parameters, and response schemas.
-* `npm run openapi:emit` writes `project_root/api/openapi/openapi.json` (and optionally `openapi.yaml`) and the file validates against the OpenAPI 3.1 schema.
-* `{{project.domain.Domain Object}}s.e2e-spec.ts` tests for create, read (all & one), update, and delete operations all pass, and an additional test verifies `/api/openapi.json` structure.
-* `project_root/api/README.md` is updated with a “{{project.domain.Domain Object}} API” section documenting each endpoint and a “API Docs” section describing `/api/docs` and `/api/openapi.json`.
-* `project_root/README.md` is updated to reference the API docs endpoints and the spec emission script.
-
-**Implementation Notes (concise)**
-
-* `main.ts` (Swagger setup):
-
-    * Build config via `new DocumentBuilder().setTitle(...).setVersion(...).addTag('{{project.domain.Domain Object}}').build()`.
-    * `const document = SwaggerModule.createDocument(app, config, { include: [ApiModule] });`
-    * `SwaggerModule.setup('/api/docs', app, document);`
-    * Add a GET route or static file server for `/api/openapi.json` if not served automatically; optionally write the file to disk when `OPENAPI_EMIT=true`.
-
-* **DTO Example**
-
-    * `@ApiProperty({ description: 'Customer email', example: 'jane.doe@example.com', maxLength: 255 })`
-    * Mirror JSON schema constraints (`maxLength`, `format`, `minimum`, etc.) in both `class-validator` and `@ApiProperty` metadata.
-
-* **Error Model**
-
-    * Define `ProblemDetails` DTO with fields `type`, `title`, `status`, `detail`, `instance`; reference in error responses using `@ApiBadRequestResponse({ type: ProblemDetails })`, etc.
-
-* **Export Script**
-
-    * Create `scripts/emit-openapi.ts` that imports the Nest `AppModule`, builds the document, and writes `/openapi/openapi.json` (and `.yaml` if desired).
-
-**Expected Outputs**
+## Outputs
 
 * New/updated files under `project_root/api/src/{{project.domain.Domain Object}}/`:
 
@@ -130,7 +99,3 @@ Based on the {{project.domain.Domain Object}} JSON schema, implement a full set 
     * `project_root/api/README.md` (“{{project.domain.Domain Object}} API” and “API Docs” sections with paths and how to regenerate spec)
     * `project_root/README.md` (pointer to `/api/docs` and spec emission script)
 
-**Scope Notes**
-
-* Keep security simple unless otherwise specified. If auth is required, add `@ApiBearerAuth()` and document `401/403` responses.
-* Ensure route parameter types and DTO field types match the JSON schema and are reflected in both validation and OpenAPI metadata.
