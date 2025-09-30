@@ -1,59 +1,63 @@
-# Task 09 – Implement Domain CRUD Endpoints (with OpenAPI)
-
-## Context
+# Task 09 – Implement Domain CRUD Endpoints 
 
 
-- Based on the {{project.domain.Domain Object}} JSON schema, implement a full set of RESTful CRUD endpoints in the backend API (`target_project/api`) 
-- fully document them with OpenAPI (Swagger). 
-- The API must expose interactive docs at `/api/docs` and publish a machine-readable spec at `/api/openapi.json`.
+## Inputs
 
-* **Controller**
+- project.domain.Domain Object
 
-    * Create nestjs Controller with routes:
+## Outputs
 
-        * `GET    /{{project.domain.Domain Object}}`        → list all domain records
-        * `GET    /{{project.domain.Domain Object}}/:id`    → fetch one domain record by ID
-        * `POST   /{{project.domain.Domain Object}}`        → create a new domain record
-        * `PUT    /{{project.domain.Domain Object}}/:id`    → update an existing domain record
-        * `DELETE /{{project.domain.Domain Object}}/:id`    → remove a domain record
-    * Add NestJS Swagger decorators on each route:
+### Controller
 
-        * `@ApiTags('{{project.domain.Domain Object}}')`
-        * `@ApiOperation({ summary: '...' })`
-        * `@ApiOkResponse(...)`, `@ApiCreatedResponse(...)`, `@ApiNoContentResponse(...)`, `@ApiBadRequestResponse(...)`, `@ApiNotFoundResponse(...)`
-        * `@ApiParam({ name: 'id', type: String })` (or Number/UUID as appropriate)
+- Create nestjs Controller with routes:
 
-* **Service**
+    - `GET    /{{project.domain.Domain Object}}`        → list all domain records
+    - `GET    /{{project.domain.Domain Object}}/:id`    → fetch one domain record by ID
+    - `POST   /{{project.domain.Domain Object}}`        → create a new domain record
+    - `PUT    /{{project.domain.Domain Object}}/:id`    → update an existing domain record
+    - `DELETE /{{project.domain.Domain Object}}/:id`    → remove a domain record
+- Add NestJS Swagger decorators on each route:
 
-    * Call `{{project.domain.Domain Object}}Service` with methods: `create()`, `findAll()`, `findOne()`, `update()`, `remove()`.
+    - `@ApiTags('{{project.domain.Domain Object}}')`
+    - `@ApiOperation({ summary: '...' })`
+    - `@ApiOkResponse(...)`, `@ApiCreatedResponse(...)`, `@ApiNoContentResponse(...)`, `@ApiBadRequestResponse(...)`, `@ApiNotFoundResponse(...)`
+    - `@ApiParam({ name: 'id', type: String })` (or Number/UUID as appropriate)
 
-* **DTOs & Validation**
+### Service
 
-    * Define `Create{{project.domain.Domain Object}}Dto` and `Update{{project.domain.Domain Object}}Dto` matching the schema fields, with `class-validator` decorators.
-    * Annotate DTOs with `@ApiProperty()` (and `@ApiPropertyOptional()`) including `description`, `example`, and constraints derived from the JSON schema.
+- inject  {{project.domain.Domain Object}}Service into controller.
+
+### DTOs
+
+- generate
+  - Create{{project.domain.Domain Object}}Dto
+  - Update{{project.domain.Domain Object}}Dto
+  - Response{{project.domain.Domain Object}}Dto
+  - match the schema fields, with `class-validator` decorators.
+  - Annotate DTOs with `@ApiProperty()` (and `@ApiPropertyOptional()`) including `description`, `example`, and constraints derived from the JSON schema.
 
 
-* **OpenAPI Bootstrapping**
+### OPENAPI
 
-    * In `main.ts`, enable global validation pipes and set up Swagger using `SwaggerModule`:
+- add OpenAPI Bootstrapping
+- In `main.ts`, enable global validation pipes and set up Swagger using `SwaggerModule`:
 
-        * Title: `{{project.name}} API`
-        * Version: read from `package.json`
-        * Docs UI at `/api/docs`
-        * JSON spec served at `/api/openapi.json` and YAML at `/api/openapi.yaml` (optional file writer step described below)
-    * Add an error model (Problem Details shape) and reference it in `@Api*Response({ schema: ... })` or a typed class.
+    - Title: `{{project.name}} API`
+    - Version: read from `package.json`
+    - Docs UI at `/api/docs`
+    - JSON spec served at `/api/openapi.json` and YAML at `/api/openapi.yaml` (optional file writer step described below)
+- Add an error model (Problem Details shape) and reference it in `@Api*Response({ schema: ... })` or a typed class.
 
-* **Spec Generation**
+- Spec Generation
+  - Add an `npm` script to emit `openapi.json` (and `.yaml`) to `project_root/api/openapi/` by running the Nest app in a small script or CLI bootstrap that calls `SwaggerModule.createDocument` and writes files to disk.
+  - Provide an optional Spectral or OpenAPI schema validation step in CI that lints `openapi.json`.
 
-    * Add an `npm` script to emit `openapi.json` (and `.yaml`) to `project_root/api/openapi/` by running the Nest app in a small script or CLI bootstrap that calls `SwaggerModule.createDocument` and writes files to disk.
-    * Provide an optional Spectral or OpenAPI schema validation step in CI that lints `openapi.json`.
-
-* **Testing**
+### Testing
 
     * Add an end-to-end test suite in `project_root/api/test/{{project.domain.Domain Object}}.e2e-spec.ts` covering all CRUD routes.
     * Add an assertion that `/api/openapi.json` returns a valid OpenAPI 3.1 document and that all five CRUD paths exist.
 
-* **.http Smoke Tests**
+### .http Smoke Tests**
 
     * Provide `project_root/api/e2e/{{project.domain.Domain Object}}s.http` including calls to each route and a request to `/api/openapi.json`.
 
