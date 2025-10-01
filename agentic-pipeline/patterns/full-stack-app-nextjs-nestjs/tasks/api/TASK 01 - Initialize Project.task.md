@@ -120,7 +120,7 @@ File: tsconfig.json
     "tsBuildInfoFile": ".tsbuildinfo",
     "sourceMap": true
   },
-  "include": ["src"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "dist", "**/*.spec.ts"]
 }
 ```

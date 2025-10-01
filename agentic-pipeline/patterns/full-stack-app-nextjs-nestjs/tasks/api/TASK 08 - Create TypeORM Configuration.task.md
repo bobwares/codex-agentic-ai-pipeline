@@ -88,7 +88,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 
-const CONTEXT_ENV = path.resolve(__dirname, '..', 'context.env');
+const CONTEXT_ENV = path.resolve(__dirname, '.', '.env');
 
 @Module({
   imports: [
