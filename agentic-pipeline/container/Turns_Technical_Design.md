@@ -57,9 +57,8 @@ Each turn executes the specified tasks in the pattern.
 
 4. **Execute Post Turn Tasks**
 
-    * project_root/agentic-pipeline/container/tasks/TASK - Create Project Markdown File.tas
+    * project_root/agentic-pipeline/container/tasks/TASK - Create Project Markdown File.task.md
 
-   
 
     
 ## Indexing
