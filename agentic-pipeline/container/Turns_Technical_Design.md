@@ -5,33 +5,9 @@
 * **Turn**: a single execution of a Codex task (plan, generate, refactor, test, etc).
 * **Turn ID**: a monotonically increasing integer. Initial value `1`. Incremented by `1` at the start of each new turn.
 
-## Turn lifecycle
-
-Each turn executes the specified tasks in the pattern.  
-
-
-1. **Plan**
-
-    * Resolve inputs (task, domain schema, constraints).
-    * Allocate next Turn ID (increment integer).
-    * Create `/turns/<TurnID>/manifest.json` with initial metadata.
-
-2. **Execute**
-
-    * Run tools (e.g., codegen, tests).
-    * Capture logs, diffs, generated files.
-
-3. **Record**
-
-    * Write Change Log (human-readable delta).
-    * Write ADR (Architecture Decision Record) (context, options, decision, consequences).
-    * Finalize `manifest.json` (hashes, file list, metrics).
-    * Write global and project scoped variable values to session_context_values.md in the current turn directory.
-
-
 
     
-## Indexing
+## Turn Index
 
 Append one line per turn to `/turns/index.csv`:
 
@@ -182,8 +158,16 @@ Minimal schema:
 ```
 
 
+## Turns lifecycle
 
-
-4. **Execute Post Turn Tasks**
-
-    * project_root/agentic-pipeline/container/tasks/TASK - Create Project Markdown File.task.md
+- Allocate next Turn ID (increment integer).
+- load session and project contexts
+- Read task and executes the specified tasks in the selected application implementation pattern's task-pipeline.md..
+- Resolve inputs (variables, task, domain schema, constraints).
+- Create Change Log.
+- Create ADR (Architecture Decision Record).
+- Create `/turns/<TurnID>/manifest.json` with initial metadata.
+- Update `manifest.json` (hashes, file list, metrics).
+- Write global and project scoped variable values to session_context_values.md in the current turn directory.
+- Create/update Turn Index.
+- execute task project_root/agentic-pipeline/container/tasks/TASK - Create Project Markdown File.task.md when code generation has completed.
