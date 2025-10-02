@@ -55,11 +55,11 @@ Each turn executes the specified tasks in the pattern.
     * Finalize `manifest.json` (hashes, file list, metrics).
     * Write global and project scoped variable values to session_context_values.md in the current turn directory.
 
-4. **Commit & tag**
+4. **Execute Post Turn Tasks**
 
-    * Commit with conventional message and the Turn ID.
-    * Tag `turn/<TurnID>`.
-    * Optionally open a PR referencing the Turn ID.
+    * project_root/agentic-pipeline/container/tasks/TASK - Create Project Markdown File.tas
+
+   
 
     
 ## Indexing

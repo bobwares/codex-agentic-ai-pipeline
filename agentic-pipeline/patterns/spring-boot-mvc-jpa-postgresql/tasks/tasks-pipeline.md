@@ -13,4 +13,4 @@ Execute the following Tasks:
 
 Phase 1
 
-1. TASK 01 - create_app.task.md
+1. TASK 01 - Initialize Project.task.md
