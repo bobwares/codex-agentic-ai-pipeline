@@ -1,5 +1,4 @@
-# Codex Agentic AI Pipeline — Container Definition (Current Version)
-
+# Codex Agentic AI Pipeline — Container Definition 
 Purpose: a reproducible runtime that executes agentic pipelines (“turns”), enforces project/session context, and runs the bundled application “Code Generator.”
 
 
