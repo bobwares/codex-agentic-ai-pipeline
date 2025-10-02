@@ -11,13 +11,12 @@ Create a clean Spring Boot Java 21 project scaffold with exact `pom.xml`, baseli
 * src/main/java/com/example/app/config/AppProperties.java
 * src/main/java/com/example/app/web/MetaController.java
 * src/main/resources/application.yml
-* src/main/resources/application-example.yml
 * src/test/java/com/example/app/ApplicationSmokeTest.java
 * .editorconfig
 * .gitignore (exact content below)
 * checkstyle.xml (minimal Google-style baseline)
 * .checkstyle-suppressions.xml
-* .java-version (optional; set to 21)
+0* .java-version (optional; set to 21)
 * README-config.md (includes instructions to add Maven Wrapper yourself)
 
 
@@ -383,7 +382,7 @@ Endpoints
 
 Profiles
 - Run with `-Dspring-boot.run.profiles=local` or export `SPRING_PROFILES_ACTIVE=local`.
-- Use `application-local.yml` locally (copy from `application-example.yml`).
+- Use `application-local.yml` locally (copy from `application.yml`).
 
 Build & Run (no Maven Wrapper in repo)
 - Build: `mvn -q -DskipTests=false clean verify`
