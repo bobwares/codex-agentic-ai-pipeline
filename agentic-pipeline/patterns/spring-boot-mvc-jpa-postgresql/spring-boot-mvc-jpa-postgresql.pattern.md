@@ -1,4 +1,3 @@
-
 # Application Implementation Pattern: Spring Boot MVC JPA PostgreSQL
 
 ## Purpose
