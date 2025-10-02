@@ -4,23 +4,23 @@
 
 Create a clean Spring Boot Java 21 project scaffold with exact `pom.xml`, baseline configuration (`application.yml` + validated `@ConfigurationProperties`), logging, testing, formatting (Spotless) and linting (Checkstyle), plus a minimal controller. Output builds, runs, and validates required environment/config on startup. Do not generate or commit the Maven Wrapper; provide instructions to add it later.
 
+## Inputs
+
+- package = {{groupId}}/{{artifactId}}
+
 ## Output (authoritative)
 
 * pom.xml (exact content below)
-* src/main/java/com/example/app/Application.java
-* src/main/java/com/example/app/config/AppProperties.java
-* src/main/java/com/example/app/web/MetaController.java
+* src/main/java/{{package directory}}/Application.java
+* src/main/java/{{package directory}}/AppProperties.java
+* src/main/java/{{package directory}}/web/MetaController.java
 * src/main/resources/application.yml
-* src/test/java/com/example/app/ApplicationSmokeTest.java
-* .editorconfig
+* src/test/java/{{package directory}}/ApplicationSmokeTest.java
 * .gitignore (exact content below)
-* checkstyle.xml (minimal Google-style baseline)
-* .checkstyle-suppressions.xml
-0* .java-version (optional; set to 21)
 * README-config.md (includes instructions to add Maven Wrapper yourself)
 
 
-
+* write the following files:
 
 File: pom.xml
 
@@ -43,10 +43,6 @@ File: pom.xml
     <spring-boot.version>3.3.4</spring-boot.version>
     <springdoc.version>2.6.0</springdoc.version>
     <maven.compiler.release>${java.version}</maven.compiler.release>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <checkstyle.version>10.17.0</checkstyle.version>
-    <spotless.version>2.45.0</spotless.version>
   </properties>
 
   <dependencyManagement>
@@ -134,51 +130,6 @@ File: pom.xml
           <release>${maven.compiler.release}</release>
         </configuration>
       </plugin>
-
-      <!-- Checkstyle -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>3.5.0</version>
-        <configuration>
-          <configLocation>checkstyle.xml</configLocation>
-          <suppressionsLocation>.checkstyle-suppressions.xml</suppressionsLocation>
-          <encoding>${project.build.sourceEncoding}</encoding>
-          <consoleOutput>true</consoleOutput>
-          <failOnViolation>true</failOnViolation>
-        </configuration>
-        <executions>
-          <execution>
-            <id>checkstyle-validate</id>
-            <phase>validate</phase>
-            <goals>
-              <goal>check</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-
-      <!-- Spotless (formatting) -->
-      <plugin>
-        <groupId>com.diffplug.spotless</groupId>
-        <artifactId>spotless-maven-plugin</artifactId>
-        <version>${spotless.version}</version>
-        <configuration>
-          <java>
-            <eclipse />
-            <removeUnusedImports />
-            <formatAnnotations />
-          </java>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>apply</goal>
-            </goals>
-            <phase>process-sources</phase>
-          </execution>
-        </executions>
-      </plugin>
     </plugins>
   </build>
 
@@ -193,7 +144,7 @@ File: pom.xml
 </project>
 ```
 
-File: src/main/java/com/example/app/Application.java
+File: src/main/java/{{package directory}}/Application.java
 
 ```java
 package com.example.app;
@@ -211,7 +162,7 @@ public class Application {
 }
 ```
 
-File: src/main/java/com/example/app/config/AppProperties.java
+File: src/main/java/{{package directory}}/config/AppProperties.java
 
 ```java
 package com.example.app.config;
@@ -241,7 +192,7 @@ public class AppProperties {
 }
 ```
 
-File: src/main/java/com/example/app/web/MetaController.java
+File: src/main/java/{{package directory}}/web/MetaController.java
 
 ```java
 package com.example.app.web;
@@ -269,34 +220,6 @@ public class MetaController {
 }
 ```
 
-File: src/main/resources/application.yml
-
-```yaml
-spring:
-  application:
-    name: ${APP_NAME:backend}
-  main:
-    banner-mode: "console"
-  output:
-    ansi:
-      enabled: DETECT
-
-server:
-  port: ${PORT:8080}
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info
-  endpoint:
-    health:
-      show-details: when_authorized
-
-app:
-  name: ${APP_NAME:backend}
-  port: ${PORT:8080}
-```
 
 File: src/main/resources/application.yml
 
@@ -350,7 +273,7 @@ app:
 
 ```
 
-File: src/test/java/com/example/app/ApplicationSmokeTest.java
+File: src/test/java/{{package directory}}/ApplicationSmokeTest.java
 
 ```java
 package com.example.app;

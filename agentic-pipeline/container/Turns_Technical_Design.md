@@ -4,33 +4,6 @@
 
 * **Turn**: a single execution of a Codex task (plan, generate, refactor, test, etc).
 * **Turn ID**: a monotonically increasing integer. Initial value `1`. Incremented by `1` at the start of each new turn.
-* **Artifacts per turn**:
-
-    1. a changelog,
-    2. an Architecture Decision Record (ADR),
-    3. a manifest that indexes everything created/changed,
-    4. optional logs (stdout/stderr), diffs, and test reports.
-
-## Repository layout
-
-```
-/ai/agentic-pipeline/turns/
-  1/
-    manifest.json
-    changelog.md
-    adr.md
-    diff.patch
-    logs/
-      task.log
-      llm_prompt.txt
-      llm_response.txt
-    reports/
-      tests.xml
-      coverage.json
-
-/turns/index.csv   # append-only registry of all turns
-
-```
 
 ## Turn lifecycle
 
@@ -55,11 +28,7 @@ Each turn executes the specified tasks in the pattern.
     * Finalize `manifest.json` (hashes, file list, metrics).
     * Write global and project scoped variable values to session_context_values.md in the current turn directory.
 
-4. **Execute Post Turn Tasks**
 
-    * project_root/agentic-pipeline/container/tasks/TASK - Create Project Markdown File.tas
-
-   
 
     
 ## Indexing
@@ -215,86 +184,6 @@ Minimal schema:
 
 
 
+4. **Execute Post Turn Tasks**
 
-
-### Git Workflow Conventions
-
-#### 1. Branch Naming
-
-```
-<type>/<short-description>-<Task-id?>
-```
-
-| Type       | Purpose                                | Example                           |
-| ---------- | -------------------------------------- | --------------------------------- |
-| `feat`     | New feature                            | `feat/profile-photo-upload-T1234` |
-| `fix`      | Bug fix                                | `fix/login-csrf-T5678`            |
-| `chore`    | Tooling, build, or dependency updates  | `chore/update-eslint-T0021`       |
-| `docs`     | Documentation only                     | `docs/api-error-codes-T0099`      |
-| `refactor` | Internal change w/out behaviour change | `refactor/db-repository-T0456`    |
-| `test`     | Adding or improving tests              | `test/profile-service-T0789`      |
-| `perf`     | Performance improvement                | `perf/query-caching-T0987`        |
-
-**Rules**
-
-1. One branch per Task or atomic change.
-2. **Never** commit directly to `main` or `develop`.
-3. Re-base on the target branch before opening a pull request.
-
----
-
-#### 2. Commit Messages (Conventional Commits)
-
-```
-AI Coding Agent Change:
-<type>(<optional-scope>): <short imperative summary>
-<BLANK LINE>
-Optional multi-line body (wrap at 72 chars).
-<BLANK LINE>
-Refs: <Task-id(s)>
-```
-
-Example:
-
-```
-feature(profile-ui): add in-place address editing
-
-Allows users to update their address directly on the Profile Overview
-card without navigating away. Uses optimistic UI and server-side
-validation.
-
-Refs: T1234
-```
----
-
-#### 3. Pull-Request Summary Template
-
-Copy this template into every PR description and fill in each placeholder.
-
-```markdown
-# Summary
-<!-- One-sentence description of the change. -->
-
-# Details
-* **What was added/changed?**
-* **Why was it needed?**
-* **How was it implemented?** (key design points)
-
-# Related Tasks
-- T1234 Profile Overview – In-place editing
-- T1300 Validation Rules
-
-# Checklist
-- [ ] Unit tests pass 
-- [ ] Integration tests pass
-- [ ] Linter passes
-- [ ] Documentation updated
-
-# Breaking Changes
-<!-- List backward-incompatible changes, or “None” -->
-
-# Codex Task Link
-
-```
-
-
+    * project_root/agentic-pipeline/container/tasks/TASK - Create Project Markdown File.task.md
