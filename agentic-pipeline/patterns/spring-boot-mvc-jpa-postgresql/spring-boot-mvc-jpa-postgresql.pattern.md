@@ -79,9 +79,9 @@ spring:
     name: ${APP_NAME}
 
   datasource:
-    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    url: jdbc:postgresql://${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -96,7 +96,7 @@ spring:
     change-log: classpath:db/changelog/db.changelog-master.yml
     enabled: true
     contexts: ${LIQUIBASE_CONTEXTS:}
-    default-schema: ${DB_SCHEMA:public}
+    default-schema: ${DATABASE_SCHEMA:public}
     drop-first: false
     parameters:
       appName: ${APP_NAME}
@@ -125,22 +125,5 @@ springdoc:
 ```
 
 Required environment variables (no defaults):
-APP_NAME, APP_PORT, DB_HOST, DB_PORT, DB_NAME, DB_USERNAME, DB_PASSWORD
+APP_NAME, APP_PORT, DATABASE_HOST, DATABASE_PORT, DATABASE_NAME, DATABASE_USERNAME, DATABASE_PASSWORD
 
----
-# Tasks
-
-tasks are in directory /workspace/codex-agentic-ai-pipeline/agentic-pipeline/patterns/{{selected pattern}}/tasks
-
-# Tools
-
-tools are in directory /workspace/codex-agentic-ai-pipeline/agentic-pipeline/patterns/{{selected pattern}}/tools
-
-# Agentic Pipeline Flow
-
-execute tasks
-
-1. initialize_app.task.md
-2. create_sql_ddl_from_schema.task.md
-3. create_persistence_layer.task.md
-4. create_rest_service.task.md

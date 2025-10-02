@@ -9,8 +9,8 @@ tools are in directory /workspace/codex-agentic-ai-pipeline/agentic-pipeline/pat
 
 # Agentic Pipeline Flow
 
-Execute the following api Tasks:
+Execute the following Tasks:
 
-Turn 1
+Phase 1
 
 1. TASK 01 - create_app.task.md

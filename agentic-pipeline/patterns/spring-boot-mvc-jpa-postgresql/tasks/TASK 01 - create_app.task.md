@@ -7,3 +7,4 @@ execute tasks
 3. create_sql_ddl_from_schema.task.md
 4. create_persistence_layer.task.md
 5. create_rest_service.task.md
+6. TASK – Add GitHub Actions for Spring Boot MVC JPA PostgreSQL.task.md
