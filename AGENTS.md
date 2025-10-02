@@ -8,7 +8,7 @@ Act as an Agentic Coding Agent.
 
 # Turns
 
- open and read file /workspace/codex-agentic-ai-pipeline/agentic-pipeline/container/Turns_Technical_Design.md
+- open and read file /workspace/codex-agentic-ai-pipeline/agentic-pipeline/container/Turns_Technical_Design.md
 
 # Project Context
 
