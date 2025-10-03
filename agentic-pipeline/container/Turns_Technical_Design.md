@@ -91,7 +91,7 @@ comments.
 **Context**  
 Briefly explain the problem or decision context.
 
-**Options Considered***
+**Options Considered**
 What are the options that were considered before implementing the solution.
 
 **Decision**  

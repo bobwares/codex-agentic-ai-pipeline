@@ -1,12 +1,11 @@
-## Tool: Generate Persistence Code (Spring Data JPA for PostgreSQL)
+# Task – Create Persistence Layer (JPA)
 
-### Purpose
+
+## Purpose
 
 Generate the Java persistence layer for a domain entity using Spring Data JPA on PostgreSQL. Produce compilable source that maps the project’s JSON schema to JPA entities, repositories, and a service layer, aligned with the Codex session context and existing DB migrations.
 
----
-
-### Inputs
+## Inputs
 
 Load Codex session context.
 
@@ -22,13 +21,14 @@ Load Codex session context.
 
     * Domain Object (singular, e.g., Customer)
     * Persisted Data schema (path to JSON schema)
+  
 * Tech assumptions (implicit unless overridden)
 
     * Java 21, Spring Boot 3.5.x, Hibernate 6.x, PostgreSQL 16
 
 ---
 
-### Constraints
+## Constraints
 
 * Use `jakarta.persistence.*` and `jakarta.validation.*`.
 * Map JSON field names to snake\_case DB column names.
@@ -39,7 +39,7 @@ Load Codex session context.
 
 ---
 
-### Behavior
+## Behavior
 
 1. Parse the Persisted Data schema to derive entity fields, nullability, lengths, uniques, and FKs.
 2. Emit:
@@ -53,7 +53,7 @@ Load Codex session context.
 
 ---
 
-### Deliverables (create or update)
+## Deliverables (create or update)
 
 * `src/main/java/{{groupIdPath}}/{{artifactId}}/{{Domain}}.java`
 
@@ -91,35 +91,9 @@ Where `{{groupIdPath}}` is `{{groupId}}` with dots replaced by slashes.
 * Arrays/collections in schema → separate child entity mapped `@OneToMany` with FK, only if the DB DDL establishes a separate table
 * Email fields → add `@Email` when field name or schema format indicates email
 
----
 
-### Output Format
 
-On success, return a JSON object with file list and contents suitable for writing to disk:
-
-```json
-{
-  "status": "success",
-  "files": [
-    {"path": "src/main/java/{{groupIdPath}}/{{artifactId}}/{{Domain}}.java", "content": "..."},
-    {"path": "src/main/java/{{groupIdPath}}/{{artifactId}}/{{Domain}}Repository.java", "content": "..."},
-    {"path": "src/main/java/{{groupIdPath}}/{{artifactId}}/{{Domain}}Service.java", "content": "..."}
-  ]
-}
-```
-
-On failure:
-
-```json
-{
-  "status": "failure",
-  "error": "reason message"
-}
-```
-
----
-
-### Workflow
+## Workflow
 
 1. Load Codex session context.
 2. Read Persisted Data schema.
@@ -130,7 +104,7 @@ On failure:
 
 ---
 
-### Acceptance Criteria
+## Acceptance Criteria
 
 * Code compiles under Java 21 and Spring Boot 3.5.x with JPA/Hibernate 6.
 * Entity/table/column names match DB migrations (no drift).
@@ -141,7 +115,7 @@ On failure:
 
 ---
 
-### Example Invocation (from context)
+## Example 
 
 * Domain Object: `Customer`
 * Persisted Data schema: `project_root/ai/agentic-pipeline/context/schemas/customer.schema.json`
