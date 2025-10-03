@@ -12,9 +12,9 @@ Execute a single, well-scoped engineering task against a linked GitHub repositor
 
 ## Overview
 
-The **Agentic AI Pipeline** defines a context for running an auditable, and reproducible AI-assisted development workflow using **ChatGPT Codex** as the coding agent.
+The **Agentic AI Pipeline** project defines a context for running an auditable, and reproducible AI-assisted development workflow using [**ChatGPT Codex**](https://developers.openai.com/codex/cloud) as the coding agent.
 
-It instructs  **ChatGPT Codex** to build context container at the beginning of each Codex Task.  
+It instructs  **ChatGPT Codex** to build a container context at the beginning of each Codex Task.  
 
 * It loads the following into the container context:
     * turn lifecycle specification
@@ -27,10 +27,10 @@ It instructs  **ChatGPT Codex** to build context container at the beginning of e
 
 ## How It Works
 
-ChatGPT Codex provides a sandbox environment for implementing a Codex Tasks for a selected GitHub repository.  
-The sandbox provides a set of preinstalled software tools such as runtimes for Java, Python, and Node.js already installed.  A setup script can be added to the environment's configuration that can add more tooling.  This setup script is used to copy the Agentic AI Pipeline to the sandbox's workspace.
+ChatGPT Codex provides a [“cloud sandbox environment”](https://developers.openai.com/codex/cloud/environments) for executing Codex Tasks against a selected GitHub repository.  
+The sandbox environment provides a set of preinstalled software tools such as runtimes for Java, Python, and Node.js already installed.  A setup script can be added to the environment's configuration that can add more tooling.  The [setup script](codex-enviroments/agentic-pipeline/env-setup.sh) is used to copy the Agentic AI Pipeline repository to the sandbox's workspace.
 
-### Codex Task Execution
+## Codex Task Execution
 
 1. Human launches a codex task by entering a prompt in the ChatGPT Codex interface.
 2. Codex initializes a sandbox with tooling.
@@ -51,12 +51,10 @@ The sandbox provides a set of preinstalled software tools such as runtimes for J
 ## Quick Start
 
 1. Create a target project using the template:  [Agentic AI Pipeline Target Project Template](https://github.com/bobwares/agentic-ai-pipeline-target-project-template)
-2. Define the project contex
-    * Update `project_context.md` with project name, selected application implementation pattern, and domain model.
-3. Create an associated Codex environment.
-
-4. Launch a Codex Task 
-5. Review generated code, ADRs, and PRs.
+2. Update `project_context.md` with project name, selected application implementation pattern, domain model and other context needed to implement the application.
+3. Create an associated [Codex environment](docs/codex/README - Setting up the CodeX Environment.md).
+4. Load [ChatGPT Codex](https://chatgpt.com/codex) in your browser and select the environment, select the repository branch, enter the task and click the Code button. 
+5. Review generated code, Architecture Decision Records (ADR), and changelogs.
 6. Create pull request.
 
 
