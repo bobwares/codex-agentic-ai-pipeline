@@ -1,4 +1,4 @@
-# tool - DB - JSON Schema to SQL DDL
+# TASK Generate Normalized Tables from JSON Schema
 
 
 ## Context
@@ -19,18 +19,18 @@ Output Directory: `/db`
 
 - codex session context: Persisted Data schema
 
-## Output  
+## Output
 
 - A complete SQL file with metadata header, table definitions, foreign keys, and indexes.
 - File path: db/migrations/NN_<domain>_.sql
 
-## Task  
+## Task
 Generate a migration in `db/migrations/NN_<schema title>_tables.sql` that:
 - Creates normalized tables from the JSON schema referenced in Task.
 - Infers data types and constraints (PRIMARY KEY, FOREIGN KEY, UNIQUE)
 - Maps nested objects ie (`customer`, `shipping_address`) to separate tables
 - Converts arrays (`items`) to a related table
-- Creates a flattened views of the domain. 
+- Creates a flattened views of the domain.
 
 ## Workflow Outline
 
@@ -46,7 +46,7 @@ Generate a migration in `db/migrations/NN_<schema title>_tables.sql` that:
 * Naming conventions, timestamp format, and directory layout match project standards.
 * `project_root/db/README.md` gains a short “Domain Migration” section describing how to execute the migration and smoke tests locally.
 
-# Example Execution 
+# Example Execution
 
 ## Inputs
 
@@ -262,6 +262,10 @@ CREATE INDEX IF NOT EXISTS idx_customer_phone_customer_id
 
 COMMIT;
 ```
+
+
+
+
 
 
 

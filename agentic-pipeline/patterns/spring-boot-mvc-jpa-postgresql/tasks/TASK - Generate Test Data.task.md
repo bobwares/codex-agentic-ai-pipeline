@@ -6,7 +6,7 @@ Create SQL statements to insert the initial set of data for the domain in to the
 
 
 - File location:** `db/scripts/<domain>_test_data.sql`
-- Insert 20 sets domain objects** 
+- Insert 20 sets domain objects**
 - Idempotent** – use `INSERT … ON CONFLICT DO NOTHING`.
 - Metadata header** (App, Package, File, Version, Author, Date, Description).
 - Realistic sample data** (names + emails).
@@ -26,7 +26,7 @@ Create SQL statements to insert the initial set of data for the domain in to the
 
 ---
 
-### Example Execution
+### Example 
 
 **Input**
 
