@@ -2,22 +2,23 @@
 
 Act as an Agentic Coding Agent.
 
+# Turn Lifecycle
+
+- open and read file /workspace/codex-agentic-ai-pipeline/agentic-pipeline/container/Turns_Technical_Design.md
+
 # Session Context
 
 - open and read file /workspace/codex-agentic-ai-pipeline/agentic-pipeline/context/session_context.md
 
-# Turns Lifecycle
-
-- open and read file /workspace/codex-agentic-ai-pipeline/agentic-pipeline/container/Turns_Technical_Design.md
 
 # Project Context
 
 - open and read file /workspace/{{session context.globals.project_context}}/project_context.md
 
 
-# Pattern
+# Application Implementation Patterns
 
-- open and read pattern specified in the codex_project_context in the directory /workspace/codex-agentic-ai-pipeline/agentic-pipeline/patterns/{{session context.globals.application_implementation_pattern}}
+- open and read pattern specified in the directory /workspace/codex-agentic-ai-pipeline/application-implementation-patterns/{{session context.globals.application_implementation_pattern}}
 
 # Governance
 
