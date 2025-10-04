@@ -14,6 +14,7 @@ Use when you want a scalable, maintainable web UI using the App Router (`app/`) 
 
 * Runtime: Node.js 20 LTS
 * Framework: Next.js (App Router)
+* Package Manager: npm
 * Language: TypeScript
 * UI: React (Server Components by default; Client Components where interactivity is required)
 * Styling: Tailwind CSS (+ PostCSS, Autoprefixer)
@@ -342,49 +343,6 @@ Component conventions:
 
 ---
 
-## Agentic AI Pipeline: Tasks
-
-### TASK 01 — Scaffold Next.js (App Router + Tailwind)
-
-1. Initialize Next.js with TS and App Router.
-2. Add Tailwind (configs + globals).
-3. Write base files listed above (layout, page, api/health).
-4. Create `@` alias mapping in `tsconfig.json`.
-
-Conformance
-
-* `yarn dev` boots; `/api/health` returns 200.
-* Tailwind classes render styles on `/`.
-
-### TASK 02 — Implement Data Fetching by Route
-
-1. For each route spec, choose rendering: `static` (with `revalidate`) or `dynamic`.
-2. Generate server containers under `app/*` calling `src/services/*`.
-3. Add `generateStaticParams` for dynamic static routes.
-4. If `tags` provided, apply `next: { tags }` and emit revalidation hook.
-
-Conformance
-
-* No client data fetching in presentational components.
-* Services imported only into server boundaries.
-
-### TASK 03 — Routing Topology and API
-
-1. Create segment layouts and route groups from the spec.
-2. Generate `app/api/*` mocks when enabled.
-
-### TASK 04 — State Strategy and Mutations
-
-1. Default to server actions for mutations.
-2. If `global_state=redux|zustand`, scaffold store and wire in client components only.
-
-### TASK 05 — Error/Loading/NotFound + Monitoring
-
-1. Emit `error.tsx`, `loading.tsx`, `not-found.tsx` per segment.
-2. If monitoring requested, add provider hooks (Sentry or equivalent) client/server.
-
----
-
 ## Pattern Inputs
 
 ### 1) Project metadata
@@ -397,7 +355,7 @@ Conformance
 ### 2) Repository context
 
 * `target_repo_root` (absolute path, required)
-* `package_manager` (npm|yarn|pnpm, default: npm)
+* `package_manager` npm
 * `init_git` (boolean, default: true)
 
 ### 3) Runtime
@@ -656,6 +614,3 @@ Each route:
 }
 ```
 
----
-
-If you want this emitted as `agentic-pipeline/patterns/nextjs-scalable-app-router.md` with your pipeline headers, say so and I’ll output it in-place with that path and exact structure.
