@@ -78,7 +78,7 @@ Notes
 
 ---
 
-## Pattern Implementations (authoritative scaffolds)
+## Example Implementation 
 
 ### 1) Container–Presentational (App Router)
 
@@ -427,7 +427,7 @@ Each route:
 
 ---
 
-## JSON Schema (pattern_config)
+## Example JSON Schema (pattern_config)
 
 ```json
 {

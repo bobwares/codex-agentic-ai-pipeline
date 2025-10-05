@@ -10,6 +10,10 @@ Act as an Agentic Coding Agent.
 
 - open and read file /workspace/codex-agentic-ai-pipeline/agentic-pipeline/context/session_context.md
 
+# Project Context
+
+- open and read file /workspace/{{session context.globals.project_context}}/project_context.md
+
 
 # Pattern Context
 
@@ -20,9 +24,6 @@ Act as an Agentic Coding Agent.
 
 - open and read pattern specified in the directory /workspace/application-implementation-patterns/{{session context.globals.application_implementation_pattern}}
 
-# Project Context
-
-- open and read file /workspace/{{session context.globals.project_context}}/project_context.md
 
 
 # Governance
