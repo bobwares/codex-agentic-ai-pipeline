@@ -22,7 +22,7 @@ Act as an Agentic Coding Agent.
 
 # Application Implementation Pattern
 
-- open and read pattern specified in the directory /workspace/codex-agentic-ai-pipeline/application-implementation-patterns/{{session context.globals.application_implementation_pattern}}
+- open and read pattern specified in the directory /workspace/codex-agentic-ai-pipeline/application-implementation-patterns/{{session context.globals.application_implementation_pattern}}/application-implementation-pattern.md
 
 
 

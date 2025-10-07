@@ -30,12 +30,12 @@ Codify five key design patterns:
 
 - Core frameworks
 
-  - Next.js 15.x (App Router, Server Actions enabled)
-  - React 19.x (RSC by default; client components only where required)
+  - Next.js 15.1.0 
+  - React 19.2.0 
 
 - Language
 
-  - TypeScript 5.9.x (strict, isolatedModules, moduleResolution: nodenext)
+  - TypeScript 5.9.x 
 
 - Styling
 
@@ -46,8 +46,8 @@ Codify five key design patterns:
 - State management
 
   - Server state: @tanstack/react-query ^5
-  - Local/UI state: Zustand ^4 (opt-in, localized interactive state)
-  - Context API: read-mostly globals (theme, feature flags)
+  - Local/UI state: Zustand ^4 
+  - Context API: read-mostly globals 
 
 - Forms and validation
 
@@ -161,9 +161,7 @@ playwright.config.ts
 
 ---
 
-## Example Implementation 
-
-Updated Example Implementation
+## Example  
 
 ### 1) Container–Presentational (App Router)
 
@@ -451,7 +449,7 @@ export default function GlobalError({
 ```
 
 ---
-## Tailwind Styling (authoritative setup)
+## Tailwind Styling 
 
 - Files
 
@@ -551,7 +549,7 @@ export default function GlobalError({
 
   - Import src/app/globals.css once in src/app/layout.tsx.
   - content includes ts, tsx, md, mdx under src to cover RSC, client components, and MDX.
-  - plugins is empty by default; add specific Tailwind plugins only when required and ensure corresponding devDependencies are present.
+  - plugins are empty by default; add specific Tailwind plugins only when required and ensure corresponding devDependencies are present.
   - enable safelist only when generating class names dynamically.
 
 - Component conventions
@@ -578,36 +576,6 @@ export default function GlobalError({
 
 ---
 
-## Generated Files (authoritative)
-
-- package.json (scripts: dev, build, start, lint, typecheck, test, test:ci, e2e, e2e:ci)
-- tsconfig.json (strict, isolatedModules, moduleResolution nodenext, baseUrl ".", paths { "@/*": ["src/*"] })
-- next.config.ts (App Router defaults, Server Actions enabled)
-- tailwind.config.ts
-- postcss.config.js
-- src/app/globals.css
-- src/app/layout.tsx
-- src/app/page.tsx
-- src/app/error.tsx
-- src/app/not-found.tsx
-- src/app/loading.tsx
-- src/app/api/health/route.ts
-- src/app/(catalog)/products/page.tsx
-- src/components/ui/ProductList.tsx
-- src/services/catalog.ts
-- src/lib/env.ts
-- src/store/useCart.ts
-- vitest.config.ts
-- playwright.config.ts
-- env.d.ts
-- .eslintrc.json
-- .prettierrc
-- .gitignore
-- .nvmrc
-- .npmrc
-- .github/workflows/ci.yml
-
----
 
 ## Pattern Inputs (authoritative for codegen)
 

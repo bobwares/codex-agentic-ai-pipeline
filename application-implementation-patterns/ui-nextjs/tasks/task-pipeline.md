@@ -13,7 +13,10 @@ Execute the following Tasks:
 
 # turn 1
 
-1. TASK 01 — Scaffold Next.js (App Router + Tailwind)
+1. TASK 01 — Initialize Project
+
+# Turn 2
+
 2. TASK 02 — Implement Data Fetching by Route
 3. TASK 03 — Routing Topology and API
 4. TASK 04 — State Strategy and Mutations
