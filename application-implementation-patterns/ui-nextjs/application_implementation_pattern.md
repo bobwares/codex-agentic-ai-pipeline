@@ -659,6 +659,8 @@ Each route object:
 - env_template: record<string,string> = { "API_BASE": "[http://localhost:3000](http://localhost:3000)" }
 - write_env_example: boolean = true
 
+
+
 This version tells the agent exactly what to generate and when, with fixed defaults and conditional requirements—no “optional” decisions left to the model.
 
 ---
