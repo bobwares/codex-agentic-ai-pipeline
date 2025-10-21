@@ -9,7 +9,7 @@
     
 ## Turn Index
 
-Append one line per turn to `/turns/index.csv`:
+Append one line per turn to `/ai/agentic-pipeline/turns_index.csv`:
 
 ```
 turnId,timestampUtc,task,branch,tag,headAfter,testsPassed,testsFailed,coverageDeltaPct
@@ -20,34 +20,39 @@ turnId,timestampUtc,task,branch,tag,headAfter,testsPassed,testsFailed,coverageDe
 
 ### Change Log
 
-- Track changes each “AI turn” in: project_root/ai/agentic-pipeline/turns/current turn directory/changelog.md
-- append changes to project change log located project_root/changelog.md
-- record the list of tasks and tools executed.
+- Append the change log for each “AI turn” in: project_root/ai/agentic-pipeline/turns/current turn directory/changelog.md
+- record the following in the changelog.md
+  - Record the input prompt.
+  - List each task_name executed during a turn.  
+  - List each tool_name executed during a task.
+  - List each agent_name executed during a task.
+  - List each path/file_name added during the task. Col1 path/file_name col2 task_name, tool_name, agent_name.
+  - List each path/file_name updated during the task.  Col1 path/file_name col2 task_name, tool_name, agent_name.
+  - Use the following template
 
-#### Change Log Entry Template
 
+```
     # Turn: {{turn number}}  – {{Date}} - {{Time of execution}}
-    
+    ##
+    {{ generate a description of the work complete during the task. }}
     ## Prompt
 
     {{ input prompt}}
 
-    #### Task
-    <Task>
+    ### Task
+    - {{task name executed during a turn}}
+     - {{tools/agents that are execute during a task.}}
     
-    #### Changes
-    - Initial project structure and configuration.
+    ### Files Added
+    - path/file_name
     
-    ### 0.0.2 – 2025-06-08 07:23:08 UTC (work)
     
-    #### Task
-    <Task>
+    ### Files Updated
+    - path/file_name
     
-    #### Changes
-    - Add tsconfig for ui and api.
-    - Create src directories with unit-test folders.
-    - Add e2e test directory for Playwright.
-
+    
+   
+```
 
 ### ADR (Architecture Decision Record)
 

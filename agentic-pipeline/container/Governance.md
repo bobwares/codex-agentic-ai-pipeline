@@ -34,9 +34,6 @@
       * Start at **0.1.0**; update only when code or configuration changes.
       * Update the version in the source file if it is updated during a turn.
 
-
-
-
 ### Git Workflow Conventions
 
 #### 1. Branch Naming
