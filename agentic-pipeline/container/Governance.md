@@ -92,8 +92,8 @@ validation.
     - Use the following template
 
 ```markdown
-
-Pull-Request Summary Template
+## Turn Summary
+<!-- CODEx_TURN_SUMMARY -->
 
 ## Statement of Work
 
@@ -103,7 +103,7 @@ Pull-Request Summary Template
 
 ## Input Prompt
 
-<!-- Summarize the input prompt / schema name that initiated this turn. -->
+<!-- Summarize the input prompt, schema name that initiated this turn. -->
 
 [Prompt summary goes here]
 
@@ -153,4 +153,5 @@ Pull-Request Summary Template
 # Codex Task Link
 {{blank}}
 ```
+
 
