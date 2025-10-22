@@ -94,27 +94,22 @@ Copy this template into every PR description and fill in each placeholder.
 
     {{ generate a description of the work complete during the task. }}
 
---
-
 ## Input Prompt
 
-    {{ input prompt}}
+    {{ input prompt :: summarize schema name.}}
 
---
+    ## Tasks Executed
+    {{Table: add a row for each task name executed during a turn }} :: col1 Task Name col2: {{tools/agents that are execute during a task.}}
+    
+    ## Turn Files Added
+    {{Table: add a row for each path/file_name added  under the /ai directory }} :: col1 path/file_name 
 
-## Tasks Executed
-    - {{task name executed during a turn}}
-     - {{tools/agents that are execute during a task.}}
-    
-    ## Turn Tracking Files Added
-    List: all path/file_name added under the /ai directory
-    
      ## Files Added
-    Table: all path/file_name added. exclude path/file_name added under the /ai directory :: col1 path/file_name col2 task_name that created the file.
+    {{Table: add a row for each path/file_name added. exclude path/file_name added under the /ai directory :: col1 path/file_name col2 task_name that created the file.}}
    
     
     ## Files Updated
-    Table: all path/file_name added. exclude path/file_name added under the /ai directory :: col1 path/file_name col2 task_name that created the file.
+    {{Table: add a row for each path/file_name updated. exclude path/file_names added under the /ai directory :: col1 path/file_name col2 task_name that created the file.}}
 
 
 # Checklist
