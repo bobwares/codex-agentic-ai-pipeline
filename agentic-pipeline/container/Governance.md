@@ -93,7 +93,8 @@ validation.
 
 ```markdown
 
-Pull-Request Summary Template
+## Turn Summary
+<!-- CODEx_TURN_SUMMARY -->
 
 ## Statement of Work
 
@@ -152,5 +153,6 @@ Pull-Request Summary Template
 
 # Codex Task Link
 {{blank}}
+
 ```
 
