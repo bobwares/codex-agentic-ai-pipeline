@@ -40,8 +40,8 @@ turnId,timestampUtc,task,branch,tag,headAfter,testsPassed,testsFailed,coverageDe
     
 
     ## Input Prompt
-
-    {{ input prompt :: summarize schema name.}}
+    
+    {{ input prompt }}
 
     ## Tasks Executed
     {{Table: add a row for each task name executed during a turn }} :: col1 Task Name col2: {{tools/agents that are execute during a task.}}

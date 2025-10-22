@@ -52,15 +52,9 @@
 | `test`     | Adding or improving tests              | `test/profile-service-T0789`      |
 | `perf`     | Performance improvement                | `perf/query-caching-T0987`        |
 
-**Rules**
 
-1. One branch per Task or atomic change.
-2. **Never** commit directly to `main` or `develop`.
-3. Re-base on the target branch before opening a pull request.
 
----
-
-#### 2. Commit Messages (Conventional Commits)
+#### Commit Messages 
 
 ```
 AI Coding Agent Change:
@@ -80,44 +74,81 @@ Allows users to update their address directly on the Profile Overview
 card without navigating away. Uses optimistic UI and server-side
 validation.
 
-Refs: T1234
 ```
----
 
-#### 3. Pull-Request Summary Template
+#### Pull-Request Title
 
-Copy this template into every PR description and fill in each placeholder.
+{{Turn: {{turn number}}  – {{Date}} - {{Time of execution}}}}
+
+
+#### Pull-Request Summary Template
+- record the following in the changelog.md
+    - Record the input prompt.
+    - List each task_name executed during a turn.
+    - List each tool_name executed during a task.
+    - List each agent_name executed during a task.
+    - List each path/file_name added during the task.
+    - List each path/file_name updated during the task.
+    - Use the following template
 
 ```markdown
 
+Pull-Request Summary Template
+
 ## Statement of Work
 
-    {{ generate a description of the work complete during the task. }}
+<!-- Write a concise description of the work completed during this turn. -->
+
+[Describe the change set at a high level: scope, rationale, notable design decisions.]
 
 ## Input Prompt
 
-    {{ input prompt :: summarize schema name.}}
+<!-- Summarize the input prompt / schema name that initiated this turn. -->
 
-    ## Tasks Executed
-    {{Table: add a row for each task name executed during a turn }} :: col1 Task Name col2: {{tools/agents that are execute during a task.}}
-    
-    ## Turn Files Added
-    {{Table: add a row for each path/file_name added  under the /ai directory }} :: col1 path/file_name 
+[Prompt summary goes here]
 
-     ## Files Added
-    {{Table: add a row for each path/file_name added. exclude path/file_name added under the /ai directory :: col1 path/file_name col2 task_name that created the file.}}
-   
-    
-    ## Files Updated
-    {{Table: add a row for each path/file_name updated. exclude path/file_names added under the /ai directory :: col1 path/file_name col2 task_name that created the file.}}
+## Tasks Executed
 
+<!-- Add a row per task executed during this turn. -->
 
-# Checklist
-- [ ] Unit tests pass 
-- [ ] Integration tests pass
-- [ ] Linter passes
-- [ ] Documentation updated
+| Task Name | Tools / Agents Executed |
+| --------- | ----------------------- |
+|           |                         |
+|           |                         |
 
+## Turn Files Added
+
+<!-- List files added under the /ai directory only. One row per file. -->
+
+| Path / File |
+| ----------- |
+|             |
+|             |
+
+## Files Added
+
+<!-- Exclude anything under /ai. Include the task that created the file. -->
+
+| Path / File | Task Name |
+| ----------- | --------- |
+|             |           |
+|             |           |
+
+## Files Updated
+
+<!-- Exclude anything under /ai. Include the task that updated the file. -->
+
+| Path / File | Task Name |
+| ----------- | --------- |
+|             |           |
+|             |           |
+
+## Checklist
+
+* [ ] Unit tests pass
+* [ ] Integration tests pass
+* [ ] Linter passes
+* [ ] Documentation updated
 
 # Codex Task Link
 {{blank}}
