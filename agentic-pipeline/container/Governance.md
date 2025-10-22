@@ -92,7 +92,6 @@ validation.
     - Use the following template
 
 ```markdown
-
 ## Turn Summary
 <!-- CODEx_TURN_SUMMARY -->
 
@@ -104,7 +103,7 @@ validation.
 
 ## Input Prompt
 
-<!-- Summarize the input prompt / schema name that initiated this turn. -->
+<!-- Summarize the input prompt, schema name that initiated this turn. -->
 
 [Prompt summary goes here]
 
