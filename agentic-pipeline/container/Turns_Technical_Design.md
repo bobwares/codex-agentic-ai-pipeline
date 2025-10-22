@@ -16,20 +16,6 @@ turnId,timestampUtc,task,branch,tag,headAfter,testsPassed,testsFailed,coverageDe
 1,2025-09-05T17:42:10Z,generate-controllers-and-services,turn/1,turn/1,d4e5f6a,42,0,1.8
 ```
 
-## Turns lifecycle
-
-- Allocate next Turn ID (increment integer).
-- load session and project contexts
-- Read task and execute the specified tasks in the selected application implementation pattern's task-pipeline.md.
-- Resolve inputs (variables, task, domain schema, constraints).
-- Create Change Log.
-- Create ADR (Architecture Decision Record).
-- Create `/turns/<TurnID>/manifest.json` with initial metadata.
-- Update `manifest.json` (hashes, file list, metrics).
-- Write global and project scoped variable values to session_context_values.md in the current turn directory.
-- Create/update Turn Index.
-- execute task project_root/agentic-pipeline/container/tasks/TASK - Create Project Markdown File.task.md when code generation has completed.
-
 
 
 
@@ -100,7 +86,7 @@ turnId,timestampUtc,task,branch,tag,headAfter,testsPassed,testsFailed,coverageDe
 
 ## ADR (Architecture Decision Record)
 
-Read /workspace/codex-agentic-ai-pipeline/agentic-pipeline/container/Architecture_Decision_Record.md
+Read and execute /workspace/codex-agentic-ai-pipeline/agentic-pipeline/container/Architecture_Decision_Record.md
 
 
 ## manifest.json (authoritative index)
@@ -154,5 +140,21 @@ Minimal schema:
   }
 }
 ```
+
+
+## Turns lifecycle
+
+- Allocate next Turn ID (increment integer).
+- load session and project contexts
+- Read task and execute the specified tasks in the selected application implementation pattern's task-pipeline.md.
+- Resolve inputs (variables, task, domain schema, constraints).
+- Create Change Log.
+- Create ADR (Architecture Decision Record).
+- Create `/turns/<TurnID>/manifest.json` with initial metadata.
+- Update `manifest.json` (hashes, file list, metrics).
+- Write global and project scoped variable values to session_context_values.md in the current turn directory.
+- Create/update Turn Index.
+- execute task project_root/agentic-pipeline/container/tasks/TASK - Create Project Markdown File.task.md when code generation has completed.
+
 
 
