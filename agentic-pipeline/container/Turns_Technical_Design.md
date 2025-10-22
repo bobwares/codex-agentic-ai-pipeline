@@ -26,29 +26,38 @@ turnId,timestampUtc,task,branch,tag,headAfter,testsPassed,testsFailed,coverageDe
   - List each task_name executed during a turn.  
   - List each tool_name executed during a task.
   - List each agent_name executed during a task.
-  - List each path/file_name added during the task. Col1 path/file_name col2 task_name, tool_name, agent_name.
-  - List each path/file_name updated during the task.  Col1 path/file_name col2 task_name, tool_name, agent_name.
+  - List each path/file_name added during the task.
+  - List each path/file_name updated during the task.  
   - Use the following template
 
 
 ```
     # Turn: {{turn number}}  – {{Date}} - {{Time of execution}}
-    ##
+    
+    ## Statement of Work
+   
     {{ generate a description of the work complete during the task. }}
-    ## Prompt
+    
+    --
+    ## Input Prompt
 
     {{ input prompt}}
 
-    ### Task
+    -- 
+    ## Tasks Executed
     - {{task name executed during a turn}}
      - {{tools/agents that are execute during a task.}}
     
-    ### Files Added
-    - path/file_name
+    ## Turn Tracking Files Added
+    List: all path/file_name added under the /ai directory
     
+     ## Files Added
+    Table: all path/file_name added. exclude path/file_name added under the /ai directory :: col1 path/file_name col2 task_name that created the file.
+   
     
-    ### Files Updated
-    - path/file_name
+    ## Files Updated
+    Table: all path/file_name added. exclude path/file_name added under the /ai directory :: col1 path/file_name col2 task_name that created the file.
+   
     
     
    

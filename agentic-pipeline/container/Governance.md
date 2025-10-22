@@ -89,17 +89,33 @@ Refs: T1234
 Copy this template into every PR description and fill in each placeholder.
 
 ```markdown
-# Summary
-<!-- One-sentence description of the change. -->
 
-# Details
-* **What was added/changed?**
-* **Why was it needed?**
-* **How was it implemented?** (key design points)
+## Statement of Work
 
-# Related Tasks
-- T1234 Profile Overview – In-place editing
-- T1300 Validation Rules
+    {{ generate a description of the work complete during the task. }}
+
+--
+
+## Input Prompt
+
+    {{ input prompt}}
+
+--
+
+## Tasks Executed
+    - {{task name executed during a turn}}
+     - {{tools/agents that are execute during a task.}}
+    
+    ## Turn Tracking Files Added
+    List: all path/file_name added under the /ai directory
+    
+     ## Files Added
+    Table: all path/file_name added. exclude path/file_name added under the /ai directory :: col1 path/file_name col2 task_name that created the file.
+   
+    
+    ## Files Updated
+    Table: all path/file_name added. exclude path/file_name added under the /ai directory :: col1 path/file_name col2 task_name that created the file.
+
 
 # Checklist
 - [ ] Unit tests pass 
@@ -107,10 +123,8 @@ Copy this template into every PR description and fill in each placeholder.
 - [ ] Linter passes
 - [ ] Documentation updated
 
-# Breaking Changes
-<!-- List backward-incompatible changes, or “None” -->
 
 # Codex Task Link
-
+{{blank}}
 ```
 
