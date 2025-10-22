@@ -78,7 +78,7 @@ validation.
 
 #### Pull-Request Title
 
-{{Turn: {{turn number}}  – {{Date}} - {{Time of execution}}}}
+{{Turn {{turn number}}  – {{Date}} - {{Time of execution}}}}
 
 
 #### Pull-Request Summary Template
@@ -93,13 +93,12 @@ validation.
 
 ```markdown
 ## Turn Summary
-<!-- CODEx_TURN_SUMMARY -->
 
-## Statement of Work
+<!-- CODEx_TURN_SUMMARY:BEGIN -->
 
-<!-- Write a concise description of the work completed during this turn. -->
+[human-readable summary here]
 
-[Describe the change set at a high level: scope, rationale, notable design decisions.]
+<!-- CODEx_TURN_SUMMARY:END -->
 
 ## Input Prompt
 
@@ -109,7 +108,7 @@ validation.
 
 ## Tasks Executed
 
-<!-- Add a row per task executed during this turn. -->
+<!-- Add a row per task executed during this turn. Tools / Agents Executed should include a comma delimited list of tools and agents called.  -->
 
 | Task Name | Tools / Agents Executed |
 | --------- | ----------------------- |
@@ -127,7 +126,7 @@ validation.
 
 ## Files Added
 
-<!-- Exclude anything under /ai. Include the task that created the file. -->
+<!-- Filter by files that were added during the turn. Exclude anything under /ai. Include the task that created the file. -->
 
 | Path / File | Task Name |
 | ----------- | --------- |
@@ -136,7 +135,7 @@ validation.
 
 ## Files Updated
 
-<!-- Exclude anything under /ai. Include the task that updated the file. -->
+<!-- Filter by files that were updated during the turn. Exclude anything under /ai. Include the task that updated the file. -->
 
 | Path / File | Task Name |
 | ----------- | --------- |
@@ -150,8 +149,7 @@ validation.
 * [ ] Linter passes
 * [ ] Documentation updated
 
-# Codex Task Link
-{{blank}}
+## Codex Task Link
 ```
 
 
