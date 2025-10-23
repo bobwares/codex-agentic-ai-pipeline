@@ -18,7 +18,6 @@ turn 1
 turn 2
 
 1. TASK - Create Docker Compose for PostgreSQL.task.md
-2. TASK - Generate Normalized Tables.task.md
-3. TASK - Generate Test Data.task.md
-4. TASK - Create Persistence Layer.task.md
-5. TASK - Create REST Service.task.md
+2. agent run sql-ddl-generator --dialect postgresql --schema-path session context: Persisted Data schema
+3. TASK - Create Persistence Layer.task.md
+4. TASK - Create REST Service.task.md

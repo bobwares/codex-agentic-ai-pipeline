@@ -29,6 +29,11 @@ Act as an Agentic Coding Agent.
 
 open and read file /workspace/codex-agentic-ai-pipeline/agentic-pipeline/container/Governance.md
 
+# Coding Agents
+
+open and read file /workspace/codex-agentic-ai-pipeline/agentic-pipeline/container/Coding_Agents.md
+
+
 # Tasks
 
 - execute Turn lifecycle defined in Turns_Technical_Design.md. 
