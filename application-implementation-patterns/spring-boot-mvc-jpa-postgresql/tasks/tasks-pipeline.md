@@ -14,10 +14,3 @@ Execute the following Tasks:
 turn 1
 1. agent run sql-ddl-generator --dialect postgresql --schema-path session context: Persisted Data schema
 
-
-turn 2
-1. TASK 01 - Initialize Project.task.md
-1. TASK - Create Docker Compose for PostgreSQL.task.md
-
-3. TASK - Create Persistence Layer.task.md
-4. TASK - Create REST Service.task.md
