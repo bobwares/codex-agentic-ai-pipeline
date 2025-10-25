@@ -61,7 +61,7 @@ This initializes and exports the following variables (examples):
 * `${TEMPLATE_COMMIT_MESSAGE}`
 * `${TEMPLATE_PULL_REQUEST}`
 * `${TEMPLATE_ADR}`
-* `${TEMPLATE_CHANGELOG}` (`template-changelog.md`)
+* `${TEMPLATE_CHANGELOG}` (`changelog.md`)
 * `${TEMPLATE_MANIFEST_SCHEMA}`
 
 ---
@@ -97,7 +97,18 @@ Defines project-level metadata, environment bindings, and the active pattern ref
 Read:
 `${ACTIVE_PATTERN_PATH}/pattern_context.md`
 
-Composition and coordination details for the active application implementation pattern.
+Also read:
+`${ACTIVE_PATTERN_PATH}/tasks/tasks-pipeline.md`
+
+The `tasks-pipeline.md` file defines the ordered list of tasks to execute for each turn.
+Tasks are located in:
+`${ACTIVE_PATTERN_PATH}/tasks/`
+
+For each `turn ${TURN_ID}` block in `tasks-pipeline.md`:
+
+* Execute any line starting with `agent run ...` as a direct agent command.
+* Execute any line starting with `TASK ... .task.md` by opening and processing the corresponding file under `/tasks/`.
+* Resolve any `session context:` references in arguments using `${PROJECT_CONTEXT}` before execution.
 
 ---
 
@@ -142,7 +153,7 @@ Describes roles, tools, and constraints for each agent used in tasks.
 | **Commit Message**  | Commit message convention for agent commits.                      | `${TEMPLATE_COMMIT_MESSAGE}`  |
 | **Pull Request**    | PR body and validation checklist; agent injects the turn summary. | `${TEMPLATE_PULL_REQUEST}`    |
 | **ADR**             | Architectural Decision Record template.                           | `${TEMPLATE_ADR}`             |
-| **Turn Changelog**  | Turn-level change summary (`template-changelog.md`).              | `${TEMPLATE_CHANGELOG}`       |
+| **Turn Changelog**  | Turn-level change summary (`changelog.md`).                       | `${TEMPLATE_CHANGELOG}`       |
 | **Manifest Schema** | JSON schema for `manifest.json`.                                  | `${TEMPLATE_MANIFEST_SCHEMA}` |
 
 ---
@@ -154,7 +165,7 @@ Write all outputs for this turn into:
 
 Artifacts:
 
-* `template-changelog.md`
+* `changelog.md`
 * `adr.md`
 * `manifest.json`
 * `pull_request_body.md` (rendered from `${TEMPLATE_PULL_REQUEST}`)
@@ -165,43 +176,45 @@ Artifacts:
 
 1. **Initialize Environment**
 
-    * Use the already-loaded Session Context variables.
-    * Confirm `${AGENTIC_PIPELINE_PROJECT}` is read-only; write only inside `${TARGET_PROJECT}`.
+   * Use the already-loaded Session Context variables.
+   * Confirm `${AGENTIC_PIPELINE_PROJECT}` is read-only; write-only inside `${TARGET_PROJECT}`.
 
 2. **Load Contexts**
 
-    * Read Governance, Turn Lifecycle, Coding Agents, Project Context.
-    * Resolve `${ACTIVE_PATTERN_NAME}` and `${ACTIVE_PATTERN_PATH}`.
+   * Read Governance, Turn Lifecycle, Coding Agents, Project Context.
+   * Resolve `${ACTIVE_PATTERN_NAME}` and `${ACTIVE_PATTERN_PATH}`.
 
 3. **Assemble Pattern**
 
-    * Parse `${ACTIVE_PATTERN_PATH}/pattern_context.md` and included Markdown files.
-    * Build an ordered list of tasks with their dependencies and parameters.
+   * Parse `${ACTIVE_PATTERN_PATH}/pattern_context.md` and `${ACTIVE_PATTERN_PATH}/tasks/tasks-pipeline.md`.
+   * Build an ordered list of tasks from the current `turn ${TURN_ID}` block.
+   * Load and execute corresponding `.task.md` files or agent commands as defined.
 
 4. **Execute Tasks**
 
-    * For each task, run the designated agent and tools.
-    * Use templates, read inputs from `${TARGET_PROJECT}` and `${AGENTIC_PIPELINE_PROJECT}`,
-      and write outputs only to `${TARGET_PROJECT}` (recording under `${CURRENT_TURN_DIRECTORY}`).
+   * For each task, run the designated agent and tools.
+   * Use templates, read inputs from `${TARGET_PROJECT}` and `${AGENTIC_PIPELINE_PROJECT}`,
+     and write outputs only to `${TARGET_PROJECT}` (recording under `${CURRENT_TURN_DIRECTORY}`).
 
 5. **Validate & Record**
 
-    * Enforce governance validations.
-    * Generate `manifest.json` validated against `${TEMPLATE_MANIFEST_SCHEMA}`.
-    * Render `template-changelog.md` and `adr.md` from templates.
+   * Enforce governance validations.
+   * Generate `manifest.json` validated against `${TEMPLATE_MANIFEST_SCHEMA}`.
+   * Render `changelog.md` and `adr.md` from templates.
 
 6. **Prepare Pull Request**
 
-    * Extract the “High-level outcome” from `template-changelog.md`.
-    * Render PR body with `${TEMPLATE_PULL_REQUEST}` and set title:
-      `Turn ${TURN_ID} – ${DATE} – ${TIME_OF_EXECUTION}`.
+   * Extract the “High-level outcome” from `changelog.md`.
+   * Render PR body with `${TEMPLATE_PULL_REQUEST}` and set title:
+     `Turn ${TURN_ID} – ${DATE} – ${TIME_OF_EXECUTION}`.
 
 7. **Finalize Turn**
 
-    * Append a row to `.../ai/agentic-pipeline/turns_index.csv`.
-    * Keep all artifacts in `${CURRENT_TURN_DIRECTORY}` for auditability.
+   * Append a row to `.../ai/agentic-pipeline/turns_index.csv`.
+   * Keep all artifacts in `${CURRENT_TURN_DIRECTORY}` for auditability.
 
 ---
 
 **Rule of thumb:**
 Only the **Bootstrap** step uses absolute paths. Everything after relies on the resolved Session Context variables.
+
