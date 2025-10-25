@@ -17,8 +17,6 @@ turnId,timestampUtc,task,branch,tag,headAfter,testsPassed,testsFailed,coverageDe
 ```
 
 
-
-
 ## Change Log
 
 - Append the change log for each “AI turn” in: project_root/ai/agentic-pipeline/turns/current turn directory/changelog.md
@@ -29,60 +27,8 @@ turnId,timestampUtc,task,branch,tag,headAfter,testsPassed,testsFailed,coverageDe
   - List each agent_name executed during a task.
   - List each path/file_name added during the task.
   - List each path/file_name updated during the task.  
-  - Use the following template
+  - Use the template: {{TEMPLATE_CHANGELOG}}
 
-
-```
-# Turn: {{turn number}}  – {{Date}} - {{Time of execution}}
-
-## Turn Summary
-<!-- CODEx_TURN_SUMMARY:BEGIN -->
-
-[human-readable summary here]
-
-<!-- CODEx_TURN_SUMMARY:END -->
-
-## Input Prompt
-
-<!-- Summarize the input prompt, schema name that initiated this turn. -->
-
-[Prompt summary goes here]
-
-## Tasks Executed
-
-<!-- Add a row per task executed during this turn. -->
-
-| Task Name | Tools / Agents Executed |
-| --------- | ----------------------- |
-|           |                         |
-|           |                         |
-
-## Turn Files Added
-
-<!-- List files added under the /ai directory only. One row per file. -->
-
-| Path / File |
-| ----------- |
-|             |
-|             |
-
-## Files Added
-
-<!-- Exclude anything under /ai. Include the task that created the file. -->
-
-| Path / File | Task Name |
-| ----------- | --------- |
-|             |           |
-|             |           |
-
-## Files Updated
-<!-- Exclude anything under /ai. Include the task that updated the file. -->
-
-| Path / File | Task Name |
-| ----------- | --------- |
-|             |           |
-|             |           |
-```
 
 ## ADR (Architecture Decision Record)
 

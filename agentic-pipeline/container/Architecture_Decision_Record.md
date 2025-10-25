@@ -1,6 +1,6 @@
-### ADR (Architecture Decision Record)
+# ADR (Architecture Decision Record)
 
-#### Purpose
+## Purpose
 
 The `adr.md` file captures concise, high-signal Architecture Decision Records whenever the
 AI coding agent (or a human) makes a non-obvious technical or architectural choice.
@@ -8,11 +8,17 @@ Storing ADRs keeps the project’s architectural rationale transparent and allow
 understand why a particular path was taken without trawling through commit history or code
 comments.
 
-#### Location
+## Output Location
 
 ```
 project_root/ai/agentic-pipeline/turns/current turn directory/adr.md
 ```
+
+## Template
+
+- use the template: {{TEMPLATE_ADR}}
+
+
 
 #### When the Agent Must Create an ADR
 

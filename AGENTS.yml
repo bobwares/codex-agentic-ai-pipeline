@@ -1,0 +1,165 @@
+agent_name: codex-agentic-coding-agent
+version: 0.3.0
+description: >
+  Orchestrates a single turn of the Agentic AI Pipeline. Loads Session Context,
+  resolves the active pattern (Markdown), executes tasks via coding agents, enforces
+  governance, validates outputs, and emits turn artifacts and a PR body.
+
+# All paths below are resolved using Session Context globals.
+environment:
+  SANDBOX_BASE_DIRECTORY: ${SANDBOX_BASE_DIRECTORY}
+  AGENTIC_PIPELINE_PROJECT: ${AGENTIC_PIPELINE_PROJECT}
+  TARGET_PROJECT: ${TARGET_PROJECT}
+  PROJECT_CONTEXT: ${PROJECT_CONTEXT}
+  ACTIVE_PATTERN_NAME: ${ACTIVE_PATTERN_NAME}
+  ACTIVE_PATTERN_PATH: ${ACTIVE_PATTERN_PATH}
+  TURN_ID: ${TURN_ID}
+  CURRENT_TURN_DIRECTORY: ${CURRENT_TURN_DIRECTORY}
+
+templates:
+  root: ${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/templates
+  metadata_header: ${TEMPLATE_METADATA_HEADER}
+  branch_naming:   ${TEMPLATE_BRANCH_NAMING}
+  commit_message:  ${TEMPLATE_COMMIT_MESSAGE}
+  pull_request:    ${TEMPLATE_PULL_REQUEST}
+  adr:             ${TEMPLATE_ADR}
+  changelog:       ${TEMPLATE_CHANGELOG}
+  manifest_schema: ${TEMPLATE_MANIFEST_SCHEMA}
+
+inputs:
+  session_context_md: ${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/context/session_context.md
+  turns_design_md:    ${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/container/Turns_Technical_Design.md
+  governance_md:      ${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/container/Governance.md
+  coding_agents_md:   ${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/container/Coding_Agents.md
+  project_context_md: ${PROJECT_CONTEXT}
+  pattern_context_md: ${ACTIVE_PATTERN_PATH}/pattern_context.md
+  pattern_dir_glob:   ${ACTIVE_PATTERN_PATH}/**
+
+artifacts:
+  turn_dir: ${CURRENT_TURN_DIRECTORY}
+  changelog: ${CURRENT_TURN_DIRECTORY}/template-changelog.md
+  adr:       ${CURRENT_TURN_DIRECTORY}/adr.md
+  manifest:  ${CURRENT_TURN_DIRECTORY}/manifest.json
+  pr_body:   ${CURRENT_TURN_DIRECTORY}/pull_request_body.md
+  turns_index: ${TARGET_PROJECT}/ai/agentic-pipeline/turns_index.csv
+
+policies:
+  write_roots:
+    - ${TARGET_PROJECT}/**          # only writable area
+  read_only:
+    - ${AGENTIC_PIPELINE_PROJECT}/**  # framework is immutable
+  enforce_metadata_header: true
+  enforce_branch_naming: true
+  enforce_commit_message: true
+
+execution_flow:
+  - step: initialize
+    do:
+      - load_file: ${inputs.session_context_md}
+      - export_env:
+          - SANDBOX_BASE_DIRECTORY
+          - AGENTIC_PIPELINE_PROJECT
+          - TARGET_PROJECT
+          - PROJECT_CONTEXT
+          - ACTIVE_PATTERN_NAME
+          - ACTIVE_PATTERN_PATH
+          - TURN_ID
+          - CURRENT_TURN_DIRECTORY
+      - mkdir: ${artifacts.turn_dir}
+
+  - step: load_contexts
+    do:
+      - load_file: ${inputs.turns_design_md}
+      - load_file: ${inputs.governance_md}
+      - load_file: ${inputs.coding_agents_md}
+      - load_file: ${inputs.project_context_md}
+      - load_file: ${inputs.pattern_context_md}
+      - glob_read: ${inputs.pattern_dir_glob}
+
+  - step: plan
+    do:
+      - parse_pattern_markdown:
+          path: ${inputs.pattern_context_md}
+          sections: ["Tasks", "Agents", "Inputs", "Outputs", "Validations", "Composition"]
+      - build_task_order: {}   # compute runnable order from dependencies (no cycles)
+
+  - step: execute
+    do:
+      - for_each_task:
+          in: ${plan.tasks}
+          do:
+            - ensure_write_within: ${policies.write_roots}
+            - apply_templates:
+                metadata_header: ${templates.metadata_header}
+            - run_agent:
+                agent_id: ${task.agent}
+                inputs: ${task.inputs}
+                outputs: ${task.outputs}
+                params: ${task.params}
+            - validate:
+                rules: ${task.validations}
+            - record_manifest_entry:
+                manifest: ${artifacts.manifest}
+                schema: ${templates.manifest_schema}
+                task_ref: ${task.id}
+
+  - step: document
+    do:
+      - render_markdown_from_template:
+          template: ${templates.changelog}
+          out: ${artifacts.changelog}
+          vars:
+            TURN_ID: ${TURN_ID}
+            ACTIVE_PATTERN_NAME: ${ACTIVE_PATTERN_NAME}
+            ACTIVE_PATTERN_PATH: ${ACTIVE_PATTERN_PATH}
+            TURN_TASK: ${turn_task}
+            FILES_ADDED: ${plan.files_added}
+            FILES_UPDATED: ${plan.files_updated}
+      - render_markdown_from_template:
+          template: ${templates.adr}
+          out: ${artifacts.adr}
+          vars:
+            TURN_ID: ${TURN_ID}
+            ACTIVE_PATTERN_NAME: ${ACTIVE_PATTERN_NAME}
+            ACTIVE_PATTERN_PATH: ${ACTIVE_PATTERN_PATH}
+
+  - step: prepare_pr
+    do:
+      - extract_section:
+          from: ${artifacts.changelog}
+          heading: "High-level outcome"
+          out_var: PR_SUMMARY
+      - render_markdown_from_template:
+          template: ${templates.pull_request}
+          out: ${artifacts.pr_body}
+          vars:
+            TURN_ID: ${TURN_ID}
+            DATE: ${now_utc_date}
+            TIME_OF_EXECUTION: ${now_utc_time}
+            CODEx_TURN_SUMMARY: ${PR_SUMMARY}
+
+  - step: index
+    do:
+      - append_csv:
+          path: ${artifacts.turns_index}
+          header: [turnId,timestampUtc,task,branch,tag,headAfter,testsPassed,testsFailed,coverageDeltaPct]
+          row:
+            - ${TURN_ID}
+            - ${now_utc_iso}
+            - daemon-run
+            - turn/${TURN_ID}
+            - turn/${TURN_ID}
+            - HEAD
+            - ${tests_passed}
+            - ${tests_failed}
+            - ${coverage_delta_pct}
+
+failure_policy:
+  on_validation_fail: "abort"     # or "continue"
+  on_write_outside_root: "abort"
+  on_missing_template: "abort"
+
+logging:
+  level: info
+  prefix: "[turn:${TURN_ID} pattern:${ACTIVE_PATTERN_NAME}]"
+

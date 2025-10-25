@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Turn Manifest",
+  "type": "object",
+  "required": ["turnId", "tasks", "provenance", "outputs"],
+  "properties": {
+    "turnId": { "type": "integer", "minimum": 1 },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["taskId", "agent", "inputs", "outputs", "validations"],
+        "properties": {
+          "taskId": { "type": "string" },
+          "agent": { "type": "string" },
+          "inputs": { "type": "array", "items": { "type": "string" } },
+          "outputs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["path", "sha256"],
+              "properties": {
+                "path": { "type": "string" },
+                "sha256": { "type": "string" }
+              }
+            }
+          },
+          "validations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["rule", "status"],
+              "properties": {
+                "rule": { "type": "string" },
+                "status": { "type": "string", "enum": ["pass", "fail", "skipped"] },
+                "detailsPath": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "promptHash",
+        "tools",
+        "startedAt",
+        "finishedAt",
+        "activePatternName",
+        "activePatternPath"
+      ],
+      "properties": {
+        "promptHash": { "type": "string" },
+        "tools": { "type": "array", "items": { "type": "string" } },
+        "startedAt": { "type": "string" },
+        "finishedAt": { "type": "string" },
+        "activePatternName": { "type": "string" },
+        "activePatternPath": { "type": "string" }
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "sha256"],
+        "properties": {
+          "path": { "type": "string" },
+          "sha256": { "type": "string" }
+        }
+      }
+    }
+  }
+}
