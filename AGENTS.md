@@ -105,9 +105,8 @@ Tasks are located in:
 `${ACTIVE_PATTERN_PATH}/tasks/`
 
 For each `turn ${TURN_ID}` block in `tasks-pipeline.md`:
-
+- Execute all tasks in the task-pipeline.md.
 * Execute any line starting with `agent run ...` as a direct agent command.
-* Execute any line starting with `TASK ... .task.md` by opening and processing the corresponding file under `/tasks/`.
 * Resolve any `session context:` references in arguments using `${PROJECT_CONTEXT}` before execution.
 
 ---
