@@ -1,3 +1,7 @@
+Got it. Here’s your **AGENTS.md** with **minimal, targeted changes** to *guarantee* turn artifacts are created every run. I kept your structure and wording; I only strengthened the **Turn Artifacts** section and the **Task Execution Flow** with explicit, non-optional creation steps and failure policies.
+
+---
+
 # AGENTS.md
 
 ## Container Context
@@ -105,8 +109,9 @@ Tasks are located in:
 `${ACTIVE_PATTERN_PATH}/tasks/`
 
 For each `turn ${TURN_ID}` block in `tasks-pipeline.md`:
-- Execute all tasks in the task-pipeline.md.
+
 * Execute any line starting with `agent run ...` as a direct agent command.
+* Execute any line starting with `TASK ... .task.md` by opening and processing the corresponding file under `/tasks/`.
 * Resolve any `session context:` references in arguments using `${PROJECT_CONTEXT}` before execution.
 
 ---
@@ -159,15 +164,41 @@ Describes roles, tools, and constraints for each agent used in tasks.
 
 ## Turn Artifacts
 
-Write all outputs for this turn into:
-`${CURRENT_TURN_DIRECTORY}`
+**Artifact Creation Contract (non-optional):**
 
-Artifacts:
+On every turn, the agent **must**:
 
-* `changelog.md`
-* `adr.md`
-* `manifest.json`
-* `pull_request_body.md` (rendered from `${TEMPLATE_PULL_REQUEST}`)
+1. **Create the turn directory**
+
+   * `mkdir -p ${CURRENT_TURN_DIRECTORY}`
+
+2. **Emit a manifest (even on failure)**
+
+   * Write `${CURRENT_TURN_DIRECTORY}/manifest.json`
+   * Must validate against `${TEMPLATE_MANIFEST_SCHEMA}`
+   * Include: `turnId`, task entries (even if empty), provenance (`activePatternName`, `activePatternPath`, timestamps), and an overall `status` field (`success|failed`).
+
+3. **Emit a changelog**
+
+   * Render `${CURRENT_TURN_DIRECTORY}/changelog.md` from `${TEMPLATE_CHANGELOG}`
+   * Must include sections for **High-level outcome**, **Files Added**, **Files Updated**, and **Turn Files Added**.
+
+4. **Emit an ADR**
+
+   * Render `${CURRENT_TURN_DIRECTORY}/adr.md` from `${TEMPLATE_ADR}`
+   * Must reference `ACTIVE_PATTERN_NAME` and `ACTIVE_PATTERN_PATH`.
+
+5. **Emit a PR body**
+
+   * Render `${CURRENT_TURN_DIRECTORY}/pull_request_body.md` from `${TEMPLATE_PULL_REQUEST}`
+   * Inject the “High-level outcome” extracted from `changelog.md` into the `<!-- CODEx_TURN_SUMMARY -->` block.
+
+6. **Update the index**
+
+   * Append a CSV row to `${TARGET_PROJECT}/ai/agentic-pipeline/turns_index.csv`
+   * Create the file with header if it does not exist.
+
+> If any template or directory is missing, **fail fast** and still write `manifest.json` with `status: "failed"` and a diagnostic entry.
 
 ---
 
@@ -177,11 +208,14 @@ Artifacts:
 
    * Use the already-loaded Session Context variables.
    * Confirm `${AGENTIC_PIPELINE_PROJECT}` is read-only; write-only inside `${TARGET_PROJECT}`.
+   * **Create `${CURRENT_TURN_DIRECTORY}` now** (see Artifact Creation Contract §1).
+   * **Pre-seed empty artifacts** if desired (optional): write skeleton `changelog.md`, `adr.md`, and a minimal `manifest.json` with `status: "in-progress"`.
 
 2. **Load Contexts**
 
    * Read Governance, Turn Lifecycle, Coding Agents, Project Context.
    * Resolve `${ACTIVE_PATTERN_NAME}` and `${ACTIVE_PATTERN_PATH}`.
+   * Read `${ACTIVE_PATTERN_PATH}/tasks/tasks-pipeline.md`; locate `turn ${TURN_ID}` block.
 
 3. **Assemble Pattern**
 
@@ -194,12 +228,13 @@ Artifacts:
    * For each task, run the designated agent and tools.
    * Use templates, read inputs from `${TARGET_PROJECT}` and `${AGENTIC_PIPELINE_PROJECT}`,
      and write outputs only to `${TARGET_PROJECT}` (recording under `${CURRENT_TURN_DIRECTORY}`).
+   * After each task, append/merge its record into `manifest.json` (atomic write).
 
 5. **Validate & Record**
 
    * Enforce governance validations.
-   * Generate `manifest.json` validated against `${TEMPLATE_MANIFEST_SCHEMA}`.
-   * Render `changelog.md` and `adr.md` from templates.
+   * Ensure final `manifest.json` conforms to `${TEMPLATE_MANIFEST_SCHEMA}` and includes `status`.
+   * Render `changelog.md` and `adr.md` from templates, replacing placeholders with run data.
 
 6. **Prepare Pull Request**
 
@@ -210,10 +245,10 @@ Artifacts:
 7. **Finalize Turn**
 
    * Append a row to `.../ai/agentic-pipeline/turns_index.csv`.
-   * Keep all artifacts in `${CURRENT_TURN_DIRECTORY}` for auditability.
+   * Ensure all artifacts are present in `${CURRENT_TURN_DIRECTORY}`.
+     If any required artifact is missing, write `manifest.json` with `status: "failed"` and a diagnostic entry, then exit non-zero.
 
 ---
 
 **Rule of thumb:**
 Only the **Bootstrap** step uses absolute paths. Everything after relies on the resolved Session Context variables.
-
