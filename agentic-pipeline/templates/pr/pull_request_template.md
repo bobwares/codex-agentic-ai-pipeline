@@ -3,7 +3,7 @@ PR TITLE (agent must set the GitHub PR title field to the following exact value)
 Turn {{TURN_ID}} – {{DATE}} – {{TIME_OF_EXECUTION}}
 -->
 
-## Turn Summary (from changelog.md)
+## Turn Summary
 
 < 1–3 sentences summarizing the overall result of this turn. >
 
