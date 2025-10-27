@@ -13,6 +13,10 @@ Turn {{TURN_ID}} – {{DATE}} – {{TIME_OF_EXECUTION}}
 
 [Summarize the input prompt / schema name that initiated this turn.]
 
+## Pattern
+{{ACTIVE_PATTERN_NAME}} ({{ACTIVE_PATTERN_PATH}})
+
+
 ## Tasks Executed
 
 | Task Name | Tools / Agents Executed |
