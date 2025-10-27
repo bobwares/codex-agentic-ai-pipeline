@@ -39,6 +39,7 @@ Read: ${ACTIVE_PATTERN_PATH}/tasks/task-pipeline.md
    
 3. Finalize Turn
    - Create directory {{CURRENT_TURN_DIRECTORY}}.
+   - write session_context to {{CURRENT_TURN_DIRECTORY}}.
    - Create Pull Request: ${{CURRENT_TURN_DIRECTORY}}/${TEMPLATE_PULL_REQUEST}
    - Create Architecture Decision Record: ${{CURRENT_TURN_DIRECTORY}}/${TEMPLATE_ADR}
    - Create Turn Index
