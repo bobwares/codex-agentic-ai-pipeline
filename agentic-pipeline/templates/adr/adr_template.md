@@ -1,17 +1,24 @@
-# ADR: {{TITLE}}
+# Architecture Decision Record
 
-- Turn: {{TURN_ID}}
-- Date: {{UTC_ISO8601}}
-- Context:
-    - {{WHAT_PROBLEM_ARE_WE_SOLVING}}
-    - {{CONSTRAINTS_OR_REQUIREMENTS}}
-- Decision:
-    - {{WHAT_WE_DECIDED}}
-- Rationale:
-    - {{WHY_THIS_DECISION_OVER_ALTERNATIVES}}
-- Consequences:
-    - Positive: {{LIST}}
-    - Negative: {{LIST}}
-- Links:
-    - Pattern: {{ACTIVE_PATTERN_NAME}} ({{ACTIVE_PATTERN_PATH}})
-    - Artifacts: {{LIST_OUTPUT_PATHS}}
+{{ADR Title}}
+
+**Turn**: ${TURN_ID}
+
+**Date**: ${YYYY-MM-DD} - ${hh:mm}
+
+**Context**  
+<Briefly explains the problem or decision context.>
+
+**Options Considered**
+<What are the options that were considered before implementing the solution.>
+
+**Decision**  
+<State the choice that was made. Explain how the decision was effected by the application implementation pattern context.>
+
+
+**Result**
+<What artifacts were created because of the decision.>
+
+**Consequences**  
+<List the trade-offs and implications (positive and negative)>.
+```

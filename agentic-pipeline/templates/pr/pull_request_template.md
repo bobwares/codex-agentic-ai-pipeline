@@ -5,16 +5,16 @@ Turn {{TURN_ID}} – {{DATE}} – {{TIME_OF_EXECUTION}}
 
 ## Turn Summary (from changelog.md)
 
-<!-- CODEx_TURN_SUMMARY:BEGIN -->
-[The agent must paste the “High-level outcome” paragraph from changelog.md here.]
-<!-- CODEx_TURN_SUMMARY:END -->
+< 1–3 sentences summarizing the overall result of this turn. >
 
 ## Input Prompt
 
-[Summarize the input prompt / schema name that initiated this turn.]
+<Summarize the input prompt / schema name that initiated this turn.>
 
-## Pattern
-{{ACTIVE_PATTERN_NAME}} ({{ACTIVE_PATTERN_PATH}})
+## Selected Application Implementation Pattern 
+
+Name: **${ACTIVE_PATTERN_NAME}** 
+Path: **${{ACTIVE_PATTERN_PATH}**
 
 
 ## Tasks Executed
