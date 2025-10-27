@@ -35,57 +35,7 @@ turnId,timestampUtc,task,branch,tag,headAfter,testsPassed,testsFailed,coverageDe
 Read and execute /workspace/codex-agentic-ai-pipeline/agentic-pipeline/container/Architecture_Decision_Record.md
 
 
-## manifest.json (authoritative index)
 
-Minimal schema:
-
-```json
-{
-  "turnId": 1,
-  "timestampUtc": "2025-09-05T17:42:10Z",
-  "actor": {
-    "initiator": "bobwares",
-    "agent": "codex@1.0.0"
-  },
-  "task": {
-    "name": "generate-controllers-and-services",
-    "inputs": [
-      "schemas/custodian.domain.schema.json"
-    ],
-    "parameters": {
-      "language": "java",
-      "framework": "spring-boot",
-      "openapi": true
-    }
-  },
-  "artifacts": {
-    "changelog": "changelog.md",
-    "adr": "adr.md",
-    "diff": "diff.patch",
-    "logs": ["logs/task.log", "logs/llm_prompt.txt", "logs/llm_response.txt"],
-    "reports": ["reports/tests.xml", "reports/coverage.json"]
-  },
-  "changes": {
-    "added": ["src/main/java/..."],
-    "modified": ["..."],
-    "deleted": []
-  },
-  "metrics": {
-    "filesChanged": 12,
-    "linesAdded": 350,
-    "linesDeleted": 40,
-    "testsPassed": 42,
-    "testsFailed": 0,
-    "coverageDeltaPct": 1.8
-  },
-  "validation": {
-    "adrPresent": true,
-    "changelogPresent": true,
-    "lintStatus": "passed",
-    "testsStatus": "passed"
-  }
-}
-```
 
 
 ## Turns lifecycle
