@@ -5,26 +5,19 @@
 
 # Initialize Environment
 
-- Session Context
-  Read: `/workspace/agentic-ai-pipeline/agentic-pipeline/context/session_context.md`
+- Session Context read: `/workspace/agentic-ai-pipeline/agentic-pipeline/context/session_context.md`
 
-- Project Context
-  Read: `${PROJECT_CONTEXT}`
+- Project Context read: `${PROJECT_CONTEXT}`
 
-- Coding Agents Context
-  Read: ${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/container/Governance.md
+- Coding Agents Context read: ${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/container/Coding_Agents.md
 
-- Application Implementation Pattern Context
-  Read: ${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/container/Coding_Agents.md
+- Application Implementation Pattern Context read: ${ACTIVE_PATTERN_PATH}/pattern_context.md
 
-- Governance
-  Read: ${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/container/Governance.md
+- Governance read: ${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/container/Governance.md
 
-- Architecture Decision Record
-  Read: ${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/container/Architecture_Decision_Record.md
+- Architecture Decision Recordv read: ${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/container/Architecture_Decision_Record.md
 
-- Task Pipeline
-  Read: `${ACTIVE_PATTERN_PATH}/tasks/task-pipeline.md`
+- Task Pipeline read: `${ACTIVE_PATTERN_PATH}/tasks/task-pipeline.md`
 
 # Turns lifecycle
 
@@ -49,7 +42,7 @@
   
 # Pull Request
 
-- PR title:  `Turn ${TURN_ID} – ${DATE} – ${TIME_OF_EXECUTION`.
-- PR Body; ${TEMPLATE_PULL_REQUEST}.
+- PR title:  `Turn ${TURN_ID} – {{DATE}} – {{TIME_OF_EXECUTION}}`.
+- PR Body use template: ${TEMPLATE_PULL_REQUEST}.
 
 

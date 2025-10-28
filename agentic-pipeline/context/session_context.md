@@ -23,10 +23,10 @@
 
 ### **Patterns**
 
-| **Variable**            | **Description**                                                                                                                                                   | **Path / Resolution Rule**                                              |
-| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| **ACTIVE_PATTERN_NAME** | Logical name or relative path of the application implementation pattern (Markdown file) defining the structure and task composition of the generated application. | Read from `${PROJECT_CONTEXT}/project.ApplicationImplementationPattern` |
-| **ACTIVE_PATTERN_PATH** | Absolute filesystem path to the resolved pattern file.                                                                                                            | `${AGENTIC_PIPELINE_PROJECT}/${ACTIVE_PATTERN_NAME}`                    |
+| **Variable**            | **Description**                                                                                                                                                   | **Path / Resolution Rule**                                                               |
+|-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
+| **ACTIVE_PATTERN_NAME** | Logical name or relative path of the application implementation pattern (Markdown file) defining the structure and task composition of the generated application. | Read from `${PROJECT_CONTEXT}/project.ApplicationImplementationPattern`                  |
+| **ACTIVE_PATTERN_PATH** | Absolute filesystem path to the resolved pattern file.                                                                                                            | `${AGENTIC_PIPELINE_PROJECT}/application-implementation-patterns/${ACTIVE_PATTERN_NAME}` |
 
 ---
 
