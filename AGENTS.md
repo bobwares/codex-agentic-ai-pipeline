@@ -5,9 +5,9 @@
 
 # Initialize Environment
 
-- Session Context read: `/workspace/agentic-ai-pipeline/agentic-pipeline/context/session_context.md`
+- Load and resolve Session Context before proceeding. read: /workspace/agentic-ai-pipeline/agentic-pipeline/context/session_context.md
 
-- Project Context read: `${PROJECT_CONTEXT}`
+- Project Context read: ${PROJECT_CONTEXT}
 
 - Coding Agents Context read: ${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/container/Coding_Agents.md
 
@@ -17,23 +17,23 @@
 
 - Architecture Decision Recordv read: ${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/container/Architecture_Decision_Record.md
 
-- Task Pipeline read: `${ACTIVE_PATTERN_PATH}/tasks/task-pipeline.md`
+- Task Pipeline read: ${ACTIVE_PATTERN_PATH}/tasks/task-pipeline.md
 
 # Turns lifecycle
 
-- Create directory turn directory `${CURRENT_TURN_DIRECTORY}`.
+- Create directory turn directory ${CURRENT_TURN_DIRECTORY}.
 - Write session_context values.
-  - Write to directory `${CURRENT_TURN_DIRECTORY}/session_context.md`.
+  - Write to directory ${CURRENT_TURN_DIRECTORY}/session_context.md.
 - Read task and execute the specified tasks and agents in the selected application implementation pattern's task-pipeline.md.
 - Create Pull Request file.
-  - Use Template : `${TEMPLATE_PULL_REQUEST}`
-  - Write to `${CURRENT_TURN_DIRECTORY}/pull_request.md`
+  - Use Template : ${TEMPLATE_PULL_REQUEST}
+  - Write to ${CURRENT_TURN_DIRECTORY}/pull_request.md.
 - Create Architecture Decision Record.
-  - Use Template: `${TEMPLATE_ADR}`
-  - Write to `${CURRENT_TURN_DIRECTORY}/adr.md`
+  - Use Template: ${TEMPLATE_ADR}
+  - Write to ${CURRENT_TURN_DIRECTORY}/adr.md.
 - Create Turn Index
 
-  Append one line per turn to `/ai/agentic-pipeline/turns_index.csv`:
+  Append one line per turn to {{TARGET_PROJECT}}/ai/agentic-pipeline/turns_index.csv.
 
   ```
   turnId,timestampUtc,task,branch,tag,headAfter,testsPassed,testsFailed,coverageDeltaPct
