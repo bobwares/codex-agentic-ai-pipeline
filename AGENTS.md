@@ -26,30 +26,18 @@
 - Task Pipeline
   Read: `${ACTIVE_PATTERN_PATH}/tasks/task-pipeline.md`
 
-
-# Execute Tasks
-
-- Execute selected agents and tasks in the task pipeline based on the input prompt.
-
-
-# Create Turn Artifacts
+# Turns lifecycle
 
 - Create directory turn directory `${CURRENT_TURN_DIRECTORY}`.
-
 - Write session_context values.
-
-    * Write to directory `${CURRENT_TURN_DIRECTORY}/session_context.md`.
-
+  - Write to directory `${CURRENT_TURN_DIRECTORY}/session_context.md`.
+- Read task and execute the specified tasks and agents in the selected application implementation pattern's task-pipeline.md.
 - Create Pull Request file.
-
-    * Use Template : `${TEMPLATE_PULL_REQUEST}`
-    * Write to `${CURRENT_TURN_DIRECTORY}/pull_request.md`
-
+  - Use Template : `${TEMPLATE_PULL_REQUEST}`
+  - Write to `${CURRENT_TURN_DIRECTORY}/pull_request.md`
 - Create Architecture Decision Record.
-
-    * Use Template: `${TEMPLATE_ADR}`
-    * Write to `${CURRENT_TURN_DIRECTORY}/adr.md`
-
+  - Use Template: `${TEMPLATE_ADR}`
+  - Write to `${CURRENT_TURN_DIRECTORY}/adr.md`
 - Create Turn Index
 
   Append one line per turn to `/ai/agentic-pipeline/turns_index.csv`:
@@ -58,8 +46,7 @@
   turnId,timestampUtc,task,branch,tag,headAfter,testsPassed,testsFailed,coverageDeltaPct
   1,2025-09-05T17:42:10Z,generate-controllers-and-services,turn/1,turn/1,d4e5f6a,42,0,1.8
   ```
-
-
+  
 # Pull Request
 
 - PR title:  `Turn ${TURN_ID} – ${DATE} – ${TIME_OF_EXECUTION`.
