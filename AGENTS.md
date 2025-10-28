@@ -3,21 +3,32 @@
 * **Turn**: a single execution of a Codex task (plan, generate, refactor, test, etc).
 * **Turn ID**: a monotonically increasing integer. Initial value `1`. Incremented by `1` at the start of each new turn.
 
-# Initialize Environment
+# Session Context
 
-- Load and resolve Session Context before proceeding. read: /workspace/agentic-ai-pipeline/agentic-pipeline/context/session_context.md
+- Open and read /workspace/agentic-ai-pipeline/agentic-pipeline/context/session_context.md.
 
-- Project Context read: ${PROJECT_CONTEXT}
+# Project Context
 
-- Coding Agents Context read: ${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/container/Coding_Agents.md
+- Open and read ${PROJECT_CONTEXT}
 
-- Application Implementation Pattern Context read: ${ACTIVE_PATTERN_PATH}/pattern_context.md
+# Coding Agents Context
 
-- Governance read: ${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/container/Governance.md
+- open and read ${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/container/Coding_Agents.md.
 
-- Architecture Decision Recordv read: ${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/container/Architecture_Decision_Record.md
+# Application Implementation Pattern Context 
 
-- Task Pipeline read: ${ACTIVE_PATTERN_PATH}/tasks/task-pipeline.md
+- opne and read ${ACTIVE_PATTERN_PATH}/pattern_context.md.
+
+# Governance 
+
+- Open and read ${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/container/Governance.md.
+
+# Architecture Decision Record
+- Open and read ${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/container/Architecture_Decision_Record.md.
+
+# Task Pipeline 
+
+- open and read ${ACTIVE_PATTERN_PATH}/tasks/task-pipeline.md.
 
 # Turns lifecycle
 
