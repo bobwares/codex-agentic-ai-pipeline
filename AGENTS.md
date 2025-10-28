@@ -6,6 +6,7 @@
 # Session Context
 
 - Open and read /workspace/agentic-ai-pipeline/agentic-pipeline/context/session_context.md.
+- resolve variables.
 
 # Project Context
 
