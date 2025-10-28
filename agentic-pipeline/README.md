@@ -5,7 +5,6 @@ agents can audit prior context and continue the workflow safely.
 
 ## Required turn files
 
-1. `changelog.md` – Summarizes the tasks, tools, and outputs that were executed during the turn.
 2. `adr.md` – Captures the key architectural decision(s) and their consequences.
 3. `manifest.json` – Machine-readable index that points to every artifact and reports validation results.
 4. `pull_request_body.md` – Rendered from the pull request template so the final PR message is reproducible.

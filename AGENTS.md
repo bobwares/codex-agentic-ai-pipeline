@@ -11,14 +11,17 @@
 - Project Context
   Read: `${PROJECT_CONTEXT}`
 
+- Coding Agents Context
+  Read: ${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/container/Governance.md
+
 - Application Implementation Pattern Context
-  Read: `${ACTIVE_PATTERN_PATH}/pattern_context.md`
+  Read: ${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/container/Coding_Agents.md
 
 - Governance
-  Read: `${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/container/Governance.md`
+  Read: ${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/container/Governance.md
 
 - Architecture Decision Record
-  Read: `${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/container/Architecture_Decision_Record.md`
+  Read: ${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/container/Architecture_Decision_Record.md
 
 - Task Pipeline
   Read: `${ACTIVE_PATTERN_PATH}/tasks/task-pipeline.md`
@@ -26,8 +29,7 @@
 
 # Execute Tasks
 
-* Execute selected agents and tasks in the task pipeline based on the input prompt.
-
+- Execute selected agents and tasks in the task pipeline based on the input prompt.
 
 
 # Create Turn Artifacts
@@ -60,6 +62,7 @@
 
 # Pull Request
 
-* Use this template `${TEMPLATE_PULL_REQUEST}` when creating the PR.
-* Set PR title:  `Turn ${TURN_ID} – ${DATE} – ${TIME_OF_EXECUTION}`.
+- PR title:  `Turn ${TURN_ID} – ${DATE} – ${TIME_OF_EXECUTION`.
+- PR Body; ${TEMPLATE_PULL_REQUEST}.
+
 
