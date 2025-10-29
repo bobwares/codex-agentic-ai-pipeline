@@ -42,7 +42,7 @@
 #### Commit Message 
 
 ```
-AI Coding Agent Change: < 1–3 sentences summarizing the overall result of this turn. >```
+AI Coding Agent Change: < 3 - 5 sentences summarizing the overall result of this turn. >```
 
 ```
 
