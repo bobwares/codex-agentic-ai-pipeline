@@ -12,6 +12,10 @@
 
 - Open and read ${PROJECT_CONTEXT}
 
+# Tasks Context
+
+- Open and read ${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/container/Tasks.md.
+
 # Coding Agents Context
 
 - Open and read ${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/container/Coding_Agents.md.
@@ -25,6 +29,7 @@
 - Open and read ${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/container/Governance.md.
 
 # Architecture Decision Record
+
 - Open and read ${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/container/Architecture_Decision_Record.md.
 
 # Execution Plan
