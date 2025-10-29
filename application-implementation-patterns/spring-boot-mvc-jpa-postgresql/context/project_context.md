@@ -2,8 +2,7 @@
 
 ## Project 
 
-- Name: 
-- Application Implementation Pattern:  full-stack-app-nextjs-nestjs
+- Name:
 - Detailed Description:
 - Short Description
 - Author: Bobwares ([bobwares@outlook.com](mailto:bobwares@outlook.com)) 

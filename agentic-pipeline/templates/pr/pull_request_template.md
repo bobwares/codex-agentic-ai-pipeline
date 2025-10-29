@@ -5,7 +5,7 @@ Turn {{TURN_ID}} – {{DATE}} – {{TIME_OF_EXECUTION}}
 
 ## Turn Durations
 
-**Worked for:**  < Display worked for >.
+**Worked for:**  < Display the elapsed time of the codex turn. >.
 
 ## Turn Summary
 
