@@ -1,9 +1,7 @@
-# Tasks
+# Execution Pipeline
 
-tasks are in directory /workspace/codex-agentic-ai-pipeline/application-implementation-patterns/spring-boot-mvc-jpa-postgresql/tasks
+- tasks are in directory ./tasks
 
-
-# Agentic Pipeline Flow
 
 Execute the following Tasks:
 

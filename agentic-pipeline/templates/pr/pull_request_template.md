@@ -14,6 +14,7 @@ Turn {{TURN_ID}} – {{DATE}} – {{TIME_OF_EXECUTION}}
 ## Selected Application Implementation Pattern 
 
 Name: **${ACTIVE_PATTERN_NAME}** 
+
 Path: **${{ACTIVE_PATTERN_PATH}**
 
 

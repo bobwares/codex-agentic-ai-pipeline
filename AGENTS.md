@@ -5,7 +5,7 @@
 
 # Session Context
 
-- Open and read /workspace/agentic-ai-pipeline/agentic-pipeline/context/session_context.md.
+- Open and read /workspace/codex-agentic-ai-pipeline/agentic-pipeline/context/session_context.md.
 - resolve variables.
 
 # Project Context
@@ -27,16 +27,16 @@
 # Architecture Decision Record
 - Open and read ${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/container/Architecture_Decision_Record.md.
 
-# Task Pipeline 
+# Execution Plan
 
-- open and read ${ACTIVE_PATTERN_PATH}/tasks/task-pipeline.md.
+- open and read ${ACTIVE_PATTERN_PATH}/execution-plan.md.
 
 # Turns lifecycle
 
 - Create directory turn directory ${CURRENT_TURN_DIRECTORY}.
 - Write session_context values.
   - Write to directory ${CURRENT_TURN_DIRECTORY}/session_context.md.
-- Read task and execute the specified tasks and agents in the selected application implementation pattern's task-pipeline.md.
+- Read task and execute the tasks and agent calls in ${EXECUTION_PLAN}.
 - Create Pull Request file.
   - Use Template : ${TEMPLATE_PULL_REQUEST}
   - Write to ${CURRENT_TURN_DIRECTORY}/pull_request.md.

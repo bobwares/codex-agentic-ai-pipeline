@@ -39,26 +39,10 @@
 
 
 
-#### Commit Messages 
+#### Commit Message 
 
 ```
-AI Coding Agent Change:
-<type>(<optional-scope>): <short imperative summary>
-<BLANK LINE>
-Optional multi-line body (wrap at 72 chars).
-<BLANK LINE>
-Refs: <Task-id(s)>
-```
-
-Example:
+AI Coding Agent Change: < 1–3 sentences summarizing the overall result of this turn. >```
 
 ```
-feature(profile-ui): add in-place address editing
-
-Allows users to update their address directly on the Profile Overview
-card without navigating away. Uses optimistic UI and server-side
-validation.
-
-```
-
 
