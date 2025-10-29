@@ -1,6 +1,6 @@
 # Core definitions
 
-* **Turn**: a single execution of a Codex task (plan, generate, refactor, test, etc).
+* **Turn**: a single execution of a Codex task (plan, generate, refactor, test, etc.).
 * **Turn ID**: a monotonically increasing integer. Initial value `1`. Incremented by `1` at the start of each new turn.
 
 # Session Context
@@ -14,11 +14,11 @@
 
 # Coding Agents Context
 
-- open and read ${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/container/Coding_Agents.md.
+- Open and read ${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/container/Coding_Agents.md.
 
 # Application Implementation Pattern Context 
 
-- opne and read ${ACTIVE_PATTERN_PATH}/pattern_context.md.
+- Open and read ${ACTIVE_PATTERN_PATH}/pattern_context.md.
 
 # Governance 
 
@@ -29,14 +29,13 @@
 
 # Execution Plan
 
-- open and read ${ACTIVE_PATTERN_PATH}/execution-plan.md.
+- Open and read ${EXECUTION_PLAN}.
 
 # Turns lifecycle
 
-- Create directory turn directory ${CURRENT_TURN_DIRECTORY}.
 - Write session_context values.
   - Write to directory ${CURRENT_TURN_DIRECTORY}/session_context.md.
-- Read task and execute the tasks and agent calls in ${EXECUTION_PLAN}.
+- Execute the tasks and agent calls in ${EXECUTION_PLAN}.
 - Create Pull Request file.
   - Use Template : ${TEMPLATE_PULL_REQUEST}
   - Write to ${CURRENT_TURN_DIRECTORY}/pull_request.md.
@@ -45,7 +44,7 @@
   - Write to ${CURRENT_TURN_DIRECTORY}/adr.md.
 - Create Turn Index
 
-  Append one line per turn to {{TARGET_PROJECT}}/ai/agentic-pipeline/turns_index.csv.
+  Append one line per turn to ${TARGET_PROJECT}/ai/agentic-pipeline/turns_index.csv.
 
   ```
   turnId,timestampUtc,task,branch,tag,headAfter,testsPassed,testsFailed,coverageDeltaPct

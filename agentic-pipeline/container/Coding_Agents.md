@@ -13,4 +13,4 @@ agent run sql-ddl-generator --dialect postgresql --schema-path ./schemas/domain.
 
 1. The Coding agent definition is contained in the agents_context.md 
 2. from the codex-agentic-ai-pipeline/Agents/sql-ddl-generator directory.
-2. The coding agent loads and executes its' execution-plan.md in the ${CODING_AGENTS_DIRECTORY}/{{Coding Agent Name}}/tasks directory.
+2. The coding agent loads and executes its execution-plan.md in the ${CODING_AGENTS_DIRECTORY}/{{Coding Agent Name}}/tasks directory.

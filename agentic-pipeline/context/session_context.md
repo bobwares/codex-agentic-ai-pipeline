@@ -1,13 +1,13 @@
 SANDBOX_BASE_DIRECTORY = `/workspace`
-AGENTIC_PIPELINE_PROJECT = `${SANDBOX_BASE_DIRECTORY}/agentic-ai-pipeline`
-SESSION_CONTEXT = `${AGENTIC_PIPELINE_PROJECT}/codex-agentic-pipeline/context/session_context.md`
+AGENTIC_PIPELINE_PROJECT = `${SANDBOX_BASE_DIRECTORY}/codex-agentic-ai-pipeline`
+SESSION_CONTEXT = `${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/context/session_context.md`
 TARGET_PROJECT = `${SANDBOX_BASE_DIRECTORY}/${TARGET_PROJECT}`
 PROJECT_CONTEXT = `${TARGET_PROJECT}/ai/context/project_context.md`
 ACTIVE_PATTERN_NAME = `${PROJECT_CONTEXT}/project.ApplicationImplementationPattern`
 ACTIVE_PATTERN_PATH = `${AGENTIC_PIPELINE_PROJECT}/application-implementation-patterns/${ACTIVE_PATTERN_NAME}`
-EXECUTION_PLAN = `${AGENTIC_PIPELINE_PROJECT}/application-implementation-patterns/${ACTIVE_PATTERN_NAME}//execution-plan.md`
+EXECUTION_PLAN = `${AGENTIC_PIPELINE_PROJECT}/application-implementation-patterns/${ACTIVE_PATTERN_NAME}/execution-plan.md`
 
-TURN_ID = Computed dynamically at runtime
+TURN_ID = Computed dynamically at runtime. starts at 1.
 CURRENT_TURN_DIRECTORY = `${TARGET_PROJECT}/ai/agentic-pipeline/turns/${TURN_ID}`
 
 TEMPLATES = `${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/templates`
