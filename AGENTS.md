@@ -55,7 +55,9 @@
   turnId,timestampUtc,task,branch,tag,headAfter,testsPassed,testsFailed,coverageDeltaPct
   1,2025-09-05T17:42:10Z,generate-controllers-and-services,turn/1,turn/1,d4e5f6a,42,0,1.8
   ```
-  
+ 
+- Execute tasks in the ${CONTAINER_TASKS} directory.
+ 
 # Pull Request
 
 - PR title:  `Turn ${TURN_ID} – {{DATE}} – {{TIME_OF_EXECUTION}}`.

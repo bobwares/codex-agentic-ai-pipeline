@@ -33,3 +33,5 @@ TEMPLATE_ADR = `${TEMPLATES}/adr/adr_template.md`
 TEMPLATE_MANIFEST_SCHEMA = `${TEMPLATES}/turn/manifest.schema.json`
 
 CODING_AGENTS_DIRECTORY = `${AGENTIC_PIPELINE_PROJECT}/coding-agents`
+
+CONTAINER_TASKS = `${AGENTIC_PIPELINE_PROJECT}/container/tasks`
