@@ -1,15 +1,12 @@
-<!--
-PR TITLE (agent must set the GitHub PR title field to the following exact value):
-Turn {{TURN_ID}} – {{DATE}} – {{TIME_OF_EXECUTION}}
--->
-
-## Turn Durations
-
-**Worked for:**  < Display the elapsed time of the codex turn. >.
+< Agent must set the GitHub PR title field to the following exact value): Turn {{TURN_ID}} – {{DATE}} – {{TIME_OF_EXECUTION}} >
 
 ## Turn Summary
 
-< 3–5 sentences summarizing the overall result of this turn. >
+< 3–5 Bullet points summarizing the overall result of this turn. >
+
+## Turn Durations
+
+**Worked for:**  ${TURN_ELAPSED_TIME}
 
 ## Input Prompt
 
@@ -36,22 +33,22 @@ Turn {{TURN_ID}} – {{DATE}} – {{TIME_OF_EXECUTION}}
 
 | File | Path |
 |------|------|
-|      |      |
+|      |   < The path only>  |
 |      |      |
 
 ## Files Added (exclude /ai)
 
-| File | Path | Description                         | Task Name |
-|------|------|-------------------------------------|-----------|
-|      |      | <Description from metadata header.> |           |
-|      |      |                                     |           |
+| File | Path             | Description                         | Task Name |
+|------|------------------|-------------------------------------|-----------|
+|      | < The path only> | <Description from metadata header.> |           |
+|      |                  |                                     |           |
 
 ## Files Updated (exclude /ai)
 
-| File | Path | Description                         | Task Name |
-|------|------|-------------------------------------|-----------|
-|      |      | <Description from metadata header.> |           |
-|      |      |                                     |           |
+| File | Path             | Description                         | Task Name |
+|------|------------------|-------------------------------------|-----------|
+|      | < The path only> | <Description from metadata header.> |           |
+|      |                  |                                     |           |
 
 ## Checklist
 

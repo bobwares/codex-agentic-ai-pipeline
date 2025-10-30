@@ -1,3 +1,9 @@
+TURN_START_TIME = {{DATE TIME}}
+
+TURN_END_TIME = {{DATE TIME}}
+
+TURN_ELAPSED_TIME = ${TURN_END_TIME} - ${TURN_START_TIME}
+
 SANDBOX_BASE_DIRECTORY = `/workspace`
 
 AGENTIC_PIPELINE_PROJECT = `${SANDBOX_BASE_DIRECTORY}/codex-agentic-ai-pipeline`
@@ -14,9 +20,6 @@ ACTIVE_PATTERN_PATH = `${AGENTIC_PIPELINE_PROJECT}/application-implementation-pa
 
 EXECUTION_PLAN = `${AGENTIC_PIPELINE_PROJECT}/application-implementation-patterns/${ACTIVE_PATTERN_NAME}/execution-plan.md`
 
-TURN_ID = Computed dynamically at runtime. starts at 1.
-
-CURRENT_TURN_DIRECTORY = `${TARGET_PROJECT}/ai/agentic-pipeline/turns/${TURN_ID}`
 
 TEMPLATES = `${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/templates`
 
@@ -35,3 +38,8 @@ TEMPLATE_MANIFEST_SCHEMA = `${TEMPLATES}/turn/manifest.schema.json`
 CODING_AGENTS_DIRECTORY = `${AGENTIC_PIPELINE_PROJECT}/coding-agents`
 
 CONTAINER_TASKS = `${AGENTIC_PIPELINE_PROJECT}/container/tasks`
+
+
+CURRENT_TURN_DIRECTORY = `${TARGET_PROJECT}/ai/agentic-pipeline/turns/${TURN_ID}`
+
+TURN_ID = Computed dynamically at runtime. starts at 1.
