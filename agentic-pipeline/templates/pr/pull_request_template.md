@@ -16,7 +16,7 @@
 
 **Name**: ${ACTIVE_PATTERN_NAME} 
 
-**Path**: ${{ACTIVE_PATTERN_PATH}
+**Path**: ${ACTIVE_PATTERN_PATH}
 
 
 ## Tasks Executed

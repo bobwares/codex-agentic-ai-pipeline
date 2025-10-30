@@ -5,7 +5,7 @@
 
 ### Metadata Header
 
-— Every source, test, and IAC file in the target project must begin with Metadata Header comment section.
+— Every source, test, and IAC file in the target project must begin with a Metadata Header comment section.
 - exclude pom.xml
 - Placement: Top of file, above any import or code statements.
 - Version: Increment only when the file contents change.
@@ -41,7 +41,7 @@
 #### Commit Message 
 
 ```
-AI Coding Agent Change: < 3 - 5 sentences summarizing the overall result of this turn. >```
+AI Coding Agent Change: < 3 - 5 bullet points summarizing the overall result of this turn. >```
 
 ```
 

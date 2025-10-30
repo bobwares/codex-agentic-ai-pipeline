@@ -31,6 +31,8 @@ TEMPLATE_COMMIT_MESSAGE = `${TEMPLATES}/governance/commit_message.md`
 
 TEMPLATE_PULL_REQUEST = `${TEMPLATES}/pr/pull_request_template.md`
 
+TEMPLATE_SESSION_CONTEXT = `${TEMPLATES}/contexts/session_context.md`
+
 TEMPLATE_ADR = `${TEMPLATES}/adr/adr_template.md`
 
 TEMPLATE_MANIFEST_SCHEMA = `${TEMPLATES}/turn/manifest.schema.json`
