@@ -12,8 +12,7 @@
 - Date: UTC timestamp of the most recent change.
 - use template: {{TEMPLATE_METADATA_HEADER}}
 
-
-#### Source Versioning Rules
+### Source Versioning Rules
 
       * Use **semantic versioning** (`MAJOR.MINOR.PATCH`).
       * Start at **0.1.0**; update only when code or configuration changes.

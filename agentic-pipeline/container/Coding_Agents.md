@@ -1,7 +1,7 @@
 # Coding Agents
 
 
-- A coding agents are specialized code generators.
+- Coding agents are specialized code generators.
 
 - Coding Agents are located in the ${CODING_AGENTS_DIRECTORY}/{{Coding Agent Name}}.  
 

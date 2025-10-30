@@ -31,24 +31,24 @@
 
 ## Turn Files Added (under /ai only)
 
-| File | Path |
-|------|------|
-|      |   < The path only>  |
-|      |      |
+| File |
+|------|
+|      |
+|      |
 
 ## Files Added (exclude /ai)
 
-| File | Path             | Description                         | Task Name |
-|------|------------------|-------------------------------------|-----------|
-|      | < The path only> | <Description from metadata header.> |           |
-|      |                  |                                     |           |
+| TASK | Description                         | File |
+|------|-------------------------------------|------|
+|      | <Description from metadata header.> |      |
+|      |                                     |      |
 
 ## Files Updated (exclude /ai)
 
-| File | Path             | Description                         | Task Name |
-|------|------------------|-------------------------------------|-----------|
-|      | < The path only> | <Description from metadata header.> |           |
-|      |                  |                                     |           |
+| TASK | Description                         | File |
+|------|-------------------------------------|------|
+|      | <Description from metadata header.> |      |
+|      |                                     |      |
 
 ## Checklist
 

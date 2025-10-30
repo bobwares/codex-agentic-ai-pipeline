@@ -37,7 +37,7 @@ TEMPLATE_MANIFEST_SCHEMA = `${TEMPLATES}/turn/manifest.schema.json`
 
 CODING_AGENTS_DIRECTORY = `${AGENTIC_PIPELINE_PROJECT}/coding-agents`
 
-CONTAINER_TASKS = `${AGENTIC_PIPELINE_PROJECT}/container/tasks`
+CONTAINER_TASKS = `${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/container/tasks`
 
 
 CURRENT_TURN_DIRECTORY = `${TARGET_PROJECT}/ai/agentic-pipeline/turns/${TURN_ID}`

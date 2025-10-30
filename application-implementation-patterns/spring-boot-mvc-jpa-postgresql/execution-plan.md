@@ -11,3 +11,4 @@ Execute the following Tasks:
 3. TASK - Create Docker Compose for PostgreSQL.task.md
 4. TASK - Create Persistence Layer.task.md
 5. TASK - Create REST Service.task.md
+6. ${CONTAINER_TASKS}/TASK - Create Project Markdown File.task.md
