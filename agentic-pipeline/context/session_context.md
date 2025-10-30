@@ -23,7 +23,7 @@ EXECUTION_PLAN = `${AGENTIC_PIPELINE_PROJECT}/application-implementation-pattern
 
 TEMPLATES = `${AGENTIC_PIPELINE_PROJECT}/agentic-pipeline/templates`
 
-TEMPLATE_METADATA_HEADER = `${TEMPLATES}/governance/metadata_header.md`
+TEMPLATE_METADATA_HEADER = `${TEMPLATES}/governance/metadata_header.txt`
 
 TEMPLATE_BRANCH_NAMING = `${TEMPLATES}/governance/branch_naming.md`
 
