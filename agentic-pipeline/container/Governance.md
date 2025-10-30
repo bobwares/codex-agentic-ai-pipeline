@@ -5,30 +5,14 @@
 
 ### Metadata Header
 
-— Every source, test, and IAC file in the target project must begin with Metadata Header comment section.
+— Every source, test, and IAC file in the target project must begin with a Metadata Header comment section.
 - exclude pom.xml
 - Placement: Top of file, above any import or code statements.
 - Version: Increment only when the file contents change.
 - Date: UTC timestamp of the most recent change.
+- use template: {{TEMPLATE_METADATA_HEADER}}
 
-
-#### Metadata Header Template
-    ```markdown
-      /**
-      * App: {{Application Name}}
-      * Package: {{package}}
-      * File: {{file name}}
-      * Version: semantic versioning starting at 0.1.0
-      * Turns: append {{turn number}} list when created or updated.
-      * Author: {{author}}
-      * Date: {{YYYY-MM-DDThh:mm:ssZ}}
-      * Exports: {{ exported functions, types, and variables.}}
-      * Description: documentate the function of the class or function. Document each
-      *              method or function in the file.
-      */
-    ````
-
-#### Source Versioning Rules
+### Source Versioning Rules
 
       * Use **semantic versioning** (`MAJOR.MINOR.PATCH`).
       * Start at **0.1.0**; update only when code or configuration changes.
@@ -54,103 +38,10 @@
 
 
 
-#### Commit Messages 
+#### Commit Message 
 
 ```
-AI Coding Agent Change:
-<type>(<optional-scope>): <short imperative summary>
-<BLANK LINE>
-Optional multi-line body (wrap at 72 chars).
-<BLANK LINE>
-Refs: <Task-id(s)>
-```
-
-Example:
+AI Coding Agent Change: < 3 - 5 bullet points summarizing the overall result of this turn. >```
 
 ```
-feature(profile-ui): add in-place address editing
-
-Allows users to update their address directly on the Profile Overview
-card without navigating away. Uses optimistic UI and server-side
-validation.
-
-```
-
-#### Pull-Request Title
-
-{{Turn {{turn number}}  – {{Date}} - {{Time of execution}}}}
-
-
-#### Pull-Request Summary Template
-- record the following in the changelog.md
-    - Record the input prompt.
-    - List each task_name executed during a turn.
-    - List each tool_name executed during a task.
-    - List each agent_name executed during a task.
-    - List each path/file_name added during the task.
-    - List each path/file_name updated during the task.
-    - Use the following template
-
-```markdown
-## Turn Summary
-
-<!-- CODEx_TURN_SUMMARY:BEGIN -->
-
-[human-readable summary here]
-
-<!-- CODEx_TURN_SUMMARY:END -->
-
-## Input Prompt
-
-<!-- Summarize the input prompt, schema name that initiated this turn. -->
-
-[Prompt summary goes here]
-
-## Tasks Executed
-
-<!-- Add a row per task executed during this turn. Tools / Agents Executed should include a comma delimited list of tools and agents called.  -->
-
-| Task Name | Tools / Agents Executed |
-| --------- | ----------------------- |
-|           |                         |
-|           |                         |
-
-## Turn Files Added
-
-<!-- List files added under the /ai directory only. One row per file. -->
-
-| Path / File |
-| ----------- |
-|             |
-|             |
-
-## Files Added
-
-<!-- Filter by files that were added during the turn. Exclude anything under /ai. Include the task that created the file. -->
-
-| Path / File | Task Name |
-| ----------- | --------- |
-|             |           |
-|             |           |
-
-## Files Updated
-
-<!-- Filter by files that were updated during the turn. Exclude anything under /ai. Include the task that updated the file. -->
-
-| Path / File | Task Name |
-| ----------- | --------- |
-|             |           |
-|             |           |
-
-## Checklist
-
-* [ ] Unit tests pass
-* [ ] Integration tests pass
-* [ ] Linter passes
-* [ ] Documentation updated
-
-## Codex Task Link
-<leave blank>
-```
-
 

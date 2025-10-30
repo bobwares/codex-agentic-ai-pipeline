@@ -2,8 +2,6 @@
 
 Execute the following Tasks:
 
-Turn 1
-
 
 1. TASK - Generate Normalized Tables.task.md
 2. TASK - Generate Test Data.task.md
