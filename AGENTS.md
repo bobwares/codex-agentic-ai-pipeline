@@ -39,7 +39,7 @@
 # Turns lifecycle
 
 - Write session_context values.
-  - Write to session context variables to directory ${CURRENT_TURN_DIRECTORY}/session_context.md. Use template 
+  - Write to session context variables to directory ${CURRENT_TURN_DIRECTORY}/session_context.md. Use template ${TEMPLATE_SESSION_CONTEXT}
 - Execute the tasks and agent calls in ${EXECUTION_PLAN}.
 - Create Pull Request file.
   - Use Template : ${TEMPLATE_PULL_REQUEST}

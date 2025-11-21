@@ -35,8 +35,8 @@ The sandbox environment provides a set of preinstalled software tools such as ru
 1. Human launches a codex task by entering a prompt in the ChatGPT Codex interface.
 2. Codex initializes a sandbox with tooling.
 3. Codex copies the target repository to the sandbox under the directory workspace.
-4. Codex executes the environments setup script which 
-   - copies the codex-agentic-ai-pipeline to the sandbox's workspace directory.  
+4. Codex executes the environment setup script which 
+   - copy the codex-agentic-ai-pipeline to the sandbox's workspace directory.  
    - creates a symbolic link in the  root of the target repository to the AGENTS.md file in the root of the codex-agentic-ai-pipeline repository.
 5. Codex detects `AGENTS.md` which instructs the coding agent to loads the container context.
 6. `AGENTS.md` instructs the coding agent to execute Turn lifecycle defined in the container context.
