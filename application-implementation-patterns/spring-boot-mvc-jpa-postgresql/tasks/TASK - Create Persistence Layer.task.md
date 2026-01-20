@@ -3,7 +3,7 @@
 
 ## Purpose
 
-Generate the Java persistence layer for a domain entity using Spring Data JPA on PostgreSQL. Produce compilable source that maps the project’s JSON schema to JPA entities, repositories, and a service layer, aligned with the Codex session context and existing DB migrations.
+Generate the Java persistence layer for a domain entity using Spring Data JPA on PostgreSQL. Produce a compilable source that maps the project’s JSON schema to JPA entities, repositories, and a service layer, aligned with the Codex session context and existing DB migrations.
 
 ## Inputs
 

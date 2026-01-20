@@ -8,7 +8,7 @@
 — Every source, test, and IAC file in the target project must begin with a Metadata Header comment section.
 - exclude pom.xml
 - Placement: Top of file, above any import or code statements.
-- Version: Increment only when the file contents change.
+- Version: Increment only when the file contents change.[.claude.json](..%2F..%2F..%2F..%2F..%2F.claude.json)
 - Date: UTC timestamp of the most recent change.
 - use template: {{TEMPLATE_METADATA_HEADER}}
 
